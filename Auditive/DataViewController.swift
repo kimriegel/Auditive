@@ -10,6 +10,8 @@ import UIKit
 
 class DataViewController: UIViewController {
 
+  var microphone : Microphone = Microphone()
+
   @IBOutlet weak var dataLabel: UILabel!
   var dataObject: String = ""
 
@@ -25,7 +27,11 @@ class DataViewController: UIViewController {
   }
 
   @IBAction func startRecordingSample(_ sender: UIButton) {
+    microphone.checkPermission()
     print("recording");
+    microphone.startStreaming()
+
+    print("done")
   }
 
 }

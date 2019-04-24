@@ -16,6 +16,8 @@
 		E70DABAD22625AF0009B02CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
+		E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
+		E739ACB82271039400DCCC06 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739ACB72271039400DCCC06 /* Recorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABC222625AF0009B02CD /* AuditiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveUITests.swift; sourceTree = "<group>"; };
 		E70DABC422625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E739ACB3227101BB00DCCC06 /* Auditive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Auditive.entitlements; sourceTree = "<group>"; };
+		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E739ACB72271039400DCCC06 /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +91,7 @@
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
 				E70DAB9C22625AED009B02CD /* Products */,
+				E739ACB42271024C00DCCC06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +108,12 @@
 		E70DAB9D22625AED009B02CD /* Auditive */ = {
 			isa = PBXGroup;
 			children = (
+				E739ACB3227101BB00DCCC06 /* Auditive.entitlements */,
 				E70DAB9E22625AED009B02CD /* AppDelegate.swift */,
 				E70DABA022625AED009B02CD /* RootViewController.swift */,
 				E70DABA222625AED009B02CD /* DataViewController.swift */,
 				E70DABA422625AED009B02CD /* ModelController.swift */,
+				E739ACB72271039400DCCC06 /* Recorder.swift */,
 				E70DABA622625AED009B02CD /* Main.storyboard */,
 				E70DABA922625AF0009B02CD /* Assets.xcassets */,
 				E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */,
@@ -129,6 +138,14 @@
 				E70DABC422625AF0009B02CD /* Info.plist */,
 			);
 			path = AuditiveUITests;
+			sourceTree = "<group>";
+		};
+		E739ACB42271024C00DCCC06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E739ACB52271024C00DCCC06 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +216,20 @@
 				TargetAttributes = {
 					E70DAB9A22625AED009B02CD = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					E70DABB222625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
@@ -262,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E739ACB82271039400DCCC06 /* Recorder.swift in Sources */,
 				E70DABA122625AED009B02CD /* RootViewController.swift in Sources */,
 				E70DABA522625AED009B02CD /* ModelController.swift in Sources */,
 				E70DABA322625AED009B02CD /* DataViewController.swift in Sources */,
@@ -440,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = Auditive/Info.plist;
@@ -458,6 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = Auditive/Info.plist;
