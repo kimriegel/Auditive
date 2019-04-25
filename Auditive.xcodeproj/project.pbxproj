@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E70DAB9F22625AED009B02CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DAB9E22625AED009B02CD /* AppDelegate.swift */; };
-		E70DABA122625AED009B02CD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABA022625AED009B02CD /* RootViewController.swift */; };
 		E70DABA322625AED009B02CD /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABA222625AED009B02CD /* DataViewController.swift */; };
-		E70DABA522625AED009B02CD /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABA422625AED009B02CD /* ModelController.swift */; };
 		E70DABA822625AED009B02CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70DABA622625AED009B02CD /* Main.storyboard */; };
 		E70DABAA22625AF0009B02CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70DABA922625AF0009B02CD /* Assets.xcassets */; };
 		E70DABAD22625AF0009B02CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */; };
@@ -40,9 +38,7 @@
 /* Begin PBXFileReference section */
 		E70DAB9B22625AED009B02CD /* Auditive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auditive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DAB9E22625AED009B02CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E70DABA022625AED009B02CD /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E70DABA222625AED009B02CD /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		E70DABA422625AED009B02CD /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		E70DABA722625AED009B02CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E70DABA922625AF0009B02CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E70DABAC22625AF0009B02CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,13 +104,11 @@
 		E70DAB9D22625AED009B02CD /* Auditive */ = {
 			isa = PBXGroup;
 			children = (
+				E70DABA622625AED009B02CD /* Main.storyboard */,
 				E739ACB3227101BB00DCCC06 /* Auditive.entitlements */,
 				E70DAB9E22625AED009B02CD /* AppDelegate.swift */,
-				E70DABA022625AED009B02CD /* RootViewController.swift */,
 				E70DABA222625AED009B02CD /* DataViewController.swift */,
-				E70DABA422625AED009B02CD /* ModelController.swift */,
 				E739ACB72271039400DCCC06 /* Recorder.swift */,
-				E70DABA622625AED009B02CD /* Main.storyboard */,
 				E70DABA922625AF0009B02CD /* Assets.xcassets */,
 				E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */,
 				E70DABAE22625AF0009B02CD /* Info.plist */,
@@ -294,8 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E739ACB82271039400DCCC06 /* Recorder.swift in Sources */,
-				E70DABA122625AED009B02CD /* RootViewController.swift in Sources */,
-				E70DABA522625AED009B02CD /* ModelController.swift in Sources */,
 				E70DABA322625AED009B02CD /* DataViewController.swift in Sources */,
 				E70DAB9F22625AED009B02CD /* AppDelegate.swift in Sources */,
 			);

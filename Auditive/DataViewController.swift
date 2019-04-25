@@ -11,6 +11,7 @@ import UIKit
 class DataViewController: UIViewController {
 
   var microphone : Microphone = Microphone()
+  var recordingList : [URL] = []
 
   @IBOutlet weak var dataLabel: UILabel!
   var dataObject: String = ""
@@ -36,3 +37,45 @@ class DataViewController: UIViewController {
 
 }
 
+extension DataViewController : UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    recordingList = microphone.listOfRecordings();
+    return recordingList.count;
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "recordingName", for: indexPath)
+    cell.textLabel?.text = recordingList[indexPath.row].lastPathComponent
+    return cell
+  }
+
+}
+
+extension DataViewController : UITableViewDelegate {
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
+    let flagAction = self.contextualToggleFlagAction(forRowAtIndexPath: indexPath)
+    let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction, flagAction])
+    return swipeConfig
+  }
+
+  func contextualDeleteAction(forRowAtIndexPath: IndexPath) -> UIContextualAction {
+    let action = UIContextualAction(style: .normal, title: "Delete") {
+      (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+        print("delete", contextAction)
+      completionHandler(false)
+    }
+    action.backgroundColor = UIColor.red
+    return action
+  }
+
+  func contextualToggleFlagAction(forRowAtIndexPath: IndexPath) -> UIContextualAction {
+    let action = UIContextualAction(style: .normal, title: "Flag") {
+      (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+      print("flag", contextAction)
+      completionHandler(false)
+    }
+    action.backgroundColor = UIColor.gray
+    return action
+  }
+}

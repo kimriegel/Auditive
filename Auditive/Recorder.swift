@@ -334,5 +334,15 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
   }
 */
 
+  func listOfRecordings() -> [URL] {
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    do {
+      let paths = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants])
+      return paths
+    } catch {
+      print("getting list of paths", error)
+    }
+    return []
+  }
 
 }
