@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DataViewController: UIViewController {
 
@@ -15,7 +16,7 @@ class DataViewController: UIViewController {
 
   @IBOutlet weak var dataLabel: UILabel!
   var dataObject: String = ""
-
+  var audioPlayer : AVAudioPlayer?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -78,4 +79,25 @@ extension DataViewController : UITableViewDelegate {
     action.backgroundColor = UIColor.gray
     return action
   }
+
+  // =========================
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    do {
+      print(recordingList[indexPath.row] )
+      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+      try AVAudioSession.sharedInstance().setActive(true)
+
+      audioPlayer = try AVAudioPlayer(contentsOf: recordingList[indexPath.row], fileTypeHint: AVFileType.aiff.rawValue)
+      DispatchQueue.main.async {
+      self.audioPlayer?.play()
+      }
+    } catch let error {
+      print("Can't play the audio file failed with an error \(error.localizedDescription)")
+    }
+
+
+  }
+
 }
