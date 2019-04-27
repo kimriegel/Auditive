@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import os
 
 class DataViewController: UIViewController {
 
@@ -15,6 +16,8 @@ class DataViewController: UIViewController {
   var recordingList : [URL] = []
 
   @IBOutlet weak var dataLabel: UILabel!
+  @IBOutlet var tableView : UITableView!
+
   var dataObject: String = ""
   var audioPlayer : AVAudioPlayer?
 
@@ -25,14 +28,17 @@ class DataViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.dataLabel!.text = dataObject
+    DispatchQueue.main.async { self.dataLabel!.text = self.dataObject }
   }
 
   @IBAction func startRecordingSample(_ sender: UIButton) {
     microphone.checkPermission()
     print("recording");
-    microphone.startStreaming()
-
+    microphone.startStreaming { url in
+      self.recordingList.insert(url, at: 0)
+      DispatchQueue.main.async { self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top) } 
+      // DispatchQueue.main.async { self.tableView.reloadData(); }
+    }
     print("done")
   }
 
@@ -63,8 +69,17 @@ extension DataViewController : UITableViewDelegate {
   func contextualDeleteAction(forRowAtIndexPath: IndexPath) -> UIContextualAction {
     let action = UIContextualAction(style: .normal, title: "Delete") {
       (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
-        print("delete", contextAction)
-      completionHandler(false)
+      let t = forRowAtIndexPath
+      let u = self.recordingList[t.row]
+      print("deleting", u)
+      do {
+        try FileManager.default.removeItem(at: u)
+        self.tableView.deleteRows(at: [t], with: .right)
+        completionHandler(true)
+      } catch {
+        os_log("deleting: %s", type: .error, error.localizedDescription)
+        completionHandler(false)
+      }
     }
     action.backgroundColor = UIColor.red
     return action

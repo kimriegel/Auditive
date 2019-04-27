@@ -57,14 +57,13 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
   }
  */
 
-  func startStreaming() {
+  func startStreaming(onCompletion : @escaping (URL)->() ) {
     // let _ = self.selectCaptureDevice()
 
    // let j = self.audioDeviceList()
 
     audioEngine  = AVAudioEngine()
     let inputNode = audioEngine.inputNode
-
 
    // let inputUnit: AudioUnit = inputNode.audioUnit!
 
@@ -73,10 +72,6 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 //                         kAudioUnitScope_Global, 0, &inputDeviceID, UInt32(MemoryLayout<AudioDeviceID>.size))
 
 
-    self.commonStreaming(inputNode)
-  }
-
-  func commonStreaming( _ inputNode : AVAudioNode) {
     let bus = 0
     let z : AVAudioFormat = inputNode.outputFormat(forBus: bus)
     // let h = z.sampleRate
@@ -143,7 +138,7 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     let dateFormatter : DateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     let time = dateFormatter.string(from: Date())
-    let url = path.appendingPathComponent("sample-\(time)")
+    let url = path.appendingPathComponent("s-\(time)")
 
     let clipLength = 3
     do {
@@ -151,6 +146,7 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
       try audioEngine!.start()
       DispatchQueue.global().asyncAfter(wallDeadline: DispatchWallTime.now()+DispatchTimeInterval.seconds(clipLength)) {
         self.audioEngine!.stop()
+        onCompletion(self.afile.url)
         print(self.afile.url,self.afile.framePosition, self.afile.length)
       }
     } catch let e {
@@ -338,7 +334,7 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     do {
       let paths = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants])
-      return paths
+      return paths.sorted {  $0.lastPathComponent > $1.lastPathComponent } 
     } catch {
       print("getting list of paths", error)
     }
