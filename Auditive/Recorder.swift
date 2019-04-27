@@ -11,6 +11,9 @@ import AVKit
 import AVFoundation
 import os
 
+import CloudKit
+
+
 class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
   private var permissionGranted = false
   private var audioEngine : AVAudioEngine!
@@ -18,11 +21,13 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
   private var counter : Int = 0 // number of captured frames
   private var afile : AVAudioFile!
   private var musicQ : DispatchQueue = DispatchQueue.init(label: "musicGrabber", attributes: [])
-
+  var myLocation : CLLocation?
 
   override init() {
+    locationManager = CLLocationManager()
     super.init()
     checkPermission()
+    startLocationTracking()
   }
 
   func checkPermission() {
@@ -341,4 +346,60 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     return []
   }
 
+  var locationManager : CLLocationManager
+
+
+  // Upload the contents of the URL to cloudkit
+  func upload(_ url : URL) {
+    let sid = CKRecord.ID(recordName: "??")
+    let rec = CKRecord(recordType: "Samples", recordID: sid)
+
+    // CLLocation , CLGeoCoder
+    rec["location"] = "unimplemented" as NSString
+    rec["time"] = Date()
+    let asset = CKAsset(fileURL: url)
+    rec["image"] = asset
+
+    let container = CKContainer.default()
+    let pubdb = container.publicCloudDatabase
+    pubdb.save(rec) { (record, error) in
+      if let error = error {
+        os_log("saving sample to cloud: %s", type: .error, error.localizedDescription)
+      }
+      os_log("saved successfully", type: .info)
+    }
+
+  }
+
+
 }
+
+extension Microphone : CLLocationManagerDelegate {
+  func startLocationTracking() {
+    if (CLLocationManager.locationServicesEnabled()) {
+    locationManager = CLLocationManager()
+    locationManager.delegate = self
+      locationManager.requestWhenInUseAuthorization()
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+    locationManager.distanceFilter = 100 // meters
+    locationManager.startUpdatingLocation()
+    } else {
+      os_log("location services not enabled!", type: .info)
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let location = locations.last {
+      myLocation = location
+    let eventDate = location.timestamp;
+    let howRecent = eventDate.timeIntervalSinceNow
+    if (abs(howRecent) < 15.0) {
+      // If the event is recent, do something with it.
+      os_log("latitude %+.6f, longitude %+.6f\n", type: .info,
+             location.coordinate.latitude,
+             location.coordinate.longitude);
+    }
+  }
+  }
+}
+

@@ -16,6 +16,7 @@
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
 		E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
 		E739ACB82271039400DCCC06 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739ACB72271039400DCCC06 /* Recorder.swift */; };
+		E74E1E1F2274E37F003774FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E1E1E2274E37F003774FF /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E739ACB3227101BB00DCCC06 /* Auditive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Auditive.entitlements; sourceTree = "<group>"; };
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E739ACB72271039400DCCC06 /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74E1E1F2274E37F003774FF /* CoreLocation.framework in Frameworks */,
 				E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +140,7 @@
 		E739ACB42271024C00DCCC06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E74E1E1E2274E37F003774FF /* CoreLocation.framework */,
 				E739ACB52271024C00DCCC06 /* CloudKit.framework */,
 			);
 			name = Frameworks;
