@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840FA1DB2343B7A100DD0DB5 /* AudioKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 840FA1D92343B7A100DD0DB5 /* AudioKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8451BB91233FBC00001CDB14 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8451BB90233FBC00001CDB14 /* Storyboard.storyboard */; };
 		E70DAB9F22625AED009B02CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DAB9E22625AED009B02CD /* AppDelegate.swift */; };
 		E70DABA322625AED009B02CD /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABA222625AED009B02CD /* DataViewController.swift */; };
 		E70DABA822625AED009B02CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70DABA622625AED009B02CD /* Main.storyboard */; };
@@ -36,7 +38,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		840FA1DC2343B7A100DD0DB5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				840FA1DB2343B7A100DD0DB5 /* AudioKitUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		840FA1D32343B73A00DD0DB5 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = "../../../Downloads/AudioKit-iOS/AudioKit.framework"; sourceTree = "<group>"; };
+		840FA1D92343B7A100DD0DB5 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = "../../../Downloads/AudioKit-iOS/AudioKitUI.framework"; sourceTree = "<group>"; };
+		8451BB88233FB00A001CDB14 /* AudioKit-iOS 2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "AudioKit-iOS 2"; path = "../../../Downloads/AudioKit-iOS 2"; sourceTree = "<group>"; };
+		8451BB89233FB026001CDB14 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = "../../../Downloads/AudioKit-iOS 2/AudioKit.framework"; sourceTree = "<group>"; };
+		8451BB8D233FB049001CDB14 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = "../../../Downloads/AudioKit-iOS 2/AudioKitUI.framework"; sourceTree = "<group>"; };
+		8451BB90233FBC00001CDB14 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		E70DAB9B22625AED009B02CD /* Auditive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auditive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DAB9E22625AED009B02CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E70DABA222625AED009B02CD /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +108,7 @@
 		E70DAB9222625AEC009B02CD = {
 			isa = PBXGroup;
 			children = (
+				8451BB90233FBC00001CDB14 /* Storyboard.storyboard */,
 				E70DAB9D22625AED009B02CD /* Auditive */,
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
@@ -140,6 +163,11 @@
 		E739ACB42271024C00DCCC06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				840FA1D92343B7A100DD0DB5 /* AudioKitUI.framework */,
+				840FA1D32343B73A00DD0DB5 /* AudioKit.framework */,
+				8451BB8D233FB049001CDB14 /* AudioKitUI.framework */,
+				8451BB89233FB026001CDB14 /* AudioKit.framework */,
+				8451BB88233FB00A001CDB14 /* AudioKit-iOS 2 */,
 				E74E1E1E2274E37F003774FF /* CoreLocation.framework */,
 				E739ACB52271024C00DCCC06 /* CloudKit.framework */,
 			);
@@ -156,6 +184,7 @@
 				E70DAB9722625AED009B02CD /* Sources */,
 				E70DAB9822625AED009B02CD /* Frameworks */,
 				E70DAB9922625AED009B02CD /* Resources */,
+				840FA1DC2343B7A100DD0DB5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +243,7 @@
 				TargetAttributes = {
 					E70DAB9A22625AED009B02CD = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
 								enabled = 1;
@@ -231,10 +261,12 @@
 					};
 					E70DABB222625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1100;
 						TestTargetID = E70DAB9A22625AED009B02CD;
 					};
 					E70DABBD22625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1100;
 						TestTargetID = E70DAB9A22625AED009B02CD;
 					};
 				};
@@ -265,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70DABAD22625AF0009B02CD /* LaunchScreen.storyboard in Resources */,
+				8451BB91233FBC00001CDB14 /* Storyboard.storyboard in Resources */,
 				E70DABAA22625AF0009B02CD /* Assets.xcassets in Resources */,
 				E70DABA822625AED009B02CD /* Main.storyboard in Resources */,
 			);
@@ -468,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
@@ -478,6 +512,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Auditive/Auditive-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -487,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
@@ -497,6 +534,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Auditive/Auditive-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -507,6 +545,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = AuditiveTests/Info.plist;
@@ -517,6 +556,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.AuditiveTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Auditive/AuditiveTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Auditive.app/Auditive";
@@ -528,6 +569,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = AuditiveTests/Info.plist;
@@ -538,6 +580,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.AuditiveTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Auditive/AuditiveTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Auditive.app/Auditive";
@@ -548,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = AuditiveUITests/Info.plist;
@@ -558,6 +602,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.AuditiveUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Auditive/AuditiveUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Auditive;
@@ -568,6 +614,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = AuditiveUITests/Info.plist;
@@ -578,6 +625,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.AuditiveUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Auditive/AuditiveUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Auditive;
