@@ -1,10 +1,5 @@
-//
-//  Recorder.swift
-//  Auditive
-//
+
 //  Created by Robert M. Lefkowitz on 4/24/19.
-//  Copyright © 2019 Semasiology. All rights reserved.
-//
 
 import UIKit
 import AVKit
@@ -145,7 +140,7 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     let time = dateFormatter.string(from: Date())
     let url = path.appendingPathComponent("s-\(time)")
 
-    let clipLength = 3
+    let clipLength = 10
     do {
       try afile = AVAudioFile.init(forWriting: url, settings: recordSettings)
       try audioEngine!.start()

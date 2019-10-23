@@ -1,12 +1,5 @@
-//
-//  DataViewController.swift
-//  Auditive
-//
-//  Created by Robert M. Lefkowitz on 4/13/19.
-//  Copyright © 2019 Semasiology. All rights reserved.
-//
 
-//here is a fancy new comment that will change your life
+//  Created by Robert M. Lefkowitz on 4/13/19.
 
 import UIKit
 import AVFoundation
@@ -34,6 +27,11 @@ class DataViewController: UIViewController {
   }
 
   @IBAction func startRecordingSample(_ sender: UIButton) {
+    // FIXME:  If I hit the record button and then again before the first recording finishes,
+    // it crashes
+    // reason: 'Invalid update: invalid number of rows in section 0. The number of rows contained in an existing section after the update (5) must be equal to the number of rows contained in that section before the update (5), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
+    
+    
     microphone.checkPermission()
     print("recording");
     microphone.startStreaming { url in
@@ -103,6 +101,8 @@ extension DataViewController : UITableViewDelegate {
 
     do {
       print(recordingList[indexPath.row] )
+      
+      
       try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
       try AVAudioSession.sharedInstance().setActive(true)
 

@@ -1,10 +1,5 @@
-//
-//  AppDelegate.swift
-//  Auditive
-//
+
 //  Created by Robert M. Lefkowitz on 4/13/19.
-//  Copyright © 2019 Semasiology. All rights reserved.
-//
 
 import UIKit
 
