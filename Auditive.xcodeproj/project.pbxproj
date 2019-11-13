@@ -23,6 +23,18 @@
 		E757776E235FEB4F00B96D05 /* rpgad.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776B235FEB4F00B96D05 /* rpgad.wav */; };
 		E757776F235FEB4F00B96D05 /* AA_cal_wave.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */; };
 		E7577770235FEB4F00B96D05 /* rpgad1.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776D235FEB4F00B96D05 /* rpgad1.wav */; };
+		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
+		E76EA100237B536400D1282A /* Recordings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FF237B536400D1282A /* Recordings.swift */; };
+		E76EA102237B53C700D1282A /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA101237B53C700D1282A /* Recorder.swift */; };
+		E76EA104237B583300D1282A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA103237B583300D1282A /* Observable.swift */; };
+		E76EA106237B6BC800D1282A /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA105237B6BC800D1282A /* Recording.swift */; };
+		E7A0E9FE2360C4900014C886 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0E9FD2360C4900014C886 /* RecordView.swift */; };
+		E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA072360C9210014C886 /* AppDelegate.swift */; };
+		E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA0B2360C9210014C886 /* ContentView.swift */; };
+		E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA0D2360C9220014C886 /* Assets.xcassets */; };
+		E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA102360C9220014C886 /* Preview Assets.xcassets */; };
+		E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */; };
+		E7A0EA192360CADE0014C886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA092360C9210014C886 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,9 +101,23 @@
 		E757776B235FEB4F00B96D05 /* rpgad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad.wav; sourceTree = "<group>"; };
 		E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AA_cal_wave.wav; sourceTree = "<group>"; };
 		E757776D235FEB4F00B96D05 /* rpgad1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad1.wav; sourceTree = "<group>"; };
+		E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E76EA0FF237B536400D1282A /* Recordings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordings.swift; sourceTree = "<group>"; };
+		E76EA101237B53C700D1282A /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		E76EA103237B583300D1282A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		E76EA105237B6BC800D1282A /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		E773940E235F60E100DE5031 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E7A0E9FB2360AAA40014C886 /* LeqCalibrationMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqCalibrationMaster.py; sourceTree = "<group>"; };
 		E7A0E9FC2360AAA40014C886 /* LeqMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqMaster.py; sourceTree = "<group>"; };
+		E7A0E9FD2360C4900014C886 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		E7A0EA052360C9210014C886 /* Clem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7A0EA072360C9210014C886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E7A0EA092360C9210014C886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E7A0EA0B2360C9210014C886 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E7A0EA0D2360C9220014C886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7A0EA102360C9220014C886 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E7A0EA132360C9220014C886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E7A0EA152360C9220014C886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +151,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7A0EA022360C9210014C886 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -137,6 +170,7 @@
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
 				E7577764235FB78D00B96D05 /* LeqTest */,
+				E7A0EA062360C9210014C886 /* Clem */,
 				E70DAB9C22625AED009B02CD /* Products */,
 				E739ACB42271024C00DCCC06 /* Frameworks */,
 			);
@@ -149,6 +183,7 @@
 				E70DABB322625AF0009B02CD /* AuditiveTests.xctest */,
 				E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */,
 				E7577763235FB78D00B96D05 /* LeqTest */,
+				E7A0EA052360C9210014C886 /* Clem.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,10 +194,12 @@
 				E70DABA622625AED009B02CD /* Main.storyboard */,
 				E739ACB3227101BB00DCCC06 /* Auditive.entitlements */,
 				E70DAB9E22625AED009B02CD /* AppDelegate.swift */,
+				E7A0EA092360C9210014C886 /* SceneDelegate.swift */,
 				E70DABA222625AED009B02CD /* DataViewController.swift */,
 				E739ACB72271039400DCCC06 /* Recorder.swift */,
 				E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */,
 				E7577748235FB64B00B96D05 /* Leq.swift */,
+				E7A0E9FD2360C4900014C886 /* RecordView.swift */,
 				E70DABAE22625AF0009B02CD /* Info.plist */,
 			);
 			path = Auditive;
@@ -215,6 +252,32 @@
 				E7577765235FB78D00B96D05 /* main.swift */,
 			);
 			path = LeqTest;
+			sourceTree = "<group>";
+		};
+		E7A0EA062360C9210014C886 /* Clem */ = {
+			isa = PBXGroup;
+			children = (
+				E7A0EA072360C9210014C886 /* AppDelegate.swift */,
+				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
+				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
+				E76EA101237B53C700D1282A /* Recorder.swift */,
+				E76EA105237B6BC800D1282A /* Recording.swift */,
+				E76EA103237B583300D1282A /* Observable.swift */,
+				E76EA0FF237B536400D1282A /* Recordings.swift */,
+				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
+				E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */,
+				E7A0EA152360C9220014C886 /* Info.plist */,
+				E7A0EA0F2360C9220014C886 /* Preview Content */,
+			);
+			path = Clem;
+			sourceTree = "<group>";
+		};
+		E7A0EA0F2360C9220014C886 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E7A0EA102360C9220014C886 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +356,23 @@
 			productReference = E7577763235FB78D00B96D05 /* LeqTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		E7A0EA042360C9210014C886 /* Clem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7A0EA162360C9220014C886 /* Build configuration list for PBXNativeTarget "Clem" */;
+			buildPhases = (
+				E7A0EA012360C9210014C886 /* Sources */,
+				E7A0EA022360C9210014C886 /* Frameworks */,
+				E7A0EA032360C9210014C886 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clem;
+			productName = Clem;
+			productReference = E7A0EA052360C9210014C886 /* Clem.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,6 +411,9 @@
 					E7577762235FB78D00B96D05 = {
 						CreatedOnToolsVersion = 11.1;
 					};
+					E7A0EA042360C9210014C886 = {
+						CreatedOnToolsVersion = 11.1;
+					};
 				};
 			};
 			buildConfigurationList = E70DAB9622625AEC009B02CD /* Build configuration list for PBXProject "Auditive" */;
@@ -352,6 +435,7 @@
 				E70DABB222625AF0009B02CD /* AuditiveTests */,
 				E70DABBD22625AF0009B02CD /* AuditiveUITests */,
 				E7577762235FB78D00B96D05 /* LeqTest */,
+				E7A0EA042360C9210014C886 /* Clem */,
 			);
 		};
 /* End PBXProject section */
@@ -384,6 +468,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7A0EA032360C9210014C886 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */,
+				E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */,
+				E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -394,7 +488,9 @@
 				E739ACB82271039400DCCC06 /* Recorder.swift in Sources */,
 				E70DABA322625AED009B02CD /* DataViewController.swift in Sources */,
 				E7577749235FB64B00B96D05 /* Leq.swift in Sources */,
+				E7A0E9FE2360C4900014C886 /* RecordView.swift in Sources */,
 				E70DAB9F22625AED009B02CD /* AppDelegate.swift in Sources */,
+				E7A0EA192360CADE0014C886 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +516,20 @@
 			files = (
 				E757776A235FB79300B96D05 /* Leq.swift in Sources */,
 				E7577766235FB78D00B96D05 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A0EA012360C9210014C886 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E76EA102237B53C700D1282A /* Recorder.swift in Sources */,
+				E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */,
+				E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */,
+				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
+				E76EA104237B583300D1282A /* Observable.swift in Sources */,
+				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
+				E76EA100237B536400D1282A /* Recordings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +561,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70DABAC22625AF0009B02CD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7A0EA132360C9220014C886 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -509,7 +627,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -564,7 +682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -722,6 +840,48 @@
 			};
 			name = Release;
 		};
+		E7A0EA172360C9220014C886 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Clem/Preview Content\"";
+				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Clem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.Clem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E7A0EA182360C9220014C886 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Clem/Preview Content\"";
+				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Clem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.Clem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -766,6 +926,15 @@
 			buildConfigurations = (
 				E7577768235FB78D00B96D05 /* Debug */,
 				E7577769235FB78D00B96D05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7A0EA162360C9220014C886 /* Build configuration list for PBXNativeTarget "Clem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7A0EA172360C9220014C886 /* Debug */,
+				E7A0EA182360C9220014C886 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
