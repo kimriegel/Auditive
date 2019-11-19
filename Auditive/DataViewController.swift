@@ -7,7 +7,8 @@
 //
 
 //here is a fancy new comment that will change your life
-
+//Hello, my name is mahmud.
+//Watch me overcomment this like crazy
 import UIKit
 import AVFoundation
 import os
@@ -19,7 +20,10 @@ class DataViewController: UIViewController {
     
     
     
-    
+    //Hi nice to meet you
+    //I see you're reading my code
+    //Well, below is all the private variables that i added.
+    //I am gonna fix this and clean it up because most of these private vars i Do not need at all.
     
     
     
@@ -195,10 +199,14 @@ extension DataViewController : UITableViewDelegate {
     
     
     
-    
-    
-    
-    
+//=======================================Commentedout because of mic error. will fix soon========================
+//=======================================Commentedout because of mic error. will fix soon========================
+//=======================================Commentedout because of mic error. will fix soon========================
+    //=======================================Commentedout because of mic error. will fix soon========================
+    //=======================================Commentedout because of mic error. will fix soon========================
+    //=======================================Commentedout because of mic error. will fix soon========================
+    //=======================================Commentedout because of mic error. will fix soon========================
+    /*
    
 
     func setupPlot() {
@@ -238,8 +246,8 @@ extension DataViewController : UITableViewDelegate {
         }
         setupPlot()
 
-    }
-
+    } */
+/*
     @objc func updateUI() {
         if tracker.amplitude > 0.1 {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
@@ -263,7 +271,7 @@ extension DataViewController : UITableViewDelegate {
                 }
             }
              
-    
+   */
     
     
     
@@ -271,6 +279,5 @@ extension DataViewController : UITableViewDelegate {
     
     
 }
-}
-}
+
 
