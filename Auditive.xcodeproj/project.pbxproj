@@ -24,10 +24,11 @@
 		E757776F235FEB4F00B96D05 /* AA_cal_wave.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */; };
 		E7577770235FEB4F00B96D05 /* rpgad1.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776D235FEB4F00B96D05 /* rpgad1.wav */; };
 		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
-		E76EA100237B536400D1282A /* Recordings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FF237B536400D1282A /* Recordings.swift */; };
 		E76EA102237B53C700D1282A /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA101237B53C700D1282A /* Recorder.swift */; };
 		E76EA104237B583300D1282A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA103237B583300D1282A /* Observable.swift */; };
 		E76EA106237B6BC800D1282A /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA105237B6BC800D1282A /* Recording.swift */; };
+		E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D4237CA59A00576B00 /* RecordingView.swift */; };
+		E78351D7237CAB8F00576B00 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D6237CAB8F00576B00 /* Leq.swift */; };
 		E7A0E9FE2360C4900014C886 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0E9FD2360C4900014C886 /* RecordView.swift */; };
 		E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA072360C9210014C886 /* AppDelegate.swift */; };
 		E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA0B2360C9210014C886 /* ContentView.swift */; };
@@ -102,11 +103,12 @@
 		E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AA_cal_wave.wav; sourceTree = "<group>"; };
 		E757776D235FEB4F00B96D05 /* rpgad1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad1.wav; sourceTree = "<group>"; };
 		E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E76EA0FF237B536400D1282A /* Recordings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordings.swift; sourceTree = "<group>"; };
 		E76EA101237B53C700D1282A /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		E76EA103237B583300D1282A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E76EA105237B6BC800D1282A /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		E773940E235F60E100DE5031 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E78351D4237CA59A00576B00 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		E78351D6237CAB8F00576B00 /* Leq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leq.swift; sourceTree = "<group>"; };
 		E7A0E9FB2360AAA40014C886 /* LeqCalibrationMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqCalibrationMaster.py; sourceTree = "<group>"; };
 		E7A0E9FC2360AAA40014C886 /* LeqMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqMaster.py; sourceTree = "<group>"; };
 		E7A0E9FD2360C4900014C886 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -259,11 +261,12 @@
 			children = (
 				E7A0EA072360C9210014C886 /* AppDelegate.swift */,
 				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
+				E78351D4237CA59A00576B00 /* RecordingView.swift */,
 				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
 				E76EA101237B53C700D1282A /* Recorder.swift */,
+				E78351D6237CAB8F00576B00 /* Leq.swift */,
 				E76EA105237B6BC800D1282A /* Recording.swift */,
 				E76EA103237B583300D1282A /* Observable.swift */,
-				E76EA0FF237B536400D1282A /* Recordings.swift */,
 				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
 				E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */,
 				E7A0EA152360C9220014C886 /* Info.plist */,
@@ -526,10 +529,11 @@
 				E76EA102237B53C700D1282A /* Recorder.swift in Sources */,
 				E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */,
 				E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */,
+				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
 				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
 				E76EA104237B583300D1282A /* Observable.swift in Sources */,
+				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
-				E76EA100237B536400D1282A /* Recordings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

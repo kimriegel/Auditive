@@ -6,14 +6,32 @@ import AVFoundation
 import CloudKit
 import os
 
-class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
+class Recorder: NSObject, ObservableObject {
+  @Published var onAir : Bool = false
+
+  var recordings : [Recording] {
+    get {
+      listOfRecordings()
+    }
+  }
+  var recordingNames : [String] {
+    get {
+      listOfRecordings().map {
+        $0.displayName
+      }
+    }
+  }
+  
+
   private var permissionGranted = false
-  private var audioEngine : AVAudioEngine!
+//  private var audioEngine : AVAudioEngine!
   private var frameCount : Int = 0
   private var counter : Int = 0 // number of captured frames
-  private var afile : AVAudioFile!
+//  private var afile : AVAudioFile!
+  private var arec : AVAudioRecorder!
   private var musicQ : DispatchQueue = DispatchQueue.init(label: "musicGrabber", attributes: [])
   var myLocation : CLLocation?
+  
 
   override init() {
     locationManager = CLLocationManager()
@@ -54,13 +72,13 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
   }
  */
 
-  func startStreaming(onCompletion : @escaping (URL)->() ) {
+/*  func startStreaming(onCompletion : @escaping (URL)->() ) {
     // let _ = self.selectCaptureDevice()
 
    // let j = self.audioDeviceList()
 
-    audioEngine  = AVAudioEngine()
-    let inputNode = audioEngine.inputNode
+//    audioEngine  = AVAudioEngine()
+//    let inputNode = audioEngine.inputNode
 
    // let inputUnit: AudioUnit = inputNode.audioUnit!
 
@@ -70,19 +88,19 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
 
     let bus = 0
-    let z : AVAudioFormat = inputNode.outputFormat(forBus: bus)
+//    let z : AVAudioFormat = inputNode.outputFormat(forBus: bus)
     // let h = z.sampleRate
     // let j = z.channelCount
     // let k = z.formatDescription
     // let m = z.commonFormat
     // let n = z.formatDescription
 
-    let bs = Int(z.sampleRate) //  / 10.0) // sampling is at 1 tenth of a second?   Always?
+ //   let bs = Int(z.sampleRate) //  / 10.0) // sampling is at 1 tenth of a second?   Always?
     // buffer size for a second worth of audio?
 
     // os_log("%s", type:.debug, "sample rate \(h), channel count \(j), format description \(k), common format \(m), format description \(n), buffer size \(bs)")
 
-    frameCount = Int(bs / 60 )
+ //   frameCount = Int(bs / 60 )
     // this is FFT related stuff
 
       // nover2 = vDSP_Length(frameCount/2)
@@ -115,11 +133,11 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
     // inputNode.installTap(onBus: bus, bufferSize: AVAudioFrameCount(bs), format: inputNode.outputFormat(forBus: bus), block: self.captured)
 
-    inputNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount(frameCount), format: inputNode.outputFormat(forBus: bus), block: self.captured)
+ //   inputNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount(frameCount), format: inputNode.outputFormat(forBus: bus), block: self.captured)
 
-    audioEngine!.prepare()
+//    audioEngine!.prepare()
 
-    let iff = inputNode.outputFormat(forBus: bus)
+//    let iff = inputNode.outputFormat(forBus: bus)
 
     let recordSettings : [String:Any] = [
       // AVFormatIDKey: kAudioFormatAppleLossless,
@@ -135,26 +153,32 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     let dateFormatter : DateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     let time = dateFormatter.string(from: Date())
-    let url = path.appendingPathComponent("s-\(time)")
+    let url = path.appendingPathComponent("s-\(time)").appendingPathExtension("aiff")
 
     let clipLength = 10
     do {
-      try afile = AVAudioFile.init(forWriting: url, settings: recordSettings)
+//      try afile = AVAudioFile.init(forWriting: url, settings: recordSettings)
+        
+      try arec = AVAudioRecorder(url: url, settings: recordSettings)
+      self.onAir = true
       try audioEngine!.start()
-      DispatchQueue.global().asyncAfter(wallDeadline: DispatchWallTime.now()+DispatchTimeInterval.seconds(clipLength)) {
+
+      DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now()+DispatchTimeInterval.seconds(clipLength)) {
         self.audioEngine!.stop()
-        onCompletion(self.afile.url)
-        print(self.afile.url,self.afile.framePosition, self.afile.length)
+        onCompletion(self.arec.url)
+        self.onAir = false
+        print(self.arec.url,self.arec.deviceCurrentTime, self.arec.currentTime)
       }
+
     } catch let e {
       os_log("%s", type:.debug, "audioEngine start: \(e.localizedDescription)")
     }
 
   }
 
+*/
 
-
-
+/*
 
   func captured(buffer: AVAudioPCMBuffer, timex: AVAudioTime) {
     // os_log("%s", type:.debug, "\(timex.sampleTime,timex.sampleRate)")
@@ -171,7 +195,8 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
     musicQ.async {
       do {
-        try self.afile.write(from: buffer)
+        try self.arec.write(from: buffer)
+        print("wrote \(self.counter)")
       } catch {
         print("writing file", error)
       }
@@ -237,6 +262,9 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
      */
   }
 
+ */
+ 
+ 
 /*
   func selectCaptureDevice() -> AVCaptureDevice? {
     let j = AVCaptureDevice.devices(for: AVMediaType.audio).filter { d in
@@ -326,11 +354,11 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     }
   }
 */
-
+  
   func listOfRecordings() -> [Recording] {
     let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     do {
-      let paths = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants])
+      let paths = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
       let ps = paths.sorted {  $0.lastPathComponent > $1.lastPathComponent }
       return ps.map { Recording($0) }
     } catch {
@@ -367,7 +395,7 @@ class Microphone: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
 }
 
-extension Microphone : CLLocationManagerDelegate {
+extension Recorder : CLLocationManagerDelegate {
   func startLocationTracking() {
     if (CLLocationManager.locationServicesEnabled()) {
     locationManager = CLLocationManager()
@@ -394,5 +422,40 @@ extension Microphone : CLLocationManagerDelegate {
     }
   }
   }
-}
+  
+  
+  
+   func startRecordingSample() {
+     // FIXME:  If I hit the record button and then again before the first recording finishes,
+     // it crashes
+     // reason: 'Invalid update: invalid number of rows in section 0. The number of rows contained in an existing section after the update (5) must be equal to the number of rows contained in that section before the update (5), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
+     
+     
+     checkPermission()
+     print("recording");
+    
+    self.onAir = true
+   // self.objectWillChange.send()
+    
+    Recording().record() {
+      self.onAir = false
+     //     self.objectWillChange.send()
+    }
+    
+    
+    /*startStreaming { url in
+      // self.recordingList.insert(url, at: 0)
+      // DispatchQueue.main.async { self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top) }
+       // DispatchQueue.main.async { self.tableView.reloadData(); }
+      self.objectWillChange.send()
+     }*/
+     print("done")
+   }
 
+   func deleteRecording(_ n : Int) {
+     let u = listOfRecordings()[n]
+     u.delete()
+   }
+
+
+}
