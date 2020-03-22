@@ -68,11 +68,11 @@ public func LeqMaster(_ u : URL) throws -> Float {
   let Lmax = leqs.reduce(-Float.greatestFiniteMagnitude) { max($0, $1) }
   print ("Lmax: ",Lmax)
 
-  print(tmsq)
+  print("tmsq: ", tmsq)
  // compute total LEQ
   // tleq = 10*np.log10((tmsq/len(data))/(0.00002**2))
   let tleq = 10 * log10( (tmsq / Float(avf.length)) / pow( 0.00002, 2))
-   // print ("LEQ: ",tleq)
+   print ("LEQ: ",tleq)
    return tleq
 }
 
@@ -130,12 +130,12 @@ public func LeqCalibration(_ u : URL) throws -> Float {
     } else if tleq > (actual + give) {
          minrun.append(k)
     }
-     print (k, tleq)
+     print ("k, tleq",k, tleq)
   }
 
 
- print (tleq)
- print (k)
+ print ("tleq",tleq)
+ print ("k",k)
  return k
   
 }

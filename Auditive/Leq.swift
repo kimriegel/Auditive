@@ -25,7 +25,7 @@ public func LeqMaster(_ u : URL) throws -> Float {
   
   // guard let u = URL(string: file) else { throw LeqError.badURL(file) }
   let avf = try AVAudioFile.init(forReading: u)
-  print(avf)
+  print("avf",avf)
   
   guard let buf = AVAudioPCMBuffer.init(pcmFormat: avf.processingFormat, frameCapacity: AVAudioFrameCount(avf.length)) else { throw LeqError.badBuffer }
 
@@ -68,11 +68,11 @@ public func LeqMaster(_ u : URL) throws -> Float {
   let Lmax = leqs.reduce(-Float.greatestFiniteMagnitude) { max($0, $1) }
   print ("Lmax: ",Lmax)
 
-  print(tmsq)
+  print("tmsq: ", tmsq)
  // compute total LEQ
   // tleq = 10*np.log10((tmsq/len(data))/(0.00002**2))
   let tleq = 10 * log10( (tmsq / Float(avf.length)) / pow( 0.00002, 2))
-   // print ("LEQ: ",tleq)
+   print ("LEQ: ",tleq)
    return tleq
 }
 

@@ -14,7 +14,10 @@ struct RecordingView: View {
         VStack {
           Text(recording.displayName)
                 .font(.largeTitle)
-          Text(String(describing: recording.leq))
+          HStack {
+            Text("Leq:")
+            Text(String(describing: recording.leq))
+          }
         }
   }
 }

@@ -45,7 +45,7 @@ struct SwipeableText : View {
 struct ContentView: View {
   @ObservedObject var sel = Observable<Int?>(1) { nv in
     if let nv = nv {
-      print(nv)
+      print("nv:",nv)
     }
   }
   
