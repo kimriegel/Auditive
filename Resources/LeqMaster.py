@@ -37,6 +37,6 @@ Lmax = max(leqs)
 print ("Lmax: ",Lmax)
 
 #compute total LEQ
-print(tmsq)
+print ("tmsq: ",tmsq)
 tleq = 10*np.log10((tmsq/len(data))/(0.00002**2))
 print ("LEQ: ",tleq)

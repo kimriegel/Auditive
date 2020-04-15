@@ -31,6 +31,6 @@ while tleq < (actual - give) or tleq > (actual + give): #calibrate the file
     elif tleq > (actual + give):
         minrun.append(k)
     
-    print (k, tleq)
-print (tleq)
-print (k)
+    print ("k, tleq: ", k, tleq)
+print ("tleq",tleq)
+print ("k",k)
