@@ -7,21 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E70DABAA22625AF0009B02CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70DABA922625AF0009B02CD /* Assets.xcassets */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
-		E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
-		E74E1E1F2274E37F003774FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E1E1E2274E37F003774FF /* CoreLocation.framework */; };
-		E7577766235FB78D00B96D05 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7577765235FB78D00B96D05 /* main.swift */; };
-		E757776E235FEB4F00B96D05 /* rpgad.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776B235FEB4F00B96D05 /* rpgad.wav */; };
-		E757776F235FEB4F00B96D05 /* AA_cal_wave.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */; };
-		E7577770235FEB4F00B96D05 /* rpgad1.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776D235FEB4F00B96D05 /* rpgad1.wav */; };
 		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
 		E76EA102237B53C700D1282A /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA101237B53C700D1282A /* Recorder.swift */; };
 		E76EA104237B583300D1282A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA103237B583300D1282A /* Observable.swift */; };
 		E76EA106237B6BC800D1282A /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA105237B6BC800D1282A /* Recording.swift */; };
 		E7761A19246225A3006C9E4A /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A17246225A3006C9E4A /* S3.swift */; };
 		E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A18246225A3006C9E4A /* XAttr.swift */; };
+		E7761A1C24622710006C9E4A /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A1B24622710006C9E4A /* AWS.swift */; };
 		E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D4237CA59A00576B00 /* RecordingView.swift */; };
 		E78351D7237CAB8F00576B00 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D6237CAB8F00576B00 /* Leq.swift */; };
 		E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA072360C9210014C886 /* AppDelegate.swift */; };
@@ -31,47 +25,7 @@
 		E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E70DABB422625AF0009B02CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E70DAB9322625AEC009B02CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E70DAB9A22625AED009B02CD;
-			remoteInfo = Auditive;
-		};
-		E70DABBF22625AF0009B02CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E70DAB9322625AEC009B02CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E70DAB9A22625AED009B02CD;
-			remoteInfo = Auditive;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E757775B235FB68800B96D05 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E7577761235FB78D00B96D05 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		E70DAB9B22625AED009B02CD /* ToDelete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDelete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABA922625AF0009B02CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E70DABB322625AF0009B02CD /* AuditiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABB722625AF0009B02CD /* AuditiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveTests.swift; sourceTree = "<group>"; };
@@ -82,7 +36,6 @@
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E757775E235FB74D00B96D05 /* mixloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mixloop.wav; sourceTree = "<group>"; };
-		E7577763235FB78D00B96D05 /* LeqTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeqTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7577765235FB78D00B96D05 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E757776B235FEB4F00B96D05 /* rpgad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad.wav; sourceTree = "<group>"; };
 		E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AA_cal_wave.wav; sourceTree = "<group>"; };
@@ -94,6 +47,7 @@
 		E773940E235F60E100DE5031 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E7761A17246225A3006C9E4A /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
 		E7761A18246225A3006C9E4A /* XAttr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAttr.swift; sourceTree = "<group>"; };
+		E7761A1B24622710006C9E4A /* AWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWS.swift; sourceTree = "<group>"; };
 		E78351D4237CA59A00576B00 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		E78351D6237CAB8F00576B00 /* Leq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leq.swift; sourceTree = "<group>"; };
 		E7A0E9FB2360AAA40014C886 /* LeqCalibrationMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqCalibrationMaster.py; sourceTree = "<group>"; };
@@ -108,15 +62,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E70DAB9822625AED009B02CD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E74E1E1F2274E37F003774FF /* CoreLocation.framework in Frameworks */,
-				E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E70DABB022625AF0009B02CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,13 +70,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E70DABBB22625AF0009B02CD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E7577760235FB78D00B96D05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -165,10 +103,8 @@
 		E70DAB9C22625AED009B02CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E70DAB9B22625AED009B02CD /* ToDelete.app */,
 				E70DABB322625AF0009B02CD /* AuditiveTests.xctest */,
 				E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */,
-				E7577763235FB78D00B96D05 /* LeqTest */,
 				E7A0EA052360C9210014C886 /* Auditive.app */,
 			);
 			name = Products;
@@ -234,6 +170,7 @@
 				E78351D6237CAB8F00576B00 /* Leq.swift */,
 				E76EA105237B6BC800D1282A /* Recording.swift */,
 				E76EA103237B583300D1282A /* Observable.swift */,
+				E7761A1B24622710006C9E4A /* AWS.swift */,
 				E7761A17246225A3006C9E4A /* S3.swift */,
 				E7761A18246225A3006C9E4A /* XAttr.swift */,
 				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
@@ -255,26 +192,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E70DAB9A22625AED009B02CD /* ToDelete */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E70DABC722625AF0009B02CD /* Build configuration list for PBXNativeTarget "ToDelete" */;
-			buildPhases = (
-				E70DAB9722625AED009B02CD /* Sources */,
-				E70DAB9822625AED009B02CD /* Frameworks */,
-				E70DAB9922625AED009B02CD /* Resources */,
-				E757775B235FB68800B96D05 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ToDelete;
-			packageProductDependencies = (
-			);
-			productName = Auditive;
-			productReference = E70DAB9B22625AED009B02CD /* ToDelete.app */;
-			productType = "com.apple.product-type.application";
-		};
 		E70DABB222625AF0009B02CD /* AuditiveTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E70DABCA22625AF0009B02CD /* Build configuration list for PBXNativeTarget "AuditiveTests" */;
@@ -286,7 +203,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E70DABB522625AF0009B02CD /* PBXTargetDependency */,
 			);
 			name = AuditiveTests;
 			productName = AuditiveTests;
@@ -304,29 +220,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				E70DABC022625AF0009B02CD /* PBXTargetDependency */,
 			);
 			name = AuditiveUITests;
 			productName = AuditiveUITests;
 			productReference = E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		E7577762235FB78D00B96D05 /* LeqTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E7577767235FB78D00B96D05 /* Build configuration list for PBXNativeTarget "LeqTest" */;
-			buildPhases = (
-				E757775F235FB78D00B96D05 /* Sources */,
-				E7577760235FB78D00B96D05 /* Frameworks */,
-				E7577761235FB78D00B96D05 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = LeqTest;
-			productName = LeqTest;
-			productReference = E7577763235FB78D00B96D05 /* LeqTest */;
-			productType = "com.apple.product-type.tool";
 		};
 		E7A0EA042360C9210014C886 /* Auditive */ = {
 			isa = PBXNativeTarget;
@@ -355,23 +253,6 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Semasiology;
 				TargetAttributes = {
-					E70DAB9A22625AED009B02CD = {
-						CreatedOnToolsVersion = 10.2;
-						SystemCapabilities = {
-							com.apple.AccessWiFi = {
-								enabled = 1;
-							};
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-							com.apple.Push = {
-								enabled = 1;
-							};
-							com.apple.iCloud = {
-								enabled = 1;
-							};
-						};
-					};
 					E70DABB222625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = E70DAB9A22625AED009B02CD;
@@ -379,9 +260,6 @@
 					E70DABBD22625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = E70DAB9A22625AED009B02CD;
-					};
-					E7577762235FB78D00B96D05 = {
-						CreatedOnToolsVersion = 11.1;
 					};
 					E7A0EA042360C9210014C886 = {
 						CreatedOnToolsVersion = 11.1;
@@ -404,26 +282,13 @@
 			projectRoot = "";
 			targets = (
 				E7A0EA042360C9210014C886 /* Auditive */,
-				E70DAB9A22625AED009B02CD /* ToDelete */,
 				E70DABB222625AF0009B02CD /* AuditiveTests */,
 				E70DABBD22625AF0009B02CD /* AuditiveUITests */,
-				E7577762235FB78D00B96D05 /* LeqTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E70DAB9922625AED009B02CD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E70DABAA22625AF0009B02CD /* Assets.xcassets in Resources */,
-				E757776E235FEB4F00B96D05 /* rpgad.wav in Resources */,
-				E757776F235FEB4F00B96D05 /* AA_cal_wave.wav in Resources */,
-				E7577770235FEB4F00B96D05 /* rpgad1.wav in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E70DABB122625AF0009B02CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,13 +316,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E70DAB9722625AED009B02CD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E70DABAF22625AF0009B02CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,14 +332,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E757775F235FB78D00B96D05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E7577766235FB78D00B96D05 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E7A0EA012360C9210014C886 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,6 +343,7 @@
 				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
 				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
 				E76EA104237B583300D1282A /* Observable.swift in Sources */,
+				E7761A1C24622710006C9E4A /* AWS.swift in Sources */,
 				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
 				E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */,
@@ -500,19 +351,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E70DABB522625AF0009B02CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E70DAB9A22625AED009B02CD /* ToDelete */;
-			targetProxy = E70DABB422625AF0009B02CD /* PBXContainerItemProxy */;
-		};
-		E70DABC022625AF0009B02CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E70DAB9A22625AED009B02CD /* ToDelete */;
-			targetProxy = E70DABBF22625AF0009B02CD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */ = {
@@ -577,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -632,53 +470,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E70DABC822625AF0009B02CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHEBPE6SV2;
-				INFOPLIST_FILE = Auditive/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.Auditive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E70DABC922625AF0009B02CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHEBPE6SV2;
-				INFOPLIST_FILE = Auditive/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.Auditive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -760,32 +558,6 @@
 			};
 			name = Release;
 		};
-		E7577768235FB78D00B96D05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHEBPE6SV2;
-				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		E7577769235FB78D00B96D05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MHEBPE6SV2;
-				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		E7A0EA172360C9220014C886 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -840,15 +612,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E70DABC722625AF0009B02CD /* Build configuration list for PBXNativeTarget "ToDelete" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E70DABC822625AF0009B02CD /* Debug */,
-				E70DABC922625AF0009B02CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E70DABCA22625AF0009B02CD /* Build configuration list for PBXNativeTarget "AuditiveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -863,15 +626,6 @@
 			buildConfigurations = (
 				E70DABCE22625AF0009B02CD /* Debug */,
 				E70DABCF22625AF0009B02CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E7577767235FB78D00B96D05 /* Build configuration list for PBXNativeTarget "LeqTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E7577768235FB78D00B96D05 /* Debug */,
-				E7577769235FB78D00B96D05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
