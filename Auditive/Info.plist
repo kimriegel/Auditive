@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We will record your location in order to identify the location of recorded sounds.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We will record a 30-second audio clip and upload it for academic research on mapping urban noise</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -56,9 +60,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>We will record a 30-second audio clip and upload it for academic research on mapping urban noise</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We will record your location in order to identify the location of recorded sounds.</string>
 </dict>
 </plist>

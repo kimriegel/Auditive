@@ -1,10 +1,5 @@
-//
-//  AppDelegate.swift
-//  Clem
-//
-//  Created by Robert Lefkowitz on 10/23/19.
-//  Copyright © 2019 Semasiology. All rights reserved.
-//
+// Copyright (c) 1868 Charles Babbage
+// Found amongst his effects by r0ml
 
 import UIKit
 
@@ -15,6 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+
+    DispatchQueue.global().async {
+      print(getSecret())
+    }
     return true
   }
 

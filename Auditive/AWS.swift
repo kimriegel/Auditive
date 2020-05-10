@@ -1,4 +1,7 @@
 
+// Copyright (c) 1868 Charles Babbage
+// Found amongst his effects by r0ml
+
 import Foundation
 import CryptoKit
 
@@ -7,46 +10,13 @@ let algo = "AWS4-HMAC-SHA256"
 public class AWS {
 
   var regionName = "us-east-1"
-  var serviceName = "s3"
   var secretKey = "secretkey"
   var accessKey = "missing"
 
-  convenience public init() {
-    self.init(profile: "default")
-  }
-
-  public init(profile: String) {
-    (accessKey, secretKey, regionName) = getCred(profile)
-  }
-
-  func readOpts(fromFile:String) -> [String:[String:String]] {
-    let fileContent = try! String(contentsOfFile: fromFile, encoding: String.Encoding.utf8)
-    var dict = [String:[String:String]]()
-    let lines = fileContent.split(separator: "\n").map( {String($0).trimmingCharacters(in: .whitespaces) } )
-    var thisProfile = ""
-    var pDict = [String:String]()
-    for line in lines {
-      if (line.hasPrefix("[") && line.hasSuffix("]")) {
-        dict[thisProfile]=pDict
-        thisProfile = String(line[line.index(line.startIndex, offsetBy: 1)..<line.index(line.endIndex, offsetBy: -1)])
-        pDict = [:]
-      } else {
-        let components = line.split(separator: "=", maxSplits: 1)
-        if (components.count == 2) {
-          pDict[String(components[0]).trimmingCharacters(in: .whitespaces)] = String(components[1]).trimmingCharacters(in: .whitespaces)
-        }
-      }
-    }
-    dict[thisProfile] = pDict
-    return dict
-  }
-
-  func getCred(_ profile: String) -> (String, String, String) {
-    let a = readOpts(fromFile: "\(NSHomeDirectory())/.aws/credentials")
-    let b = readOpts(fromFile: "\(NSHomeDirectory())/.aws/config")
-    let aa = a[profile] ?? a["default"] ?? [:]
-    let bb = b["profile "+profile] ?? b["default"] ?? [:]
-    return (aa["aws_access_key_id"] ?? "missing", aa["aws_secret_access_key"] ?? "missing", bb["region"] ?? "missing")
+  public init(accessKey ak : String, secretKey sk : String, regionName rn : String) {
+    accessKey = ak
+    secretKey = sk
+    regionName = rn
   }
 
   /*
@@ -66,7 +36,7 @@ public class AWS {
 
 }
 
-func canonicalUrl(_ x:String) -> String {
+fileprivate func canonicalUrl(_ x:String) -> String {
   let d = x.split(separator: "/", maxSplits: .max, omittingEmptySubsequences: false)
   let n2 = d.count
   var c = [String]()
@@ -86,17 +56,23 @@ func canonicalUrl(_ x:String) -> String {
   }
   let z = c.joined(separator: "/")
   let zz = z.isEmpty ? "/" : z
-  return c.count == n2 ? zz : canonicalUrl(zz)
+  let almost = c.count == n2 ? zz : canonicalUrl(zz)
+  return almost
 }
 
-func urlEncode(_ x:String) -> String {
-  var cs = CharacterSet.urlQueryAllowed
-  let y = x.replacingOccurrences(of: "+", with: " ")
-  cs.remove(charactersIn: "+/,?;:@$%")
-  return y.addingPercentEncoding(withAllowedCharacters: cs)!
+fileprivate func urlEncode(_ x:String) -> String {
+  /*var cs = CharacterSet.urlQueryAllowed
+   let y = x.replacingOccurrences(of: "+", with: " ")
+   cs.remove(charactersIn: "+/,?;:@$%")
+   return y.addingPercentEncoding(withAllowedCharacters: cs)!
+   */
+
+  var cs = CharacterSet.alphanumerics
+  cs.insert(charactersIn: "-._~ ")
+  return x.addingPercentEncoding(withAllowedCharacters: cs)!.replacingOccurrences(of: " ", with: "%20")
 }
 
-func canonicalQuery(_ x:String) -> String {
+fileprivate func canonicalQuery(_ x:String) -> String {
   let d = x.split(separator: "&")
   let e = d.map { (z) -> [Substring] in  let a = z.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false); return a.count == 2 ? a : a + [""]  }
   let ee = e.sorted(by: { (a, b) -> Bool in String(a[0]) == String(b[0]) ? String(a[1]) < String(b[1]) : String(a[0])<String(b[0]) } )
@@ -116,7 +92,7 @@ func awsSignature(_ a: ParsedRequest, secret: String, region: String, servic: St
   return (hh, "\(algo) Credential=\(ak)/\(dd)/\(region)/\(servic)/aws4_request, SignedHeaders=\(ish), Signature=\(bst)" )
 }
 
-private func timestamp(_ date: Date) -> String {
+fileprivate func timestamp(_ date: Date) -> String {
   let formatter = DateFormatter()
   formatter.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
   formatter.timeZone = TimeZone(identifier: "UTC")
@@ -124,15 +100,7 @@ private func timestamp(_ date: Date) -> String {
   return formatter.string(from: date as Date)
 }
 
-/*func dateHeader(_ date: Date) -> String {
-  let formatter = DateFormatter()
-  formatter.dateFormat = "EEE, MMM yyyy HH:mm:ss Z" //  "yyyyMMdd'T'HHmmss'Z'"
-  formatter.timeZone = TimeZone(identifier: "UTC")
-  formatter.locale = Locale(identifier: "en_US_POSIX")
-  return formatter.string(from: date)
-}*/
-
-func signatureString(_ a : ParsedRequest, region: String, servic: String) -> ([String], [HTTPHeader], String) {
+fileprivate func signatureString(_ a : ParsedRequest, region: String, servic: String) -> ([String], [HTTPHeader], String) {
   let (hsx, hh, cr) = canonicalRequest( a )
   let reqDate = timestamp(a.date)
   let credScope = "\(reqDate[reqDate.startIndex..<reqDate.index(reqDate.startIndex, offsetBy: 8)])/\(region)/\(servic)/aws4_request"
@@ -140,7 +108,7 @@ func signatureString(_ a : ParsedRequest, region: String, servic: String) -> ([S
   return (hsx, hh, [algo, reqDate, credScope, hcr ].joined(separator: "\n") )
 }
 
-func hexdigest(_ data: Data) -> String {
+fileprivate func hexdigest(_ data: Data) -> String {
   var hex = String()
   data.withUnsafeBytes() { (k: UnsafeRawBufferPointer) -> () in
     let j = k.baseAddress!.bindMemory(to: Int8.self, capacity: data.count)
@@ -151,7 +119,7 @@ func hexdigest(_ data: Data) -> String {
   return hex
 }
 
-func canonicalRequest(_ a : ParsedRequest) -> ( [String], [HTTPHeader], String) {
+fileprivate func canonicalRequest(_ a : ParsedRequest) -> ( [String], [HTTPHeader], String) {
   let (requestMethod, url, queryString, _, resourcePath, dt) = a
   var hds = a.headers
   let uri = canonicalUrl(url)
@@ -184,28 +152,28 @@ func canonicalRequest(_ a : ParsedRequest) -> ( [String], [HTTPHeader], String) 
   return (sdx, hds, [requestMethod, uri, canonicalQuery(queryString), hdrs, shdrs, hp].joined(separator: nl) )
 }
 
-func hmac(string: String, key: Data) -> Data {
+fileprivate func hmac(string: String, key: Data) -> Data {
   let c = HMAC<SHA256>.authenticationCode(for: string.data(using: .utf8)!, using: SymmetricKey(data: key))
   return c.withUnsafeBytes { Data(bytes: $0.baseAddress!, count: c.byteCount) }
 }
 
-func md5(_ d : Data) -> Data {
+public func md5(_ d : Data) -> Data {
   let m5 = Insecure.MD5.hash(data: d)
   return m5.withUnsafeBytes { z in Data.init(bytes: z.baseAddress!, count: Insecure.MD5Digest.byteCount) }
 }
 
-func sha256(_ data: Data) -> Data {
+fileprivate func sha256(_ data: Data) -> Data {
   let z = SHA256.hash(data: data)
   return z.withUnsafeBytes { Data(bytes: $0.baseAddress!, count: SHA256.byteCount) }
 }
 
+// =====================================================================================
+// Testing code
 var counts = [0,0]
-func der(_ a:String) -> String {
+fileprivate func der(_ a:String) -> String {
   return a.replacingOccurrences(of: "\r\n", with: "\n")
 }
 
-// =====================================================================================
-// Testing code
 func assertEqualG<T>(_ str: String,_ a: T, _ b: T) -> Void where T: Equatable {
   let t = a == b
   if (t) {
@@ -313,3 +281,96 @@ func testTask2(_ nam:String) {
 func testTask3(_ nam: String) {
   testTask("task 3", nam, "authz", { awsSignature($0, secret: aws_test_secret, region: "us-east-1", servic: "host", ak: aws_test_id).1 })
 }
+
+
+class Element : CustomStringConvertible {
+  let name: String
+  open var text: String?
+  open var attributes = [String: String]()
+  open var childElements = [Element]()
+
+  // for println
+  open weak var parentElement: Element?
+
+  public init(name: String) {
+    self.name = name
+  }
+
+  public var description : String {
+    var str = "<\(name)"
+    for (k,v) in attributes {
+      str.append(" \(k)=\"\(v)\"")
+    }
+    str.append(">")
+    if text != nil { str.append(text!) }
+    for z in childElements {
+      str.append(z.description)
+    }
+    str.append("</\(name)>\n")
+    return str
+  }
+}
+
+struct Leaf {
+  let label : String
+  let value : String
+}
+
+/** Parser delegate for parsing XML in  AWS responses */
+class PD: NSObject, XMLParserDelegate {
+
+  func parse(_ data: Data) -> Element {
+    stack = [Element]()
+    stack.append(documentRoot)
+    let parser = XMLParser(data: data)
+    parser.delegate = self
+    parser.parse()
+    return documentRoot
+  }
+
+  override init() {
+    trimmingManner = nil
+  }
+
+  init(trimming manner: CharacterSet) {
+    trimmingManner = manner
+  }
+
+  // MARK:- private
+  fileprivate var documentRoot = Element(name: "root")
+  fileprivate var stack = [Element]()
+  fileprivate let trimmingManner: CharacterSet?
+
+  func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    let node = Element(name: elementName)
+    if !attributeDict.isEmpty {
+      node.attributes = attributeDict
+    }
+
+    let parentNode = stack.last
+
+    node.parentElement = parentNode
+    parentNode?.childElements.append(node)
+    stack.append(node)
+  }
+
+  func parser(_ parser: XMLParser, foundCharacters string: String) {
+    if let text = stack.last?.text {
+      stack.last?.text = text + string
+    } else {
+      stack.last?.text = "" + string
+    }
+  }
+
+  func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    if let trimmingManner = self.trimmingManner {
+      stack.last?.text = stack.last?.text?.trimmingCharacters(in: trimmingManner)
+    }
+    stack.removeLast()
+  }
+}
+
+public class AWSService {
+  
+}
+
