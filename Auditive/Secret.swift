@@ -4,10 +4,10 @@
 
 import CloudKit
 
-func getSecret() -> (String, String, String)? {
-  let c : CKContainer = CKContainer(identifier: "iCloud.edu.qcc.quacc.Auditive")
+func getSecret(_ key : String) -> (String, String, String)? {
+  let c : CKContainer = CKContainer.default() // (identifier: "iCloud.edu.qcc.quacc.Auditive")
   let pd = c.publicCloudDatabase
-  let id = CKRecord.ID.init(recordName: "ONE")
+  let id = CKRecord.ID.init(recordName: key)
   var res : (String, String, String)?
   let sem = DispatchSemaphore(value: 0)
   pd.fetch(withRecordID: id) { (rec, err) in

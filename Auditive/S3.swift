@@ -89,75 +89,12 @@ public struct BucketList : CustomStringConvertible {
   }
 }
 
-var accessKey : String?
-var secretKey: String?
-var regionName: String?
-
 public class S3 : AWSService {
-  let bucket : String
+  let bucket : String?
 
-  var aws : AWS?
-
-  public init(bucket b : String) {
-    
+  public init?(bucket b : String) {
     bucket = b
-    if let a = accessKey,
-    let s = secretKey,
-      let r = regionName {
-         aws = AWS(accessKey: a, secretKey: s, regionName: r)
-    }
-  }
-
-  func makeRequest(_ pr: ParsedRequest) -> URLRequest? {
-    guard let aw = aws else { return nil }
-    let host = "\(bucket).s3.amazonaws.com"
-
-    var mpr = pr
-    var cs = CharacterSet.alphanumerics
-    cs.insert(charactersIn: "-._~ ")
-
-    mpr.url = "/"+pr.url[pr.url.index(pr.url.startIndex, offsetBy: 1)...].addingPercentEncoding(withAllowedCharacters: cs)!.replacingOccurrences(of: " ", with: "%20")
-    mpr.queryString = pr.queryString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-
-    let urlstr = "https://\(host.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)" + mpr.url + "?" + mpr.queryString
-    if let u = URL(string: urlstr) {
-    var request = URLRequest(url: u )
-    request.httpMethod = mpr.requestMethod
-
-    mpr.headers.append(HTTPHeader(key:"Host",value: host))
-
-
-    let (hh, s) = awsSignature(mpr, secret: aw.secretKey, region: aw.regionName, servic: "s3", ak: aw.accessKey)
-    request.addValue( s, forHTTPHeaderField: "Authorization" )
-
-    for h in hh {
-      request.addValue( h.value, forHTTPHeaderField: h.key)
-    }
-      return request
-    } else {
-      print("failed to create URL")
-      return nil
-    }
-  }
-
-  class func makeRequest(_ pr: ParsedRequest) -> URLRequest? {
-    guard let a = accessKey,
-      let s = secretKey,
-      let r = regionName else { return nil }
-    let aws = AWS(accessKey: a, secretKey: s, regionName: r)
-    let host = "s3.amazonaws.com"
-    var request = URLRequest(url: URL(string: "https://\(host)"+pr.url)! )
-
-    var mpr = pr
-    mpr.headers.append(HTTPHeader(key:"Host",value: host))
-
-    let (hh, sx) = awsSignature(mpr, secret: aws.secretKey, region: aws.regionName, servic: "s3", ak: aws.accessKey)
-    request.addValue( sx, forHTTPHeaderField: "Authorization" )
-
-    for h in hh {
-      request.addValue( h.value, forHTTPHeaderField: h.key)
-    }
-    return request
+    super.init(service: "s3", profile: "ONE")
   }
 
   public struct ETag {
@@ -166,7 +103,7 @@ public class S3 : AWSService {
     }
   }
 
-  public func putObject(_ n : String, _ d : Data) throws -> ETag {
+  public func putObject(_ n : String, _ d : Data, tags : [String : String] = [:], metadata : [String : String] = [:]) throws -> ETag {
     let sem = DispatchSemaphore(value: 0)
     var res : ETag?
     var error : Error?
@@ -176,8 +113,11 @@ public class S3 : AWSService {
 
     let b = md5(d)
     let h = HTTPHeader(key: "content-md5", value: b.base64EncodedString())
-    
-    let pr = ParsedRequest(requestMethod: "PUT", url: url, queryString: "", headers: [h], body: d, date: Date() )
+    let h2 = HTTPHeader(key: "x-amz-tagging", value: (tags.map { (k, v) in "\(k)=\(v)" }).joined(separator: "&"))
+
+    let md = metadata.map { (k,v) in HTTPHeader(key: "x-amz-meta-\(k)", value: v) }
+
+    let pr = ParsedRequest(requestMethod: "PUT", url: url, queryString: "", headers: [h, h2]+md, body: d, date: Date() )
     guard let r = makeRequest(pr) else  { throw S3Error.noRequest }
     let task = session.uploadTask(with: r, from: d, completionHandler: { data, response, err in
       guard err == nil else {
@@ -224,7 +164,7 @@ public class S3 : AWSService {
 
   }
 
-  class public func get() throws -> [Bucket]  {
+  public func bucketList() throws -> [Bucket]  {
     let sem = DispatchSemaphore(value: 0)
 
     var res : [Bucket] = []
@@ -246,4 +186,40 @@ public class S3 : AWSService {
     if let e = error { throw e }
     return res
   }
+
+  func makeRequest(_ pr: ParsedRequest) -> URLRequest? {
+    var host : String = "s3.amazonaws.com"
+    if let b = bucket {
+      host = "\(b).s3.amazonaws.com"
+    }
+
+    var mpr = pr
+    var cs = CharacterSet.alphanumerics
+    cs.insert(charactersIn: "-._~ ")
+
+    mpr.url = "/"+pr.url[pr.url.index(pr.url.startIndex, offsetBy: 1)...].addingPercentEncoding(withAllowedCharacters: cs)!.replacingOccurrences(of: " ", with: "%20")
+    mpr.queryString = pr.queryString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+
+    let urlstr = "https://\(host.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)" + mpr.url + "?" + mpr.queryString
+    if let u = URL(string: urlstr) {
+    var request = URLRequest(url: u )
+    request.httpMethod = mpr.requestMethod
+
+    mpr.headers.append(HTTPHeader(key:"Host",value: host))
+
+
+    let (hh, s) = awsSignature(mpr, servic: "s3")
+    request.addValue( s, forHTTPHeaderField: "Authorization" )
+
+    for h in hh {
+      request.addValue( h.value, forHTTPHeaderField: h.key)
+    }
+      return request
+    } else {
+      print("failed to create URL")
+      return nil
+    }
+  }
+
+
 }

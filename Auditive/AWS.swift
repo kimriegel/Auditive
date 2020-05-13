@@ -7,18 +7,6 @@ import CryptoKit
 
 let algo = "AWS4-HMAC-SHA256"
 
-public class AWS {
-
-  var regionName = "us-east-1"
-  var secretKey = "secretkey"
-  var accessKey = "missing"
-
-  public init(accessKey ak : String, secretKey sk : String, regionName rn : String) {
-    accessKey = ak
-    secretKey = sk
-    regionName = rn
-  }
-
   /*
    Given the bits that go into an AWS request, generate the signed request as a ByteString
    The arguments are:
@@ -33,8 +21,6 @@ public class AWS {
    9) the AWS service
    10) the AWS id
    */
-
-}
 
 fileprivate func canonicalUrl(_ x:String) -> String {
   let d = x.split(separator: "/", maxSplits: .max, omittingEmptySubsequences: false)
@@ -80,7 +66,7 @@ fileprivate func canonicalQuery(_ x:String) -> String {
   return ee2.joined(separator: "&")
 }
 
-func awsSignature(_ a: ParsedRequest, secret: String, region: String, servic: String, ak: String) -> ([HTTPHeader], String) {
+fileprivate func _awsSignature(_ a: ParsedRequest, secret: String, region: String, servic: String, ak: String) -> ([HTTPHeader], String) {
   let dd = String(timestamp(a.date).prefix(8))
   let kDate = hmac(string: dd, key: "AWS4\(secret)".data(using: .utf8)! )
   let kRegion = hmac(string: region, key: kDate)
@@ -279,7 +265,7 @@ func testTask2(_ nam:String) {
 }
 
 func testTask3(_ nam: String) {
-  testTask("task 3", nam, "authz", { awsSignature($0, secret: aws_test_secret, region: "us-east-1", servic: "host", ak: aws_test_id).1 })
+  testTask("task 3", nam, "authz", { _awsSignature($0, secret: aws_test_secret, region: "us-east-1", servic: "host", ak: aws_test_id).1 })
 }
 
 
@@ -371,6 +357,30 @@ class PD: NSObject, XMLParserDelegate {
 }
 
 public class AWSService {
+
+  var regionName = "us-east-1"
+  var secretKey = "secretkey"
+  var accessKey = "missing"
+  var service = "set-service"
+
+  public init(service svc : String, accessKey ak : String, secretKey sk : String, regionName rn : String) {
+    accessKey = ak
+    secretKey = sk
+    regionName = rn
+    service = svc
+  }
+
+  public init?(service svc : String, profile p : String) {
+    service = svc
+    if let z = getSecret(p) {
+      (accessKey, secretKey, regionName) = z
+    } else {
+      return nil
+    }
+  }
   
+  func awsSignature(_ a: ParsedRequest, servic: String) -> ([HTTPHeader], String) {
+    return _awsSignature(a, secret: secretKey, region: regionName, servic: servic, ak: accessKey)
+  }
 }
 
