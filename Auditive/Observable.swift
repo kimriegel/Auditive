@@ -1,10 +1,6 @@
-//
-//  Observable.swift
-//  Clem
-//
-//  Created by Robert Lefkowitz on 11/12/19.
-//  Copyright © 2019 Semasiology. All rights reserved.
-//
+
+// Copyright (c) 1868 Charles Babbage
+// Found amongst his effects by r0ml
 
 import Foundation
 
