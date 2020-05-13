@@ -25,7 +25,7 @@ public func LeqMaster(_ u : URL) throws -> Float {
   
   // guard let u = URL(string: file) else { throw LeqError.badURL(file) }
   let avf = try AVAudioFile.init(forReading: u)
-  print("avf",avf)
+  print(avf)
   
   guard let buf = AVAudioPCMBuffer.init(pcmFormat: avf.processingFormat, frameCapacity: AVAudioFrameCount(avf.length)) else { throw LeqError.badBuffer }
 
@@ -130,12 +130,12 @@ public func LeqCalibration(_ u : URL) throws -> Float {
     } else if tleq > (actual + give) {
          minrun.append(k)
     }
-     print (k, tleq)
+     print ("k, tleq",k, tleq)
   }
 
 
- print (tleq)
- print (k)
+ print ("tleq",tleq)
+ print ("k",k)
  return k
   
 }

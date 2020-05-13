@@ -1,16 +1,18 @@
-
-// Copyright (c) 1868 Charles Babbage
-// Found amongst his effects by r0ml
+//
+//  ContentView.swift
+//  Clem
+//
+//  Created by Robert Lefkowitz on 10/23/19.
+//  Copyright © 2019 Semasiology. All rights reserved.
+//
 
 import SwiftUI
 import AVFoundation
 
 struct SwipeableText : View {
   @State var offset : CGSize = .zero
-
   let string : String
-  var recording : Recording
-
+  
   var body: some View {
     let drag = DragGesture()
          .onChanged { self.offset = $0.translation
@@ -20,13 +22,9 @@ struct SwipeableText : View {
           print("ended?")
              if $0.translation.width < -100 {
                  self.offset = .init(width: -1000, height: 0)
-              self.recording.delete()
-//              self.selection.x = nil
               print("left")
              } else if $0.translation.width > 100 {
                  self.offset = .init(width: 1000, height: 0)
-              self.recording.delete()
-//              self.selection.x = nil
               print("right")
              } else {
               print("nope")
@@ -43,11 +41,6 @@ struct SwipeableText : View {
   
 }
 
-var refreshers : [ContentView] = []
-var observer  = DirectoryObserver(URL: Recording.mediaDir) {
-  DispatchQueue.main.async { refreshers.forEach { $0.needsRefresh.x.toggle() }
-  }
-}
 
 struct ContentView: View {
   @ObservedObject var sel = Observable<Int?>(1) { nv in
@@ -55,46 +48,43 @@ struct ContentView: View {
       print("nv:",nv)
     }
   }
-
-  @ObservedObject var needsRefresh = Observable<Bool>(false)
-
-
-  init() {
-    print(observer)
-    refreshers.append(self)
-  }
   
   @ObservedObject var recorder = Recorder()
-
-
+  
   var body: some View {
 
     NavigationView {
       GeometryReader {g in
         VStack {
-          NavigationLink(destination: RecorderView(recorder: self.recorder)) {
-//        Button(action: {
-//          self.recorder.startRecordingSample()
-//        }) {
+        Button(action: {
+          self.recorder.startRecordingSample()
+        }) {
           Text("Record").foregroundColor(Color.black)
           .frame(width: g.size.width - 40)
           .padding(EdgeInsets.init(top: 20, leading: 0, bottom: 20, trailing: 0))
           .background( self.recorder.onAir ? Color.gray : Color.red)
-//        }
-//          .disabled( self.recorder.onAir)
-          }
+        }
+          .disabled( self.recorder.onAir)
 //        List.init(0..<self.recordingsX.recordingNames.count, selection: self.$sel.x) { x in
           List(selection: self.$sel.x) {
             ForEach(self.recorder.recordings, id: \.self) { z in
               
               NavigationLink(destination: RecordingView(recording: z)) {
-                SwipeableText(string: z.displayName, recording: z) // .background( x == self.sel.x ? Color.gray : Color.white)
-                          }
+
+         
+              SwipeableText(string: z.displayName) // .background( x == self.sel.x ? Color.gray : Color.white)
+            
+/* .onTapGesture {
+  print("play \(z.url.path)")
+   self.play(z)
+ }*/
               }
-        }.navigationBarTitle(Text("Urban Samples"))
+              }
+            // .onDelete(perform: self.delete)
+
+        }// .navigationBarItems(trailing: EditButton())
+          .navigationBarTitle(Text("Urban Samples"))
         }
-        .contrast(self.needsRefresh.x ? (
-        self.needsRefresh.x.toggle() , 1).1 : 0.9)
       }
     }
   }

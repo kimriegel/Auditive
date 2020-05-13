@@ -1,6 +1,10 @@
-
-// Copyright (c) 1868 Charles Babbage
-// Found amongst his effects by r0ml
+//
+//  AuditiveTests.swift
+//  AuditiveTests
+//
+//  Created by Robert M. Lefkowitz on 4/13/19.
+//  Copyright © 2019 Semasiology. All rights reserved.
+//
 
 import XCTest
 @testable import Auditive

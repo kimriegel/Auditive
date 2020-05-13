@@ -7,44 +7,97 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E700917724685E25005FA915 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
+		E70DAB9F22625AED009B02CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DAB9E22625AED009B02CD /* AppDelegate.swift */; };
+		E70DABA322625AED009B02CD /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABA222625AED009B02CD /* DataViewController.swift */; };
+		E70DABA822625AED009B02CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70DABA622625AED009B02CD /* Main.storyboard */; };
+		E70DABAA22625AF0009B02CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70DABA922625AF0009B02CD /* Assets.xcassets */; };
+		E70DABAD22625AF0009B02CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
-		E7403F2B2468B39900EA5631 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7403F2A2468B39900EA5631 /* Secret.swift */; };
+		E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
+		E739ACB82271039400DCCC06 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739ACB72271039400DCCC06 /* Recorder.swift */; };
+		E74E1E1F2274E37F003774FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E1E1E2274E37F003774FF /* CoreLocation.framework */; };
+		E7577749235FB64B00B96D05 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7577748235FB64B00B96D05 /* Leq.swift */; };
+		E7577766235FB78D00B96D05 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7577765235FB78D00B96D05 /* main.swift */; };
+		E757776A235FB79300B96D05 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7577748235FB64B00B96D05 /* Leq.swift */; };
+		E757776E235FEB4F00B96D05 /* rpgad.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776B235FEB4F00B96D05 /* rpgad.wav */; };
+		E757776F235FEB4F00B96D05 /* AA_cal_wave.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */; };
+		E7577770235FEB4F00B96D05 /* rpgad1.wav in Resources */ = {isa = PBXBuildFile; fileRef = E757776D235FEB4F00B96D05 /* rpgad1.wav */; };
 		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
 		E76EA102237B53C700D1282A /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA101237B53C700D1282A /* Recorder.swift */; };
 		E76EA104237B583300D1282A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA103237B583300D1282A /* Observable.swift */; };
 		E76EA106237B6BC800D1282A /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA105237B6BC800D1282A /* Recording.swift */; };
-		E7761A19246225A3006C9E4A /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A17246225A3006C9E4A /* S3.swift */; };
-		E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A18246225A3006C9E4A /* XAttr.swift */; };
-		E7761A1C24622710006C9E4A /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A1B24622710006C9E4A /* AWS.swift */; };
 		E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D4237CA59A00576B00 /* RecordingView.swift */; };
 		E78351D7237CAB8F00576B00 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D6237CAB8F00576B00 /* Leq.swift */; };
-		E796FD8024632D6200D17947 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD7F24632D6200D17947 /* ProgressBar.swift */; };
-		E796FD8224633B2E00D17947 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8124633B2E00D17947 /* RecorderView.swift */; };
-		E796FD8A2463CD0300D17947 /* DirectoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD892463CD0300D17947 /* DirectoryObserver.swift */; };
-		E796FD8C246470EF00D17947 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8B246470EF00D17947 /* MapView.swift */; };
-		E796FD8E24675CA400D17947 /* DetectWIFI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8D24675CA400D17947 /* DetectWIFI.swift */; };
+		E7A0E9FE2360C4900014C886 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0E9FD2360C4900014C886 /* RecordView.swift */; };
 		E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA072360C9210014C886 /* AppDelegate.swift */; };
 		E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA0B2360C9210014C886 /* ContentView.swift */; };
 		E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA0D2360C9220014C886 /* Assets.xcassets */; };
 		E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA102360C9220014C886 /* Preview Assets.xcassets */; };
 		E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */; };
+		E7A0EA192360CADE0014C886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA092360C9210014C886 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E70DABB422625AF0009B02CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E70DAB9322625AEC009B02CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E70DAB9A22625AED009B02CD;
+			remoteInfo = Auditive;
+		};
+		E70DABBF22625AF0009B02CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E70DAB9322625AEC009B02CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E70DAB9A22625AED009B02CD;
+			remoteInfo = Auditive;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E757775B235FB68800B96D05 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7577761235FB78D00B96D05 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		E700917624685E10005FA915 /* Auditive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Auditive.entitlements; sourceTree = "<group>"; };
+		E70DAB9B22625AED009B02CD /* Auditive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auditive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70DAB9E22625AED009B02CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E70DABA222625AED009B02CD /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		E70DABA722625AED009B02CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E70DABA922625AF0009B02CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E70DABAC22625AF0009B02CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E70DABAE22625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E70DABB322625AF0009B02CD /* AuditiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABB722625AF0009B02CD /* AuditiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveTests.swift; sourceTree = "<group>"; };
 		E70DABB922625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABC222625AF0009B02CD /* AuditiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveUITests.swift; sourceTree = "<group>"; };
 		E70DABC422625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E739ACB3227101BB00DCCC06 /* Auditive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Auditive.entitlements; sourceTree = "<group>"; };
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		E7403F2A2468B39900EA5631 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		E739ACB72271039400DCCC06 /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E7577748235FB64B00B96D05 /* Leq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leq.swift; sourceTree = "<group>"; };
 		E757775E235FB74D00B96D05 /* mixloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mixloop.wav; sourceTree = "<group>"; };
+		E7577763235FB78D00B96D05 /* LeqTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeqTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7577765235FB78D00B96D05 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E757776B235FEB4F00B96D05 /* rpgad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad.wav; sourceTree = "<group>"; };
 		E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AA_cal_wave.wav; sourceTree = "<group>"; };
@@ -54,20 +107,14 @@
 		E76EA103237B583300D1282A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E76EA105237B6BC800D1282A /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		E773940E235F60E100DE5031 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E7761A17246225A3006C9E4A /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
-		E7761A18246225A3006C9E4A /* XAttr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAttr.swift; sourceTree = "<group>"; };
-		E7761A1B24622710006C9E4A /* AWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWS.swift; sourceTree = "<group>"; };
 		E78351D4237CA59A00576B00 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		E78351D6237CAB8F00576B00 /* Leq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leq.swift; sourceTree = "<group>"; };
-		E796FD7F24632D6200D17947 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		E796FD8124633B2E00D17947 /* RecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
-		E796FD892463CD0300D17947 /* DirectoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryObserver.swift; sourceTree = "<group>"; };
-		E796FD8B246470EF00D17947 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		E796FD8D24675CA400D17947 /* DetectWIFI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectWIFI.swift; sourceTree = "<group>"; };
 		E7A0E9FB2360AAA40014C886 /* LeqCalibrationMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqCalibrationMaster.py; sourceTree = "<group>"; };
 		E7A0E9FC2360AAA40014C886 /* LeqMaster.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LeqMaster.py; sourceTree = "<group>"; };
-		E7A0EA052360C9210014C886 /* Auditive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auditive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7A0E9FD2360C4900014C886 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		E7A0EA052360C9210014C886 /* Clem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A0EA072360C9210014C886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E7A0EA092360C9210014C886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E7A0EA0B2360C9210014C886 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E7A0EA0D2360C9220014C886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7A0EA102360C9220014C886 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -76,6 +123,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E70DAB9822625AED009B02CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E74E1E1F2274E37F003774FF /* CoreLocation.framework in Frameworks */,
+				E739ACB62271024C00DCCC06 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E70DABB022625AF0009B02CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,11 +146,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7577760235FB78D00B96D05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7A0EA022360C9210014C886 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E700917724685E25005FA915 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,10 +168,11 @@
 			children = (
 				E757775D235FB74300B96D05 /* Resources */,
 				E773940E235F60E100DE5031 /* README.md */,
+				E70DAB9D22625AED009B02CD /* Auditive */,
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
 				E7577764235FB78D00B96D05 /* LeqTest */,
-				E7A0EA062360C9210014C886 /* Auditive */,
+				E7A0EA062360C9210014C886 /* Clem */,
 				E70DAB9C22625AED009B02CD /* Products */,
 				E739ACB42271024C00DCCC06 /* Frameworks */,
 			);
@@ -118,11 +181,30 @@
 		E70DAB9C22625AED009B02CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				E70DAB9B22625AED009B02CD /* Auditive.app */,
 				E70DABB322625AF0009B02CD /* AuditiveTests.xctest */,
 				E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */,
-				E7A0EA052360C9210014C886 /* Auditive.app */,
+				E7577763235FB78D00B96D05 /* LeqTest */,
+				E7A0EA052360C9210014C886 /* Clem.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E70DAB9D22625AED009B02CD /* Auditive */ = {
+			isa = PBXGroup;
+			children = (
+				E70DABA622625AED009B02CD /* Main.storyboard */,
+				E739ACB3227101BB00DCCC06 /* Auditive.entitlements */,
+				E70DAB9E22625AED009B02CD /* AppDelegate.swift */,
+				E7A0EA092360C9210014C886 /* SceneDelegate.swift */,
+				E70DABA222625AED009B02CD /* DataViewController.swift */,
+				E739ACB72271039400DCCC06 /* Recorder.swift */,
+				E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */,
+				E7577748235FB64B00B96D05 /* Leq.swift */,
+				E7A0E9FD2360C4900014C886 /* RecordView.swift */,
+				E70DABAE22625AF0009B02CD /* Info.plist */,
+			);
+			path = Auditive;
 			sourceTree = "<group>";
 		};
 		E70DABB622625AF0009B02CD /* AuditiveTests */ = {
@@ -174,33 +256,23 @@
 			path = LeqTest;
 			sourceTree = "<group>";
 		};
-		E7A0EA062360C9210014C886 /* Auditive */ = {
+		E7A0EA062360C9210014C886 /* Clem */ = {
 			isa = PBXGroup;
 			children = (
-				E700917624685E10005FA915 /* Auditive.entitlements */,
 				E7A0EA072360C9210014C886 /* AppDelegate.swift */,
-				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
 				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
 				E78351D4237CA59A00576B00 /* RecordingView.swift */,
-				E796FD8124633B2E00D17947 /* RecorderView.swift */,
-				E796FD8B246470EF00D17947 /* MapView.swift */,
+				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
 				E76EA101237B53C700D1282A /* Recorder.swift */,
-				E76EA105237B6BC800D1282A /* Recording.swift */,
-				E796FD892463CD0300D17947 /* DirectoryObserver.swift */,
-				E796FD7F24632D6200D17947 /* ProgressBar.swift */,
 				E78351D6237CAB8F00576B00 /* Leq.swift */,
+				E76EA105237B6BC800D1282A /* Recording.swift */,
 				E76EA103237B583300D1282A /* Observable.swift */,
-				E7761A1B24622710006C9E4A /* AWS.swift */,
-				E7761A17246225A3006C9E4A /* S3.swift */,
-				E7761A18246225A3006C9E4A /* XAttr.swift */,
-				E796FD8D24675CA400D17947 /* DetectWIFI.swift */,
-				E7403F2A2468B39900EA5631 /* Secret.swift */,
 				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
 				E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */,
 				E7A0EA152360C9220014C886 /* Info.plist */,
 				E7A0EA0F2360C9220014C886 /* Preview Content */,
 			);
-			path = Auditive;
+			path = Clem;
 			sourceTree = "<group>";
 		};
 		E7A0EA0F2360C9220014C886 /* Preview Content */ = {
@@ -214,6 +286,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E70DAB9A22625AED009B02CD /* Auditive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E70DABC722625AF0009B02CD /* Build configuration list for PBXNativeTarget "Auditive" */;
+			buildPhases = (
+				E70DAB9722625AED009B02CD /* Sources */,
+				E70DAB9822625AED009B02CD /* Frameworks */,
+				E70DAB9922625AED009B02CD /* Resources */,
+				E757775B235FB68800B96D05 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Auditive;
+			packageProductDependencies = (
+			);
+			productName = Auditive;
+			productReference = E70DAB9B22625AED009B02CD /* Auditive.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E70DABB222625AF0009B02CD /* AuditiveTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E70DABCA22625AF0009B02CD /* Build configuration list for PBXNativeTarget "AuditiveTests" */;
@@ -225,6 +317,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E70DABB522625AF0009B02CD /* PBXTargetDependency */,
 			);
 			name = AuditiveTests;
 			productName = AuditiveTests;
@@ -242,15 +335,33 @@
 			buildRules = (
 			);
 			dependencies = (
+				E70DABC022625AF0009B02CD /* PBXTargetDependency */,
 			);
 			name = AuditiveUITests;
 			productName = AuditiveUITests;
 			productReference = E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		E7A0EA042360C9210014C886 /* Auditive */ = {
+		E7577762235FB78D00B96D05 /* LeqTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E7A0EA162360C9220014C886 /* Build configuration list for PBXNativeTarget "Auditive" */;
+			buildConfigurationList = E7577767235FB78D00B96D05 /* Build configuration list for PBXNativeTarget "LeqTest" */;
+			buildPhases = (
+				E757775F235FB78D00B96D05 /* Sources */,
+				E7577760235FB78D00B96D05 /* Frameworks */,
+				E7577761235FB78D00B96D05 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LeqTest;
+			productName = LeqTest;
+			productReference = E7577763235FB78D00B96D05 /* LeqTest */;
+			productType = "com.apple.product-type.tool";
+		};
+		E7A0EA042360C9210014C886 /* Clem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7A0EA162360C9220014C886 /* Build configuration list for PBXNativeTarget "Clem" */;
 			buildPhases = (
 				E7A0EA012360C9210014C886 /* Sources */,
 				E7A0EA022360C9210014C886 /* Frameworks */,
@@ -260,9 +371,9 @@
 			);
 			dependencies = (
 			);
-			name = Auditive;
+			name = Clem;
 			productName = Clem;
-			productReference = E7A0EA052360C9210014C886 /* Auditive.app */;
+			productReference = E7A0EA052360C9210014C886 /* Clem.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -275,6 +386,23 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Semasiology;
 				TargetAttributes = {
+					E70DAB9A22625AED009B02CD = {
+						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					E70DABB222625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = E70DAB9A22625AED009B02CD;
@@ -282,6 +410,9 @@
 					E70DABBD22625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = E70DAB9A22625AED009B02CD;
+					};
+					E7577762235FB78D00B96D05 = {
+						CreatedOnToolsVersion = 11.1;
 					};
 					E7A0EA042360C9210014C886 = {
 						CreatedOnToolsVersion = 11.1;
@@ -303,14 +434,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E7A0EA042360C9210014C886 /* Auditive */,
+				E70DAB9A22625AED009B02CD /* Auditive */,
 				E70DABB222625AF0009B02CD /* AuditiveTests */,
 				E70DABBD22625AF0009B02CD /* AuditiveUITests */,
+				E7577762235FB78D00B96D05 /* LeqTest */,
+				E7A0EA042360C9210014C886 /* Clem */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E70DAB9922625AED009B02CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E70DABAD22625AF0009B02CD /* LaunchScreen.storyboard in Resources */,
+				E70DABAA22625AF0009B02CD /* Assets.xcassets in Resources */,
+				E70DABA822625AED009B02CD /* Main.storyboard in Resources */,
+				E757776E235FEB4F00B96D05 /* rpgad.wav in Resources */,
+				E757776F235FEB4F00B96D05 /* AA_cal_wave.wav in Resources */,
+				E7577770235FEB4F00B96D05 /* rpgad1.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E70DABB122625AF0009B02CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,6 +484,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E70DAB9722625AED009B02CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E739ACB82271039400DCCC06 /* Recorder.swift in Sources */,
+				E70DABA322625AED009B02CD /* DataViewController.swift in Sources */,
+				E7577749235FB64B00B96D05 /* Leq.swift in Sources */,
+				E7A0E9FE2360C4900014C886 /* RecordView.swift in Sources */,
+				E70DAB9F22625AED009B02CD /* AppDelegate.swift in Sources */,
+				E7A0EA192360CADE0014C886 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E70DABAF22625AF0009B02CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,33 +513,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E757775F235FB78D00B96D05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E757776A235FB79300B96D05 /* Leq.swift in Sources */,
+				E7577766235FB78D00B96D05 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7A0EA012360C9210014C886 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E76EA102237B53C700D1282A /* Recorder.swift in Sources */,
 				E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */,
-				E7761A19246225A3006C9E4A /* S3.swift in Sources */,
-				E796FD8E24675CA400D17947 /* DetectWIFI.swift in Sources */,
-				E796FD8A2463CD0300D17947 /* DirectoryObserver.swift in Sources */,
 				E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */,
 				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
 				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
-				E796FD8C246470EF00D17947 /* MapView.swift in Sources */,
 				E76EA104237B583300D1282A /* Observable.swift in Sources */,
-				E7403F2B2468B39900EA5631 /* Secret.swift in Sources */,
-				E7761A1C24622710006C9E4A /* AWS.swift in Sources */,
 				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
-				E796FD8024632D6200D17947 /* ProgressBar.swift in Sources */,
-				E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */,
-				E796FD8224633B2E00D17947 /* RecorderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E70DABB522625AF0009B02CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E70DAB9A22625AED009B02CD /* Auditive */;
+			targetProxy = E70DABB422625AF0009B02CD /* PBXContainerItemProxy */;
+		};
+		E70DABC022625AF0009B02CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E70DAB9A22625AED009B02CD /* Auditive */;
+			targetProxy = E70DABBF22625AF0009B02CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		E70DABA622625AED009B02CD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E70DABA722625AED009B02CD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E70DABAB22625AF0009B02CD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E70DABAC22625AF0009B02CD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -498,7 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -508,9 +696,50 @@
 			};
 			name = Release;
 		};
+		E70DABC822625AF0009B02CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				INFOPLIST_FILE = Auditive/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.Auditive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E70DABC922625AF0009B02CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				INFOPLIST_FILE = Auditive/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.r0ml.mac.Auditive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E70DABCB22625AF0009B02CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
@@ -531,6 +760,7 @@
 		E70DABCC22625AF0009B02CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
@@ -551,6 +781,7 @@
 		E70DABCE22625AF0009B02CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = AuditiveUITests/Info.plist;
@@ -570,6 +801,7 @@
 		E70DABCF22625AF0009B02CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				INFOPLIST_FILE = AuditiveUITests/Info.plist;
@@ -586,22 +818,47 @@
 			};
 			name = Release;
 		};
+		E7577768235FB78D00B96D05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E7577769235FB78D00B96D05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		E7A0EA172360C9220014C886 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Auditive/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Clem/Preview Content\"";
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Auditive/Info.plist;
+				INFOPLIST_FILE = Clem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacc.Auditive;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.Clem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -612,18 +869,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Auditive/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Clem/Preview Content\"";
 				DEVELOPMENT_TEAM = MHEBPE6SV2;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Auditive/Info.plist;
+				INFOPLIST_FILE = Clem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacc.Auditive;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.Clem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -638,6 +894,15 @@
 			buildConfigurations = (
 				E70DABC522625AF0009B02CD /* Debug */,
 				E70DABC622625AF0009B02CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E70DABC722625AF0009B02CD /* Build configuration list for PBXNativeTarget "Auditive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E70DABC822625AF0009B02CD /* Debug */,
+				E70DABC922625AF0009B02CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -660,7 +925,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7A0EA162360C9220014C886 /* Build configuration list for PBXNativeTarget "Auditive" */ = {
+		E7577767235FB78D00B96D05 /* Build configuration list for PBXNativeTarget "LeqTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7577768235FB78D00B96D05 /* Debug */,
+				E7577769235FB78D00B96D05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7A0EA162360C9220014C886 /* Build configuration list for PBXNativeTarget "Clem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7A0EA172360C9220014C886 /* Debug */,
