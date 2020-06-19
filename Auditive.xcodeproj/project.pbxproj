@@ -20,6 +20,9 @@
 		E7761A1C24622710006C9E4A /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A1B24622710006C9E4A /* AWS.swift */; };
 		E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D4237CA59A00576B00 /* RecordingView.swift */; };
 		E78351D7237CAB8F00576B00 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D6237CAB8F00576B00 /* Leq.swift */; };
+		E78B0142249C6566009EA972 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0141249C6566009EA972 /* ConsentView.swift */; };
+		E78B0144249C6655009EA972 /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = E78B0143249C6655009EA972 /* consent.html */; };
+		E78B0146249D2F44009EA972 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0145249D2F44009EA972 /* Storage.swift */; };
 		E796FD8024632D6200D17947 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD7F24632D6200D17947 /* ProgressBar.swift */; };
 		E796FD8224633B2E00D17947 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8124633B2E00D17947 /* RecorderView.swift */; };
 		E796FD8A2463CD0300D17947 /* DirectoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD892463CD0300D17947 /* DirectoryObserver.swift */; };
@@ -59,6 +62,9 @@
 		E7761A1B24622710006C9E4A /* AWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWS.swift; sourceTree = "<group>"; };
 		E78351D4237CA59A00576B00 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		E78351D6237CAB8F00576B00 /* Leq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leq.swift; sourceTree = "<group>"; };
+		E78B0141249C6566009EA972 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
+		E78B0143249C6655009EA972 /* consent.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = consent.html; sourceTree = "<group>"; };
+		E78B0145249D2F44009EA972 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E796FD7F24632D6200D17947 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E796FD8124633B2E00D17947 /* RecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
 		E796FD892463CD0300D17947 /* DirectoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryObserver.swift; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 				E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */,
 				E757776B235FEB4F00B96D05 /* rpgad.wav */,
 				E757776D235FEB4F00B96D05 /* rpgad1.wav */,
+				E78B0143249C6655009EA972 /* consent.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -181,6 +188,8 @@
 				E7A0EA072360C9210014C886 /* AppDelegate.swift */,
 				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
 				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
+				E78B0145249D2F44009EA972 /* Storage.swift */,
+				E78B0141249C6566009EA972 /* ConsentView.swift */,
 				E78351D4237CA59A00576B00 /* RecordingView.swift */,
 				E796FD8124633B2E00D17947 /* RecorderView.swift */,
 				E796FD8B246470EF00D17947 /* MapView.swift */,
@@ -330,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */,
+				E78B0144249C6655009EA972 /* consent.html in Resources */,
 				E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */,
 				E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */,
 			);
@@ -361,6 +371,7 @@
 				E76EA102237B53C700D1282A /* Recorder.swift in Sources */,
 				E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */,
 				E7761A19246225A3006C9E4A /* S3.swift in Sources */,
+				E78B0146249D2F44009EA972 /* Storage.swift in Sources */,
 				E796FD8E24675CA400D17947 /* DetectWIFI.swift in Sources */,
 				E796FD8A2463CD0300D17947 /* DirectoryObserver.swift in Sources */,
 				E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */,
@@ -369,6 +380,7 @@
 				E796FD8C246470EF00D17947 /* MapView.swift in Sources */,
 				E76EA104237B583300D1282A /* Observable.swift in Sources */,
 				E7403F2B2468B39900EA5631 /* Secret.swift in Sources */,
+				E78B0142249C6566009EA972 /* ConsentView.swift in Sources */,
 				E7761A1C24622710006C9E4A /* AWS.swift in Sources */,
 				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
