@@ -3,6 +3,7 @@
 // Found amongst his effects by r0ml
 
 import CloudKit
+import os
 
 func getSecret(_ key : String) -> (String, String, String)? {
   let c : CKContainer = CKContainer.default() // (identifier: "iCloud.edu.qcc.quacc.Auditive")
@@ -12,11 +13,11 @@ func getSecret(_ key : String) -> (String, String, String)? {
   let sem = DispatchSemaphore(value: 0)
   pd.fetch(withRecordID: id) { (rec, err) in
     if let e = err {
-      print("failed to get AWS secret", e.localizedDescription)
+      os_log("failed to get AWS secret %", type: .error, e.localizedDescription)
       return
     }
     guard let rec = rec else {
-      print("failed to get AWS record")
+      os_log("failed to get AWS record")
       return
     }
     res = (rec["access"] as! String, rec["secret"] as! String, rec["region"] as! String)

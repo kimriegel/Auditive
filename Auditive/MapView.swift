@@ -11,11 +11,13 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
+      mapView.frame = CGRect(origin: .zero, size: CGSize(width: 800, height: 400))
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
       print("update")
+      print(view.frame)
       view.centerCoordinate = centerCoordinate
       let ma = MKPointAnnotation()
       ma.coordinate = centerCoordinate

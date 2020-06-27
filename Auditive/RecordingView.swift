@@ -15,24 +15,25 @@ struct RecordingView: View {
           HStack {
             Text(String(format: "Leq: %.2f", recording.leq))
           }
-          Button( action: { self.recording.uploadToS3() }) {
+          Button( action: { uploadToS3(url: recording.url, location: recording.location) }) {
             Text("Upload to S3")
           }
 
- /*
- MapView(centerCoordinate: .constant(self.recorder.myLocation!.coordinate)).layoutPriority(0.2)
-            .padding(20)
 
+          GeometryReader { g in
+ MapView(centerCoordinate: .constant(self.recording.location!.coordinate)).layoutPriority(0.2)
+  .padding((print(g), 0).1 + 20)
+          }.layoutPriority(0.3)
           Text("metadata for recording here").layoutPriority(0.1)
-          Text( String(describing: self.recorder.onAir?.leq) )
-          Text( self.recorder.onAir?.displayName ?? "")
+//          Text( String(describing: self.recorder.onAir?.leq) )
+//          Text( self.recorder.onAir?.displayName ?? "")
 
-          MeterView(value: self.$recorder.recording.avgSamples).padding(10)
+//          MeterView(value: self.recording.avgSamples).padding(10)
 
 
-          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
+//          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
           Spacer().layoutPriority(0.1)
-*/
+
         }.onAppear {
           self.recording.play()
           print("recording appeared")

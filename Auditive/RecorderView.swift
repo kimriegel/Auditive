@@ -57,7 +57,11 @@ struct RecorderView: View {
           .padding(20)
 
         Text("metadata for recording here").layoutPriority(0.1)
+
+        // FIXME: this can't calculate LEQ while recording
         Text( String(describing: self.recorder.recording.leq) )
+
+
         Text( self.recorder.recording.displayName)
 
         MeterView(value: self.$recorder.recording.avgSamples).padding(10)
@@ -80,3 +84,9 @@ struct RecorderView: View {
  }
  }
  */
+
+struct RecorderView_Previews: PreviewProvider {
+  static var previews: some View {
+    /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+  }
+}

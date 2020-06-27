@@ -5,8 +5,6 @@
 import SwiftUI
 import AVFoundation
 
-var hasConsented = "hasConsented"
-
 /*struct SwipeableText : View {
  @State var offset : CGSize = .zero
 
@@ -51,24 +49,17 @@ var observer  = DirectoryObserver(URL: Recording.mediaDir) {
   // DispatchQueue.main.async { refreshers.forEach { $0.needsRefresh.x.toggle() }  }
 }
 
-struct SurveyView : View {
-  var body : some View {
-    Text("survey here")
-  }
-}
-
-
 struct ContentView : View {
   @State var needsRefresh : Bool = false
 
   var body : some View {
     VStack {
       if needsRefresh || !needsRefresh {
-    if UserDefaults.standard.bool(forKey: hasConsented) {
-      if UserDefaults.standard.bool(forKey: "hasSurvey") {
+        if UserDefaults.standard.bool(forKey: Key.hasConsented) {
+          if nil != UserDefaults.standard.string(forKey: Key.healthSurvey) {
         SampleListView()
       } else {
-        SurveyView()
+        SurveyView(needsRefresh: self.$needsRefresh)
       }
     } else {
       ConsentView(needsRefresh: self.$needsRefresh)

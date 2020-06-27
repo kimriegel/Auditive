@@ -189,26 +189,6 @@ class Recording : NSObject, Identifiable, ObservableObject {
     }
   }
 
-
-  func uploadToS3() {
-    do {
-    let dat = try Data.init(contentsOf: self.url)
-
-      var tags = [String:String]()
-      if let l = location {
-        tags["latitude"]=String(l.coordinate.latitude)
-        tags["longitude"]=String( l.coordinate.longitude)
-        tags["altitude"]=String(l.altitude)
-        let dateFormatter : DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        tags["timestamp"]=dateFormatter.string(from: l.timestamp)
-      }
-    let a = try
-      S3(bucket: "edu-qcc-quacc-auditive")?.putObject(self.url.lastPathComponent, dat, metadata: tags)
-    } catch(let e) {
-      print("saving to S3 \(e.localizedDescription)")
-    }
-  }
 }
 
 /*

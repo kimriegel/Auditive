@@ -75,8 +75,7 @@ struct ConsentView : View {
             Button(action: {
               if self.participate {
                 uploadConsent()
-                UserDefaults.standard.set( true, forKey: hasConsented)
-                self.needsRefresh = true
+                 self.needsRefresh = true
 
               }}) {
                 VStack { Spacer()

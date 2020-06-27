@@ -2,6 +2,43 @@
 // Found amongst his effects by r0ml
 
 import UIKit
+import CloudKit
+
+class Key {
+  static var VendorID = "VendorID"
+  static var UserRecordName = "UserRecordName"
+  static var hasConsented = "hasConsented"
+  static var healthSurvey = "healthSurvey"
+  static var s3bucket = "edu-qcc-quaccs-auditive"
+  static var latitude = "latitude"
+  static var longitude = "longitude"
+  static var altitude = "altitude"
+  static var timestamp = "timestamp"
+}
+
+func stashIDs() {
+
+  if nil == UserDefaults.standard.string(forKey: Key.VendorID) {
+    if let ifv = UIDevice.current.identifierForVendor?.uuidString {
+      UserDefaults.standard.set(ifv, forKey: Key.VendorID)
+    } else {
+      DispatchQueue.global().asyncAfter(deadline: DispatchTime.now().advanced(by: DispatchTimeInterval.milliseconds(800))) {
+        stashIDs()
+      }
+      return
+    }
+  }
+
+  if nil == UserDefaults.standard.string(forKey: Key.UserRecordName) {
+    CKContainer.default().fetchUserRecordID {
+      id, err in
+      if let id = id {
+        UserDefaults.standard.set(id.recordName, forKey: Key.UserRecordName)
+      }
+    }
+  }
+  
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,6 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+
+    stashIDs()
+    monitorNetwork()
+
     return true
   }
 
