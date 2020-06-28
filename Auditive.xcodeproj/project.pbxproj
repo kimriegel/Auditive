@@ -36,6 +36,7 @@
 		E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA0D2360C9220014C886 /* Assets.xcassets */; };
 		E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA102360C9220014C886 /* Preview Assets.xcassets */; };
 		E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */; };
+		E7E01E1924A9006100BFA87C /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E01E1824A9006100BFA87C /* Survey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		E7A0EA102360C9220014C886 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E7A0EA132360C9220014C886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A0EA152360C9220014C886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7E01E1824A9006100BFA87C /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
 				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
 				E78B0147249D3443009EA972 /* SurveyView.swift */,
+				E7E01E1824A9006100BFA87C /* Survey.swift */,
 				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
 				E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */,
 				E78B0145249D2F44009EA972 /* Storage.swift */,
@@ -380,6 +383,7 @@
 				E76EA102237B53C700D1282A /* Recorder.swift in Sources */,
 				E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */,
 				E7761A19246225A3006C9E4A /* S3.swift in Sources */,
+				E7E01E1924A9006100BFA87C /* Survey.swift in Sources */,
 				E78B0146249D2F44009EA972 /* Storage.swift in Sources */,
 				E796FD8E24675CA400D17947 /* DetectWIFI.swift in Sources */,
 				E796FD8A2463CD0300D17947 /* DirectoryObserver.swift in Sources */,
