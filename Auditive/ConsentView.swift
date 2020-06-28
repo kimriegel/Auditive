@@ -41,6 +41,7 @@ struct ConsentView : View {
 
   let buttonHeight : CGFloat = 60
 
+
   var body : some View {
     let consentFile = Bundle.main.url(forResource: "consent", withExtension: "html")
     let consent = try? String(contentsOf: consentFile!)
@@ -102,7 +103,36 @@ import SwiftUI
 
 struct HTMLStringView: UIViewRepresentable {
   @Binding var height : CGFloat
-  var webView: WKWebView = WKWebView()
+  var webView: WKWebView = WKWebView.init(frame: .zero, configuration: Self.webViewConfiguration() )
+
+  static func webViewConfiguration() -> WKWebViewConfiguration {
+    let configuration = WKWebViewConfiguration()
+    configuration.userContentController = userContentController()
+    return configuration
+  }
+
+
+
+  static private func userContentController() -> WKUserContentController {
+      let controller = WKUserContentController()
+      controller.addUserScript(viewPortScript())
+      return controller
+  }
+
+  static private func viewPortScript() -> WKUserScript {
+      let viewPortScript = """
+          var meta = document.createElement('meta');
+          meta.setAttribute('name', 'viewport');
+          meta.setAttribute('content', 'width=device-width');
+          meta.setAttribute('initial-scale', '1.0');
+          meta.setAttribute('maximum-scale', '1.0');
+          meta.setAttribute('minimum-scale', '1.0');
+          meta.setAttribute('user-scalable', 'no');
+          document.getElementsByTagName('head')[0].appendChild(meta);
+      """
+      return WKUserScript(source: viewPortScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+  }
+
 
   let htmlContent: String
 
@@ -113,14 +143,23 @@ struct HTMLStringView: UIViewRepresentable {
       self.parent = parent
     }
 
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-      webView.evaluateJavaScript("document.documentElement.scrollHeight") {
-        (height, error) in
+      webView.evaluateJavaScript("document.body.scrollHeight") {
+        (xheight, error) in
+
+        if self.parent.height != 0 {
+          return
+        }
         DispatchQueue.main.async {
           // print(height)
           //          let j = self.parent.frame
           //          let k = CGRect(origin: j.origin, size: CGSize(width: j.width, height: height as! CGFloat))
-          self.parent.height = height as! CGFloat
+          if let h = xheight {
+            print("set frame \(h as! CGFloat)")
+//            self.parent.frame(minHeight: h as! CGFloat)
+            self.parent.height = (h as! CGFloat)
+          }
         }
       }
     }

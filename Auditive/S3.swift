@@ -105,7 +105,7 @@ public class S3 : AWSService {
 
   public init?(bucket b : String) {
     bucket = b
-    super.init(service: "s3", profile: "ONE")
+    super.init(service: "s3", profile: "kriegel")
   }
 
   public struct ETag {

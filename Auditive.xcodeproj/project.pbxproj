@@ -619,7 +619,7 @@
 				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Auditive/Preview Content\"";
-				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
@@ -627,7 +627,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacc.Auditive;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacs.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -641,7 +641,7 @@
 				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Auditive/Preview Content\"";
-				DEVELOPMENT_TEAM = MHEBPE6SV2;
+				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
@@ -649,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacc.Auditive;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacs.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

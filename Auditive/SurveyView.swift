@@ -355,7 +355,7 @@ struct EnumSegmentView<T : MyEnum > : View {
   var body : some View {
     setSelection()
     let c : Int = T.allCases.count+1+(allowOther ? 1 : 0)
-    return HStack {
+    return VStack {
       Text(label).frame(width: 120)
       Picker(selection: Binding<Int>(get: { return self.selection },
                                      set: {
@@ -376,10 +376,11 @@ struct EnumSegmentView<T : MyEnum > : View {
 }
 
 
-struct EnumWheelView<T : MyEnum> : View {
+struct EnumWheelView<T : MyEnum, U : PickerStyle> : View {
   let label : String
   @Binding var pick : OrOther<T>
   let allowOther : Bool
+  let style : U
 
   @State var selection : Int = 0
 
@@ -395,27 +396,33 @@ struct EnumWheelView<T : MyEnum> : View {
 
   var body: some View {
     setSelection()
+
     let c : Int = T.allCases.count+1+(allowOther ? 1 : 0)
-    return HStack {
-      Spacer().layoutPriority(5)
-      Picker(selection: Binding(get: {self.selection },
+    return VStack {
+      Text(label)
+//      Spacer().layoutPriority(5)
+      let p = Picker(selection: Binding(get: {self.selection },
                                 set: {
                                   self.pick = OrOther.pick($0)
                                   self.selection = $0
                                 }),
-             label: Text(label)
+             label: EmptyView()
       ) {
         ForEach(0..<c) {
           SplitOut<T>(x:$0)
         }
-      }.pickerStyle(WheelPickerStyle())
-      .frame(width: 800)
+      }
+
+      p.pickerStyle( style )
+//      .frame(width: 800)
+
       if self.pick.other != nil {
         TextField.init("Other", text: Binding(get: { self.pick.other ?? ""},
-                                              set: { self.pick.other = $0 })).layoutPriority(5)
+                                              set: { self.pick.other = $0 }))
+          // .layoutPriority(5)
       }
-      Spacer().layoutPriority(5)
-    }
+//      Spacer().layoutPriority(5)
+    }.padding(EdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 30))
   }
 
 }
@@ -485,19 +492,20 @@ struct SurveyView : View {
   @Binding var needsRefresh : Bool
   
   var body : some View {
+    let ps = WheelPickerStyle()
 
  //   ScrollView.init(.vertical, showsIndicators: true) {
-      Form {
+    return Form {
         Section(header: Text("Demographic data")) {
 
-          EnumSegmentView<AgeRange>(label: "Age", pick: self.$survey.age, allowOther: false)
-          EnumSegmentView<Gender>(label: "Gender", pick: self.$survey.gender, allowOther: true)
+          EnumWheelView(label: "Age", pick: self.$survey.age, allowOther: false, style: ps) // SegmentPickerStyle)(
+          EnumWheelView(label: "Gender", pick: self.$survey.gender, allowOther: true, style: ps) // false
 
-          EnumWheelView<Race>(label: "Race", pick: self.$survey.race, allowOther: true)
-          EnumWheelView<Schooling>(label: "Schooling", pick: self.$survey.schooling, allowOther: false)
-          EnumWheelView<Employment>(label: "Employment", pick: self.$survey.employment, allowOther: false)
+          EnumWheelView(label: "Race", pick: self.$survey.race, allowOther: true, style: ps)
+          EnumWheelView(label: "Schooling", pick: self.$survey.schooling, allowOther: false, style: ps)
+          EnumWheelView(label: "Employment", pick: self.$survey.employment, allowOther: false, style: ps)
 
-          EnumSegmentView<Residence>(label: "Residence", pick: self.$survey.residence, allowOther: true)
+          EnumWheelView(label: "Residence", pick: self.$survey.residence, allowOther: true, style: ps ) // false
         }
 
            HealthView(health: $survey.health).padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)).allowsTightening(true)
