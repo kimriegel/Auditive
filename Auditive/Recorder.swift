@@ -14,6 +14,8 @@ class Recorder: NSObject, ObservableObject {
 
   var timer : Timer?
 
+  var baseTime : Double? = nil
+
   var recordings : [Recording] {
     get {
       listOfRecordings()
@@ -27,6 +29,8 @@ class Recorder: NSObject, ObservableObject {
     }
   }
   
+
+  static let recordingLength = 20 // seconds for a recording
 
   private var permissionGranted = false
   private var frameCount : Int = 0
@@ -142,11 +146,14 @@ extension Recorder : CLLocationManagerDelegate {
     self.onAir = true
     self.recording = rr
     self.recording.location = self.myLocation
+    rr.recorder = self
 
-    rr.record(length: DispatchTimeInterval.seconds(10), everyTick: { self.percentage += 0.1 / 10}) {
+    rr.record(length: DispatchTimeInterval.seconds(Self.recordingLength)) {
       self.onAir = false
       self.timer?.invalidate()
       self.percentage = 0
+      rr.fractionalLeq = 0
+      rr.recorder = nil
     }
 
     return rr
@@ -155,7 +162,9 @@ extension Recorder : CLLocationManagerDelegate {
   func stop() {
     self.recording.stop()
     self.onAir = false
+    self.baseTime = nil
     self.timer?.invalidate()
     self.percentage = 0
+    self.recording.fractionalLeq = 0
   }
 }

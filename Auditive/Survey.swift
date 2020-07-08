@@ -328,3 +328,39 @@ class Survey : ObservableObject, Codable {
   var affectedByNoise = AffectedByNoise()
 
 }
+
+enum SoundKind : Int, MyEnum, Codable {
+  case humanVoice
+  case humanMovement
+  case animalNoise
+  case weather
+  case construction
+  case mechanical
+  case transportationRail
+  case transportationSurface
+  case transportationAir
+  case transportationOther
+  case music
+
+  var description : String {
+    switch self {
+    case .humanVoice: return "Human Voice"
+    case .humanMovement: return "Human Movements"
+    case .animalNoise: return "Animal Noise"
+    case .weather: return "Weather"
+    case .construction: return "Consttruction"
+    case .mechanical: return "Mechanical Equipment"
+    case .transportationRail: return "Transportation (Subway/Train)"
+    case .transportationSurface: return "Transportation (Cars/Trucks/Buses)"
+    case .transportationAir: return "Transportation Air (Planes/Helicopters)"
+    case .transportationOther: return "Transporation (Other)"
+    case .music: return "Music"
+    }
+  }
+}
+
+class Annoyance : Codable, ObservableObject {
+  var annoying : Int = 0 // 1-10
+  var control : Int = 0 // 1-5
+  var kind = OrOther<SoundKind>()
+}

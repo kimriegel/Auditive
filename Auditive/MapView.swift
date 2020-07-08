@@ -16,8 +16,8 @@ struct MapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-      print("update")
-      print(view.frame)
+      // print("update")
+      // print(view.frame)
       view.centerCoordinate = centerCoordinate
       let ma = MKPointAnnotation()
       ma.coordinate = centerCoordinate

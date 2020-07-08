@@ -91,16 +91,16 @@ struct SampleListView: View {
   var body: some View {
 
     NavigationView {
-      GeometryReader {g in
         VStack {
           NavigationLink(destination: RecorderView(recorder: self.recorder)) {
             //        Button(action: {
             //          self.recorder.startRecordingSample()
             //        }) {
-            Text("Record").foregroundColor(Color.black)
-              .frame(width: g.size.width - 40)
-              .padding(EdgeInsets.init(top: 20, leading: 0, bottom: 20, trailing: 0))
-              .background( self.recorder.onAir ? Color.gray : Color.red)
+            RecordButton()
+//            Text("Record").foregroundColor(Color.black)
+//              .frame(width: g.size.width - 40)
+//              .padding(EdgeInsets.init(top: 20, leading: 0, bottom: 20, trailing: 0))
+//              .background( self.recorder.onAir ? Color.gray : Color.red)
             //        }
             //          .disabled( self.recorder.onAir)
           }
@@ -109,15 +109,17 @@ struct SampleListView: View {
             ForEach(self.recorder.recordings, id: \.self) { z in
               
               NavigationLink(destination: RecordingView(recording: z)) {
-                Text( z.displayName) // .background( x == self.sel.x ? Color.gray : Color.white)
-              }
-            }
-          }.navigationBarTitle(Text("Urban Samples"))
-        }
-        .contrast(self.needsRefresh.x ? (
-          self.needsRefresh.x.toggle() , 1).1 : 0.9)
+                Text( z.displayName).background(Color.orange) // .background( x == self.sel.x ? Color.gray : Color.white)
+              }.background(Color.green)
+            }.background(Color.blue)
+          }
+          .background(Color.orange)
+        }.navigationBarTitle(Text("Urban Samples"))
+//          .background(Color.pink)
+//        .contrast(self.needsRefresh.x ? (
+//          self.needsRefresh.x.toggle() , 1).1 : 0.9)
       }
-    }
+
   }
   
   func play(_ z : Recording){

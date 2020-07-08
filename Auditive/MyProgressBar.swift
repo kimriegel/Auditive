@@ -4,10 +4,11 @@
 
 import SwiftUI
 
-struct ProgressBar: View {
-  @Binding var value: CGFloat
+struct MyProgressBar: View {
+  var value: CGFloat
 
   var percentage : Int { get {
+    print("porgressbar value \(value)")
     return Int(ceil(value * 100))
     }
   }
@@ -34,8 +35,7 @@ struct ProgressBar: View {
 }
 
 struct ProgressBar_Previews: PreviewProvider {
-  @State static var value = CGFloat(0.5)
   static var previews: some View {
-    ProgressBar(value: $value)
+    MyProgressBar(value: 0.5)
   }
 }

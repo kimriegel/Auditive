@@ -18,7 +18,7 @@ func saveSurvey(_ survey : Survey) {
   print("\(#function) Not yet implemented")
 }
 
-func uploadToS3(url : URL, location: CLLocation?) {
+func uploadToS3(url : URL, location: CLLocation?, annoyance: Annoyance) {
   do {
   let dat = try Data.init(contentsOf: url)
 
@@ -30,6 +30,9 @@ func uploadToS3(url : URL, location: CLLocation?) {
       let dateFormatter : DateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
       tags[Key.timestamp]=dateFormatter.string(from: l.timestamp)
+      if let ss = String.init(data: try JSONEncoder().encode(annoyance), encoding: .utf8) {
+        tags[Key.annoyance]=ss
+      }
     }
   let a = try
     S3(bucket: Key.s3bucket)?.putObject(url.lastPathComponent, dat, metadata: tags)

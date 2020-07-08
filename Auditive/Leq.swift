@@ -18,11 +18,16 @@ public func LeqMaster(_ u : URL) throws -> Float {
   guard let buf = AVAudioPCMBuffer.init(pcmFormat: avf.processingFormat, frameCapacity: AVAudioFrameCount(avf.length)) else { throw LeqError.badBuffer }
 
   try avf.read(into: buf )
+  return Leq(buf)
+}
 
+
+
+public func Leq(_ buf : AVAudioPCMBuffer) -> Float {
   var tmsq : Float = 0
   let k : Float = 23047.0 / 32768
   var leqs : [Float] = []
-  let rate = AVAudioFrameCount(avf.fileFormat.sampleRate / 10)
+  let rate = AVAudioFrameCount(buf.format.sampleRate / 10)
 
   // there are two channels?    buf.format.channelCount    and      buf.format.isInterleaved
   // this is channel 0
@@ -41,11 +46,11 @@ public func LeqMaster(_ u : URL) throws -> Float {
     }
   }
   
-  let Lmax = leqs.reduce(-Float.greatestFiniteMagnitude) { max($0, $1) }
-  print ("Lmax: ",Lmax)
-  print("tmsq: ", tmsq)
-  let tleq = 10 * log10( (tmsq / Float(avf.length)) / pow( 0.00002, 2))
-  print ("LEQ: ",tleq)
+  // let Lmax = leqs.reduce(-Float.greatestFiniteMagnitude) { max($0, $1) }
+  // print ("Lmax: ",Lmax)
+  // print("tmsq: ", tmsq)
+  let tleq = 10 * log10( (tmsq / Float(buf.frameLength)) / pow( 0.00002, 2))
+  // print ("LEQ: ",tleq)
   return tleq
 }
 

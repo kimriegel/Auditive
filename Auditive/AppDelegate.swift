@@ -14,6 +14,8 @@ class Key {
   static var longitude = "longitude"
   static var altitude = "altitude"
   static var timestamp = "timestamp"
+  static var annoyance = "annoyance"
+  static var location = "location"
 }
 
 func stashIDs() {

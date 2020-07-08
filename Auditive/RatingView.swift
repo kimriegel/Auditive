@@ -23,11 +23,11 @@ struct RatingView: View {
   }
 
     var body: some View {
-      HStack {
+      VStack {
         if label.isEmpty == false {
           Text(label)
         }
-
+        HStack {
         ForEach(1..<maximumRating+1) { number in
           self.image(for: number)
             .foregroundColor(number > self.rating ? self.offColor : self.onColor)
@@ -35,6 +35,7 @@ struct RatingView: View {
               self.rating = number
             }
             .padding(EdgeInsets.init(top: 0, leading: 4, bottom: 0, trailing: 4))
+        }
         }
       }
     }

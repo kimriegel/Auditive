@@ -26,7 +26,7 @@
 		E78B0146249D2F44009EA972 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0145249D2F44009EA972 /* Storage.swift */; };
 		E78B0148249D3443009EA972 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0147249D3443009EA972 /* SurveyView.swift */; };
 		E78B014A249DBC29009EA972 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */; };
-		E796FD8024632D6200D17947 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD7F24632D6200D17947 /* ProgressBar.swift */; };
+		E796FD8024632D6200D17947 /* MyProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD7F24632D6200D17947 /* MyProgressBar.swift */; };
 		E796FD8224633B2E00D17947 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8124633B2E00D17947 /* RecorderView.swift */; };
 		E796FD8A2463CD0300D17947 /* DirectoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD892463CD0300D17947 /* DirectoryObserver.swift */; };
 		E796FD8C246470EF00D17947 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8B246470EF00D17947 /* MapView.swift */; };
@@ -72,7 +72,7 @@
 		E78B0145249D2F44009EA972 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E78B0147249D3443009EA972 /* SurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
 		E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
-		E796FD7F24632D6200D17947 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		E796FD7F24632D6200D17947 /* MyProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProgressBar.swift; sourceTree = "<group>"; };
 		E796FD8124633B2E00D17947 /* RecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
 		E796FD892463CD0300D17947 /* DirectoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryObserver.swift; sourceTree = "<group>"; };
 		E796FD8B246470EF00D17947 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				E76EA101237B53C700D1282A /* Recorder.swift */,
 				E76EA105237B6BC800D1282A /* Recording.swift */,
 				E796FD892463CD0300D17947 /* DirectoryObserver.swift */,
-				E796FD7F24632D6200D17947 /* ProgressBar.swift */,
+				E796FD7F24632D6200D17947 /* MyProgressBar.swift */,
 				E78351D6237CAB8F00576B00 /* Leq.swift */,
 				E76EA103237B583300D1282A /* Observable.swift */,
 				E7761A1B24622710006C9E4A /* AWS.swift */,
@@ -400,7 +400,7 @@
 				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
 				E78B014A249DBC29009EA972 /* KeyboardAdaptive.swift in Sources */,
-				E796FD8024632D6200D17947 /* ProgressBar.swift in Sources */,
+				E796FD8024632D6200D17947 /* MyProgressBar.swift in Sources */,
 				E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */,
 				E796FD8224633B2E00D17947 /* RecorderView.swift in Sources */,
 			);
