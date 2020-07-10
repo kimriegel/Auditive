@@ -10,6 +10,7 @@
 		E700917724685E25005FA915 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
+		E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */; };
 		E7403F2B2468B39900EA5631 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7403F2A2468B39900EA5631 /* Secret.swift */; };
 		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
 		E76EA102237B53C700D1282A /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA101237B53C700D1282A /* Recorder.swift */; };
@@ -48,6 +49,7 @@
 		E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABC222625AF0009B02CD /* AuditiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveUITests.swift; sourceTree = "<group>"; };
 		E70DABC422625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumWheelView.swift; sourceTree = "<group>"; };
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E7403F2A2468B39900EA5631 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -220,6 +222,7 @@
 				E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */,
 				E7A0EA152360C9220014C886 /* Info.plist */,
 				E7A0EA0F2360C9220014C886 /* Preview Content */,
+				E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */,
 			);
 			path = Auditive;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
 				E78B0148249D3443009EA972 /* SurveyView.swift in Sources */,
 				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
+				E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */,
 				E796FD8C246470EF00D17947 /* MapView.swift in Sources */,
 				E77783AE24A1C51C00B7EE89 /* RatingView.swift in Sources */,
 				E76EA104237B583300D1282A /* Observable.swift in Sources */,

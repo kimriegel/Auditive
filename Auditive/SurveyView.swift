@@ -1,78 +1,7 @@
-//// Copyright (c) 1868 Charles Babbage
+// Copyright (c) 1868 Charles Babbage
 // Found amongst his effects by r0ml
 
 import SwiftUI
-
-
-struct SplitOut<T:MyEnum> : View {
-  let x : Int
-
-  var body : some View {
-    if x == 0 {
-      return Text(OrOther<T>().description)
-    }
-    if x == T.allCases.count+1 {
-      return Text(OrOther<T>(other: "").description)
-    }
-    if x > 0 && x < T.allCases.count + 1 {
-      return Text(T.allCases[(x - 1) as! T.AllCases.Index].description)
-    }
-    return Text("cannot get here")
-  }
-}
-
-struct EnumWheelView<T : MyEnum /*, U : PickerStyle */ > : View {
-  let label : String
-  @Binding var pick : OrOther<T>
-  let allowOther : Bool
- // let style : U
-
-  @State var selection : Int = 0
-
-  func setSelection() {
-    if let _ = pick.other {
-      self.selection = T.allCases.count+1
-    } else if let c = self.pick.choice {
-      self.selection = 1 + (T.allCases.firstIndex(of: c) as? Int ?? -1)
-    } else {
-      self.selection = 0
-    }
-  }
-
-  var body: some View {
-    setSelection()
-
-    let c : Int = T.allCases.count+1+(allowOther ? 1 : 0)
-     // Form {
-//        Section(header: Text(label) ) {
-//      Spacer().layoutPriority(5)
-      let p = Picker(selection: Binding(get: {self.selection },
-                                set: {
-                                  self.pick = OrOther.pick($0)
-                                  self.selection = $0
-                                }),
-             label: Text(label)
-      ) {
-        ForEach(0..<c) {
-          SplitOut<T>(x:$0)
-        }
-      }
-
-    return p // .pickerStyle( style )
-//      .frame(width: 800)
-
-/*      if self.pick.other != nil {
-        TextField.init("Other", text: Binding(get: { self.pick.other ?? ""},
-                                              set: { self.pick.other = $0 }))
-          // .layoutPriority(5)
-      }
- */
-//      Spacer().layoutPriority(5)
-//    }.padding(EdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 30))
-//  }
- }
-}
-
 
 struct HealthView : View {
   @Binding var health : Health

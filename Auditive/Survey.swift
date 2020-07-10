@@ -107,7 +107,7 @@ class OrOther<T : MyEnum> : Codable {
 
   var description: String {
     if let _ = other {
-      return "Other (please specify)"
+      return "Other"
     } else if let t = choice {
       return t.description
     } else {
