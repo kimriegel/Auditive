@@ -17,10 +17,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
   let id : String
   var timer : Timer?
 
-  // @Published var avgSamples : [Float] = [0]
-  // @Published var peakSamples : [Float] = [0]
   @Published var annoyance = Annoyance()
-  // @Published var leq : Float = 0
   @Published var fractionalLeq : Float = 0
 
   var recorder : Recorder?
@@ -34,16 +31,12 @@ class Recording : NSObject, Identifiable, ObservableObject {
   }
 
   let aa : AVAudioSession = AVAudioSession.sharedInstance()
-  var ap : AVAudioPlayer! = nil
-
-
-  // var arec : AVAudioRecorder?
+  var ap : AVAudioPlayer? = nil
   var engine : AVAudioEngine?
   var sink : AnyCancellable!
 
   var noiseQ : DispatchQueue = DispatchQueue.init(label: "audioGrabber", attributes: .concurrent)
   var counter = 0
-//  var handle : FileHandle!
   var audioFile : AVAudioFile!
 
   override init() {
@@ -60,15 +53,14 @@ class Recording : NSObject, Identifiable, ObservableObject {
         try? XAttr(self.url).set(data: a, forName: Key.annoyance)
       }
     }
-
   }
   
   init(_ u : URL) {
     url = u
     id = u.lastPathComponent
     if let ll = try? XAttr(u).get(forName: Key.location),
-      let zz = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(ll) as? CLLocation {
-        self.location = zz
+       let zz = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(ll) as? CLLocation {
+      self.location = zz
     }
     if let aa = try? XAttr(u).get(forName: Key.annoyance),
        let zz = try? JSONDecoder().decode(Annoyance.self, from: aa) {
@@ -88,6 +80,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
       listOfRecordings()
     }
   }
+
   static var recordingNames : [String] {
     get {
       listOfRecordings().map {
@@ -129,63 +122,33 @@ class Recording : NSObject, Identifiable, ObservableObject {
       try self.aa.setActive(true)
 
       self.ap = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.aiff.rawValue)
-      self.ap.delegate = self
+      self.ap?.delegate = self
 
       DispatchQueue.main.async {
         print("playing")
-        self.ap.play()
+        self.ap?.play()
       }
     } catch let error {
       print("Can't play the audio file failed with an error \(error.localizedDescription)")
     }
   }
 
-
   func stop() {
     audioFile = nil
     engine?.stop()
-    // self.delete()
   }
 
   func captured(thisBuf: AVAudioPCMBuffer, timex: AVAudioTime) {
     counter += 1
 
-  //  print(timex.debugDescription)
-  //  print(timex.hostTime, timex.sampleRate, timex.sampleTime)
-
-
     // let tsr = timex.sampleRate / 60  // this should be number of samples I want per 1/60 second frame.
-   guard let _ = thisBuf.floatChannelData else {
+    guard let _ = thisBuf.floatChannelData else {
       os_log("%s", type:.error, "didn't have floatChannelData")
       return
     }
 
     noiseQ.sync(flags: .barrier) {
 
-      // each tick is 1 24th of a second?
-
- //     print( Double(timex.hostTime) / timex.sampleRate )
-//      print(timex.audioTimeStamp.mHostTime / 1000000, timex.audioTimeStamp.mFlags)
-
-  /*    let fmt = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 44100, channels: 1, interleaved: false)!
-
-      let converter = AVAudioConverter(from: thisBuf.format, to: fmt)
-      let convertedBuffer = AVAudioPCMBuffer(pcmFormat: fmt, frameCapacity: AVAudioFrameCount(fmt.sampleRate) * thisBuf.frameLength / AVAudioFrameCount(thisBuf.format.sampleRate))!
-
-      let acib : AVAudioConverterInputBlock = { packetCount, outStatus in
-        outStatus.pointee = .haveData
-        return thisBuf
-      }
-
-        var error : NSError? = nil
-        let status = converter?.convert(to: convertedBuffer, error: &error, withInputFrom: acib)
-
-      assert(status != .error)
-*/
-     // let buf = convertedBuffer
-     // let buffer = Array(UnsafeBufferPointer<Float32>(start: buf.floatChannelData![0], count: Int(buf.frameLength)))
-
-     //  handle.write(buffer)
       do {
         if let a = audioFile {
           try a.write(from: thisBuf)
@@ -203,12 +166,8 @@ class Recording : NSObject, Identifiable, ObservableObject {
         self.recorder?.baseTime = dd
       }
 
-     // print(self.recorder)
-
       let jj = dd - (self.recorder?.baseTime ?? dd )
       self.recorder?.percentage = CGFloat(jj / Double(Recorder.recordingLength) )
-      // print("leq = \(self.leq)")
-      
       self.recorder?.objectWillChange.send()
     }
   }
@@ -224,17 +183,10 @@ class Recording : NSObject, Identifiable, ObservableObject {
       return
     }
 
-    let recordSettings : [String:Any] = [
-      AVFormatIDKey: kAudioFormatLinearPCM,
-      AVNumberOfChannelsKey : aa.inputNumberOfChannels,
-      AVSampleRateKey : aa.sampleRate
-    ]
-
     do {
 
       try AVAudioSession.sharedInstance().setCategory(.record)
 
-      // try arec = AVAudioRecorder(url: url, settings: recordSettings)
       engine = AVAudioEngine()
 
       let inputNode = engine!.inputNode
@@ -243,36 +195,12 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
       let fc = sr / 10.0
 
-      // handle = try? FileHandle(forUpdating: url)
       audioFile = try AVAudioFile(forWriting: url, settings: engine!.inputNode.outputFormat(forBus: bus).settings)
 
       inputNode.installTap(onBus: bus, bufferSize: AVAudioFrameCount(fc), format: inputNode.inputFormat(forBus: bus), block: self.captured )
 
-
-
-
-
-     // arec?.isMeteringEnabled = true
-      // let chans = arec?.channelAssignments?.count ?? 1
-
-      // avgSamples = Array(repeating: Float(0), count: chans)
-      // peakSamples = Array(repeating: Float(0), count: chans)
-
-//      arec?.record()
       engine?.prepare()
       try engine?.start()
-
-    //  self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-    //    if let a = self.arec {
-    //      a.updateMeters()
-    //    for i in 0..<chans {
-    //     self.peakSamples[i] = 1 - (a.peakPower(forChannel: i) / -53)
-    //      self.avgSamples[i] = 1 - (a.averagePower(forChannel: i) / -53)
-    //      print(self.avgSamples[i], a.averagePower(forChannel: i))
-    //    }
-    //    }
-    //    everyTick()
-    //  }
 
       DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now()+clipLength) {
         self.timer?.invalidate()
@@ -298,44 +226,20 @@ class Recording : NSObject, Identifiable, ObservableObject {
     }
   }
   
-  var leq : Double { get {
-    if let _ = audioFile {
+  var leq : Double {
+    get {
+      if let _ = audioFile {
+        return 0
+      }
+      do {
+        return try Double(LeqMaster(url))
+      } catch (let e) {
+        print("getting leq \(e.localizedDescription)")
+      }
       return 0
     }
-    do {
-      return try Double(LeqMaster(url))
-    } catch (let e) {
-      print("getting leq \(e.localizedDescription)")
-    }
-    return 0
-    }
-  }
-
-}
-
-/*
-class MyLocation : CLLocation, Codable {
-  enum CodingKeys: String, CodingKey {
-    case latitude
-    case longitude
-    case altitude
-  }
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.container(keyedBy: CodingKeys.self)
-    try container.encode(coordinate.latitude, forKey: .latitude)
-    try container.encode(coordinate.longitude, forKey: .longitude)
-    try container.encode(self.altitude, forKey: .altitude)
-  }
-
-  required public init(from decoder : Decoder) throws {
-    super.init()
-  }
-
-  required public init(coder : NSCoder) {
-    super.init()
   }
 }
-*/
 
 extension Recording : AVAudioRecorderDelegate {
   func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {

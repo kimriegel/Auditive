@@ -5,13 +5,14 @@ import SwiftUI
 
 fileprivate struct SplitOut<T:MyEnum> : View {
   let x : Int
+  typealias U = OrOther<T>
 
   var body : some View {
     if x == 0 {
-      Text(OrOther<T>().description)
+      Text(U().description)
     }
     if x == T.allCases.count+1 {
-      Text(OrOther<T>(other: "").description)
+      Text(U(other: "").description)
     }
     if x > 0 && x < T.allCases.count + 1 {
       Text(T.allCases[(x - 1) as! T.AllCases.Index].description)
@@ -36,55 +37,42 @@ struct EnumWheelView<T : MyEnum > : View {
     }
   }
 
-  var body: some View {
+  init(label: String, pick : Binding<OrOther<T>>, allowOther: Bool) {
+    self.label = label
+    self._pick = pick
+    self.allowOther = allowOther
     setSelection()
+  }
 
-    let c : Int = T.allCases.count+1+(allowOther ? 1 : 0)
-      let p = Picker(selection: Binding(get: {self.selection },
-                                set: {
-                                  self.pick = OrOther.pick($0)
-                                  self.selection = $0
-                                }),
-             label: Text(label)
+  var body: some View {
+    VStack {
+      Picker(selection: Binding(get: {self.selection },
+                                        set: {
+                                          self.pick = OrOther.pick($0)
+                                          self.selection = $0
+                                        }),
+                     label: Text(label)
       ) {
-        ForEach(0..<c) { ee in
+        ForEach(0..<T.allCases.count+1+(allowOther ? 1 : 0), id: \.self) { ee in
           VStack {
             SplitOut<T>(x:ee )
-/*          if allowOther && ee == c-1 {
-            TextField.init("Other", text: Binding(get: { self.pick.other ?? ""},
-                                                  set: {
-                                                    print("setting other to \($0)")
-                                                          self.pick.other = $0} ))
-          }
- */
           }
         }
       }
-
-    let j = VStack {
-      p
       if self.pick.other != nil {
         TextField.init("Please specify", text: Binding(get: { self.pick.other ?? "Please specify"},
-                                              set: {
-                                              //  print("setting other to \($0)")
-                                                self.pick.other = $0} ))
+                                                       set: { self.pick.other = $0} ))
           .autocapitalization(.words).multilineTextAlignment(.trailing)
 
       }
     }
-    return j
-//      .frame(width: 800)
-
-//      Spacer().layoutPriority(5)
-//    }.padding(EdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 30))
-//  }
- }
+  }
 }
 
 
 struct EnumWheelView_Previews: PreviewProvider {
   @State static var race = OrOther<Race>()
   static var previews: some View {
-      EnumWheelView(label: "Race", pick: self.$race, allowOther: true)
-    }
+    EnumWheelView(label: "Race", pick: self.$race, allowOther: true)
+  }
 }

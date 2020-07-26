@@ -37,10 +37,8 @@ struct ConsentView : View {
   @State private var webViewHeight : CGFloat = .zero
   @State var participate : Bool = false
   @State var dontParticipate : Bool = false
-  @Binding var needsRefresh : Bool
 
   let buttonHeight : CGFloat = 60
-
 
   var body : some View {
     let consentFile = Bundle.main.url(forResource: "consent", withExtension: "html")
@@ -76,8 +74,7 @@ struct ConsentView : View {
             Button(action: {
               if self.participate {
                 uploadConsent()
-                 self.needsRefresh = true
-
+                NotificationCenter.default.post(Notification(name: .savedConsent))
               }}) {
                 VStack { Spacer()
                 Text("Submit")
@@ -182,8 +179,7 @@ struct HTMLStringView: UIViewRepresentable {
 }
 
 struct ConsentView_Previews: PreviewProvider {
-  @State static var needsRefresh = false
   static var previews: some View {
-    ConsentView(needsRefresh: $needsRefresh)
+    ConsentView()
   }
 }

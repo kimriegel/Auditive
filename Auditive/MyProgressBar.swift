@@ -8,7 +8,7 @@ struct MyProgressBar: View {
   var value: CGFloat
 
   var percentage : Int { get {
-    print("porgressbar value \(value)")
+    // print("porgressbar value \(value)")
     return Int(ceil(value * 100))
     }
   }

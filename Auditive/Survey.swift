@@ -203,36 +203,6 @@ enum Residence : Int, MyEnum, Codable {
     case .detached: return "Detached House"
     }
   }
-
-  /*
-   func encode(to encoder: Encoder) throws {
-   var container = encoder.singleValueContainer()
-   if let j = Self.allCases.firstIndex(where: {$0 == self} ) {
-   try container.encode(j)
-   } else {
-   switch self {
-   case .other(let e):
-   try container.encode(e)
-   default: fatalError("cannot get here")
-   }
-   }
-
-   }
-
-   init(from decoder: Decoder) throws {
-   let values = try decoder.singleValueContainer()
-   if let j = try? values.decode(Int.self) {
-   self = Self.allCases[j]
-   } else {
-   if let k = try? values.decode(String.self) {
-   self = Self.other(k)
-   } else {
-   fatalError("cannot get here?")
-   }
-   }
-
-   }*/
-
 }
 
 class Health : Codable {

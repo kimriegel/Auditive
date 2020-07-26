@@ -54,7 +54,6 @@
 		E7403F2A2468B39900EA5631 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E757775E235FB74D00B96D05 /* mixloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mixloop.wav; sourceTree = "<group>"; };
-		E7577765235FB78D00B96D05 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E757776B235FEB4F00B96D05 /* rpgad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad.wav; sourceTree = "<group>"; };
 		E757776C235FEB4F00B96D05 /* AA_cal_wave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AA_cal_wave.wav; sourceTree = "<group>"; };
 		E757776D235FEB4F00B96D05 /* rpgad1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rpgad1.wav; sourceTree = "<group>"; };
@@ -124,7 +123,6 @@
 				E773940E235F60E100DE5031 /* README.md */,
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
-				E7577764235FB78D00B96D05 /* LeqTest */,
 				E7A0EA062360C9210014C886 /* Auditive */,
 				E70DAB9C22625AED009B02CD /* Products */,
 				E739ACB42271024C00DCCC06 /* Frameworks */,
@@ -181,14 +179,6 @@
 				E78B0143249C6655009EA972 /* consent.html */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		E7577764235FB78D00B96D05 /* LeqTest */ = {
-			isa = PBXGroup;
-			children = (
-				E7577765235FB78D00B96D05 /* main.swift */,
-			);
-			path = LeqTest;
 			sourceTree = "<group>";
 		};
 		E7A0EA062360C9210014C886 /* Auditive */ = {

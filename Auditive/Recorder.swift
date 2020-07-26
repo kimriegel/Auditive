@@ -8,6 +8,8 @@ import CloudKit
 import os
 
 class Recorder: NSObject, ObservableObject {
+  static let recordingLength = 5 // seconds for a recording
+
   @Published var onAir : Bool = false
   @Published var percentage : CGFloat = 0
   @Published var recording : Recording = Recording()
@@ -28,9 +30,6 @@ class Recorder: NSObject, ObservableObject {
       }
     }
   }
-  
-
-  static let recordingLength = 20 // seconds for a recording
 
   private var permissionGranted = false
   private var frameCount : Int = 0
@@ -62,10 +61,8 @@ class Recorder: NSObject, ObservableObject {
   }
 
   private func requestPermission() {
-    // sessionQueue.suspend()
     AVCaptureDevice.requestAccess(for: AVMediaType.audio) { granted in
       self.permissionGranted = granted
-      // self.sessionQueue.resume()
     }
   }
   
@@ -88,7 +85,6 @@ class Recorder: NSObject, ObservableObject {
     let sid = CKRecord.ID(recordName: "??")
     let rec = CKRecord(recordType: "Samples", recordID: sid)
 
-    // CLLocation , CLGeoCoder
     rec["location"] = "unimplemented" as NSString
     rec["time"] = Date()
     let asset = CKAsset(fileURL: url)
@@ -137,7 +133,6 @@ extension Recorder : CLLocationManagerDelegate {
     // FIXME:  If I hit the record button and then again before the first recording finishes,
     // it crashes
     // reason: 'Invalid update: invalid number of rows in section 0. The number of rows contained in an existing section after the update (5) must be equal to the number of rows contained in that section before the update (5), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
-
 
     checkPermission()
     print("recording");

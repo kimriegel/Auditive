@@ -4,6 +4,7 @@
 
 import Foundation
 import CryptoKit
+import os
 
 enum S3Error : Error {
   case s3ListError
@@ -43,7 +44,7 @@ public struct Bucket : CustomStringConvertible {
       let keyCount = Int(x.first(where: {$0.name == S3Key.keyCount })?.text ?? "-1")
       let contents = x.filter { $0.name == S3Key.contents }
       if (contents.count != keyCount) {
-        print("wrong number of contents")
+        os_log("wrong number of contents", type: .error)
       }
       return contents.map { S3Object(element: $0) }
     }
@@ -227,7 +228,7 @@ public class S3 : AWSService {
     }
       return request
     } else {
-      print("failed to create URL")
+      os_log("failed to create URL", type: .error)
       return nil
     }
   }
