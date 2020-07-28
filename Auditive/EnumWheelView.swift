@@ -9,14 +9,16 @@ fileprivate struct SplitOut<T:MyEnum> : View {
 
   var body : some View {
     if x == 0 {
-      Text(U().description)
+      return Text(U().description)
     }
     if x == T.allCases.count+1 {
-      Text(U(other: "").description)
+      return Text(U(other: "").description)
     }
     if x > 0 && x < T.allCases.count + 1 {
-      Text(T.allCases[(x - 1) as! T.AllCases.Index].description)
+      return Text(T.allCases[(x - 1) as! T.AllCases.Index].description)
     }
+    // Should never get here
+    return Text("")
   }
 }
 

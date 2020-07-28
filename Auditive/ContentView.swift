@@ -47,14 +47,14 @@ struct SampleListView: View {
 
   init() {
     print(observer)
-    let j = Recorder()
-    rv = RecorderView(recorder: j)
-    recorder = j
+    let j = Recording()
+    rv = RecordingView(recording: j)
+    recording = j
     refreshers.append(self)
   }
 
-  var rv : RecorderView
-  @ObservedObject var recorder : Recorder
+  var rv : RecordingView
+  @ObservedObject var recording : Recording
   @State var isRecording: Bool = false
 
   var body: some View {
@@ -62,12 +62,12 @@ struct SampleListView: View {
       VStack {
         NavigationLink( destination: rv, isActive: $isRecording ) {
           RecordButton().onTapGesture {
-            self.recorder.startRecordingSample()
-            isRecording = true
+            self.recording.startRecordingSample()
+            self.isRecording = true
           }
         }
         List(selection: self.$sel.x) {
-          ForEach(self.recorder.recordings, id: \.self) { z in
+          ForEach(Recording.recordings, id: \.self) { z in
             NavigationLink(destination: RecordingView(recording: z)) {
               Text( z.displayName).background(Color.orange)
             }.background(Color.green)

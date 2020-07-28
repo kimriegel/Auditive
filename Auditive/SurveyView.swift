@@ -69,7 +69,7 @@ struct SurveyView : View {
         AffectedByNoiseView(affectedByNoise: survey.affectedByNoise)
 
         Button(action: {
-          saveSurvey(survey)
+          saveSurvey(self.survey)
           NotificationCenter.default.post(Notification(name: .savedSurvey))
         }) {
 

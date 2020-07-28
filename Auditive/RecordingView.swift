@@ -30,24 +30,46 @@ struct RecordingView: View {
   var body: some View {
     ScrollView {
       VStack {
-        
-        PlayButton().onTapGesture {
-          print("play")
+
+        if self.recording.onAir {
+          Text("Stop recording").foregroundColor(Color.black)
+            // g.size.width
+            .frame(width: UIScreen.screens[0].bounds.width - 40)
+            .padding(EdgeInsets.init(top: 20, leading: 0, bottom: 20, trailing: 0))
+            .background( Color.green )
+            .onTapGesture {
+              self.recording.stop()
+            }
+        } else if self.recording.audioFile == nil {
+          RecordButton()
+            .onTapGesture {
+              self.recording.startRecordingSample()
+              // self.recorder.objectWillChange.send()
+            }
+        } else {
+          PlayButton().onTapGesture {
+            print("play")
+          }
         }
+
         Text(recording.displayName).font(.largeTitle)
-        Text(String(describing:recording.location))
-        HStack {
-          Text(String(format: "Leq: %.2f", recording.leq))
-        }
-        Button( action: { uploadToS3(url: recording.url, location: recording.location, annoyance: recording.annoyance) }) {
-          Text("Upload to S3")
+        //        Text(String(describing:recording.location))
+
+        if self.recording.audioFile != nil {
+          HStack {
+            Text(String(format: "Leq: %.2f", recording.leq))
+          }
+          Button( action: { uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance) }) {
+            Text("Upload to S3")
+          }
         }
 
 
-        GeometryReader { g in
-          if let rl = self.recording.location {
-            MapView(centerCoordinate: .constant(rl.coordinate)).layoutPriority(0.2)
-              .padding((print(g), 0).1 + 20).frame(minHeight: 50)
+
+      GeometryReader { g in
+          if nil != self.recording.location {
+            MapView(centerCoordinate: .constant(self.recording.location!.coordinate)).layoutPriority(0.2)
+              .padding(20).frame(minHeight: 50)
           }
         }.layoutPriority(0.3)
 
@@ -56,22 +78,37 @@ struct RecordingView: View {
 
         //          MeterView(value: self.recording.avgSamples).padding(10)
 
+        if self.recording.onAir {
+          VStack {
+            OnAirView(recording: self.recording)
 
+            MyProgressBar(value: self.recording.percentage).layoutPriority(0)
+            Spacer().layoutPriority(0.1)
+          }
+        }
 
         // NavigationView {
         AnnoyanceForm(annoyance: $recording.annoyance)
           .frame(minHeight: 300)
           .layoutPriority(0.3)
 
-
-
-
-        Text("metadata for recording here").layoutPriority(0.1)
-
-
-
         //          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
         Spacer().layoutPriority(0.1)
+
+        if self.recording.audioFile != nil {
+          HStack {
+            Button(action: {
+              print("submit")
+            }) {
+              Text("Submit")
+            }.background(Color.green)
+            Button(action: {
+              print("discard")
+            }) {
+              Text("Discard")
+            }.background(Color.red)
+          }
+        }
       }
     }
     .onDisappear {

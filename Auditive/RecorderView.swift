@@ -136,6 +136,7 @@ struct OnAirView : View {
   }
 }
 
+/*
 // The view when recording a new clip
 struct RecorderView: View {
   @ObservedObject var recorder : Recorder
@@ -205,3 +206,4 @@ struct RecorderView_Previews: PreviewProvider {
     RecorderView(recorder: Recorder())
   }
 }
+*/

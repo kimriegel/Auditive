@@ -7,22 +7,28 @@ import os
 import CoreLocation
 import Foundation
 import Combine
+import CloudKit
 
 class Recording : NSObject, Identifiable, ObservableObject {
   static func == (lhs: Recording, rhs: Recording) -> Bool {
     lhs.displayName == rhs.displayName
   }
   
-  let url : URL
-  let id : String
+  var url : URL
+  var id : String
   var timer : Timer?
 
   @Published var annoyance = Annoyance()
   @Published var fractionalLeq : Float = 0
 
-  var recorder : Recorder?
-
   var location : CLLocation?
+  var locationManager : CLLocationManager
+
+  static let recordingLength = 5 // seconds for a recording
+
+  @Published var onAir : Bool = false
+  @Published var percentage : CGFloat = 0
+  var baseTime : Double? = nil
 
   static var mediaDir : URL {
     get {
@@ -40,6 +46,10 @@ class Recording : NSObject, Identifiable, ObservableObject {
   var audioFile : AVAudioFile!
 
   override init() {
+    locationManager = CLLocationManager()
+    Self.checkPermission()
+
+
     let path = Self.mediaDir
     let dateFormatter : DateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -48,6 +58,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
     id = url.lastPathComponent
 
     super.init()
+    startLocationTracking()
     sink = $annoyance.sink {
       if let a = try? JSONEncoder().encode($0) {
         try? XAttr(self.url).set(data: a, forName: Key.annoyance)
@@ -55,7 +66,8 @@ class Recording : NSObject, Identifiable, ObservableObject {
     }
   }
   
-  init(_ u : URL) {
+  convenience init(_ u : URL) {
+    self.init()
     url = u
     id = u.lastPathComponent
     if let ll = try? XAttr(u).get(forName: Key.location),
@@ -66,7 +78,6 @@ class Recording : NSObject, Identifiable, ObservableObject {
        let zz = try? JSONDecoder().decode(Annoyance.self, from: aa) {
       self.annoyance = zz
     }
-    super.init()
   }
   
   var displayName : String {
@@ -83,28 +94,10 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
   static var recordingNames : [String] {
     get {
-      listOfRecordings().map {
+      recordings.map {
         $0.displayName
       }
     }
-  }
-
-  class func listOfRecordings() -> [Recording] {
-    let path = mediaDir
-    do {
-      let paths = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
-      let ps = paths.sorted {  $0.lastPathComponent > $1.lastPathComponent }
-      return ps.compactMap {
-        if ($0.pathExtension == "aiff") {
-          return Recording($0)
-        } else {
-          return nil
-        }
-      }
-    } catch {
-      print("getting list of paths", error)
-    }
-    return []
   }
 
   func delete() {
@@ -133,10 +126,6 @@ class Recording : NSObject, Identifiable, ObservableObject {
     }
   }
 
-  func stop() {
-    audioFile = nil
-    engine?.stop()
-  }
 
   func captured(thisBuf: AVAudioPCMBuffer, timex: AVAudioTime) {
     counter += 1
@@ -162,13 +151,12 @@ class Recording : NSObject, Identifiable, ObservableObject {
     DispatchQueue.main.async {
       self.fractionalLeq = z
       let dd = Double(timex.sampleTime) / timex.sampleRate
-      if self.recorder?.baseTime == nil {
-        self.recorder?.baseTime = dd
+      if self.baseTime == nil {
+        self.baseTime = dd
       }
 
-      let jj = dd - (self.recorder?.baseTime ?? dd )
-      self.recorder?.percentage = CGFloat(jj / Double(Recorder.recordingLength) )
-      self.recorder?.objectWillChange.send()
+      let jj = dd - (self.baseTime ?? dd )
+      self.percentage = CGFloat(jj / Double(Self.recordingLength) )
     }
   }
 
@@ -251,4 +239,123 @@ extension Recording : AVAudioPlayerDelegate {
   func audioPlayerDidFinishPlaying(_ p : AVAudioPlayer, successfully: Bool) {
     print("finished playing \(self.url.path)")
   }
+}
+
+var permissionGranted : Bool = false
+
+extension Recording {
+  static func checkPermission() {
+    switch AVCaptureDevice.authorizationStatus(for: AVMediaType.audio) {
+    case .authorized:
+      permissionGranted = true
+    case .notDetermined:
+      requestPermission()
+    case .denied:
+      os_log("%s", type: .error, "**** can't use the microphone!!!");
+    case .restricted:
+      os_log("%s", type: .error, "*** restricted microphone use!!!");
+    default:
+      permissionGranted = false
+    }
+  }
+
+  static private func requestPermission() {
+    AVCaptureDevice.requestAccess(for: AVMediaType.audio) { granted in
+      permissionGranted = granted
+    }
+  }
+
+  static func listOfRecordings() -> [Recording] {
+    let path = mediaDir
+    do {
+      let paths = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
+      let ps = paths.sorted {  $0.lastPathComponent > $1.lastPathComponent }
+      return ps.compactMap {
+        if ($0.pathExtension == "aiff") {
+          return Recording($0)
+        } else {
+          return nil
+        }
+      }
+    } catch {
+      print("getting list of paths", error)
+    }
+    return []
+  }
+
+  func startRecordingSample() {
+    // FIXME:  If I hit the record button and then again before the first recording finishes,
+    // it crashes
+    // reason: 'Invalid update: invalid number of rows in section 0. The number of rows contained in an existing section after the update (5) must be equal to the number of rows contained in that section before the update (5), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
+
+    Self.checkPermission()
+    print("recording");
+
+    self.onAir = true
+    self.record(length: DispatchTimeInterval.seconds(Self.recordingLength)) {
+      self.onAir = false
+      self.timer?.invalidate()
+      self.percentage = 0
+      self.fractionalLeq = 0
+    }
+  }
+
+  func stop() {
+    audioFile = nil
+    engine?.stop()
+    self.onAir = false
+    self.baseTime = nil
+    self.timer?.invalidate()
+    self.percentage = 0
+    self.fractionalLeq = 0
+  }
+
+  // Upload the contents of the URL to cloudkit
+  func upload(_ url : URL) {
+    let sid = CKRecord.ID(recordName: "??")
+    let rec = CKRecord(recordType: "Samples", recordID: sid)
+
+    rec["location"] = "unimplemented" as NSString
+    rec["time"] = Date()
+    let asset = CKAsset(fileURL: url)
+    rec["image"] = asset
+
+    let container = CKContainer.default()
+    let pubdb = container.publicCloudDatabase
+    pubdb.save(rec) { (record, error) in
+      if let error = error {
+        os_log("saving sample to cloud: %s", type: .error, error.localizedDescription)
+      }
+      os_log("saved successfully", type: .info)
+    }
+  }
+
+}
+
+extension Recording : CLLocationManagerDelegate {
+  func startLocationTracking() {
+    if (CLLocationManager.locationServicesEnabled()) {
+      locationManager = CLLocationManager()
+      locationManager.delegate = self
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+      locationManager.distanceFilter = 100 // meters
+      locationManager.startUpdatingLocation()
+    } else {
+      os_log("location services not enabled!", type: .info)
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let location = locations.last {
+      self.location = location
+      let eventDate = location.timestamp;
+      let howRecent = eventDate.timeIntervalSinceNow
+      if (abs(howRecent) < 15.0) {
+        // If the event is recent, do something with it.
+        // os_log("latitude %+.6f, longitude %+.6f\n", type: .info, location.coordinate.latitude, location.coordinate.longitude);
+      }
+    }
+  }
+
 }
