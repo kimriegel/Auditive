@@ -45,6 +45,9 @@ struct AffectedByNoiseView : View {
 extension Notification.Name {
   static var savedSurvey = Self("savedSurvey")
   static var savedConsent = Self("savedConsent")
+  static var directoryEvent = Self("directoryEvent")
+  static var deletedFile = Self("deletedFile")
+  static var addedFile = Self("addedFile")
 }
 
 struct SurveyView : View {

@@ -9,18 +9,18 @@ struct AnnoyanceForm : View {
   @Binding var annoyance : Annoyance
 
   var body: some View {
-    Form {
-      Section(header: Text("Annoyance data")) {
+    //    Form {
+    Section(header: Text("Annoyance data")) {
 
-        RatingView(rating: $annoyance.annoying, label: "How annoying does this sound feel to you?",
-                   maximumRating: 10)
-        RatingView(rating: $annoyance.control, label: "How much control do you have over the sound (i.e.  can you turn it off/walk away)?",
-                   maximumRating: 5)
+      RatingView(rating: $annoyance.annoying, label: "How annoying is it?",
+                 maximumRating: 10)
+      RatingView(rating: $annoyance.control, label: "How much control do you have over it?",
+                 maximumRating: 5)
 
-        EnumWheelView(label: "What kind of sound is this?", pick: self.$annoyance.kind, allowOther: true) // SegmentPickerStyle)(
-      }
+      EnumWheelView(label: "What kind of sound is it?", pick: self.$annoyance.kind, allowOther: true) // SegmentPickerStyle)(
     }
   }
+  //  }
 }
 
 struct RecordingView: View {
@@ -28,9 +28,9 @@ struct RecordingView: View {
   @ObservedObject var recording : Recording
 
   var body: some View {
-    ScrollView {
+    print("view onaAir: \(self.recording.onAir)")
+    return  Form {
       VStack {
-
         if self.recording.onAir {
           Text("Stop recording").foregroundColor(Color.black)
             // g.size.width
@@ -40,38 +40,34 @@ struct RecordingView: View {
             .onTapGesture {
               self.recording.stop()
             }
-        } else if self.recording.audioFile == nil {
-          RecordButton()
-            .onTapGesture {
-              self.recording.startRecordingSample()
-              // self.recorder.objectWillChange.send()
-            }
-        } else {
-          PlayButton().onTapGesture {
-            print("play")
-          }
-        }
+          /*        } else if self.recording.audioFile == nil {
+           RecordButton()
+           .onTapGesture {
+           self.recording.startRecordingSample()
+           // self.recorder.objectWillChange.send()
+           }
+           */        } else {
+            PlayButton().onTapGesture {
+              self.recording.play()
+            }.disabled(self.recording.playing)
+           }
 
-        Text(recording.displayName).font(.largeTitle)
+        Text(recording.displayName).font(.headline)
         //        Text(String(describing:recording.location))
 
-        if self.recording.audioFile != nil {
+        if !self.recording.onAir {
           HStack {
             Text(String(format: "Leq: %.2f", recording.leq))
           }
-          Button( action: { uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance) }) {
-            Text("Upload to S3")
-          }
+
         }
 
-
-
-      GeometryReader { g in
+        GeometryReader { g in
           if nil != self.recording.location {
-            MapView(centerCoordinate: .constant(self.recording.location!.coordinate)).layoutPriority(0.2)
-              .padding(20).frame(minHeight: 50)
+            MapView(centerCoordinate: .constant(self.recording.location!.coordinate)).layoutPriority(0.4)
+              .padding(20).frame(minHeight: 150).disabled(true)
           }
-        }.layoutPriority(0.3)
+        }.layoutPriority(0.3).frame(minHeight: 150)
 
         //          Text( String(describing: self.recorder.onAir?.leq) )
         //          Text( self.recorder.onAir?.displayName ?? "")
@@ -86,37 +82,47 @@ struct RecordingView: View {
             Spacer().layoutPriority(0.1)
           }
         }
-
-        // NavigationView {
-        AnnoyanceForm(annoyance: $recording.annoyance)
-          .frame(minHeight: 300)
-          .layoutPriority(0.3)
-
-        //          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
-        Spacer().layoutPriority(0.1)
-
-        if self.recording.audioFile != nil {
-          HStack {
-            Button(action: {
-              print("submit")
-            }) {
-              Text("Submit")
-            }.background(Color.green)
-            Button(action: {
-              print("discard")
-            }) {
-              Text("Discard")
-            }.background(Color.red)
-          }
-        }
       }
+
+      // NavigationView {
+      AnnoyanceForm(annoyance: $recording.annoyance)
+        .layoutPriority(0.3)
+
+      //          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
+      // Spacer().layoutPriority(0.1)
+
+      HStack {
+        Spacer()
+        if self.recording.annoyance.isFilledOut {
+          Button( action: { uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance) }) {
+            HStack {
+              Image(systemName: "icloud.and.arrow.up.fill")
+              Text("Submit")
+            }.font(.title).padding(10)
+          }.background(Color.green).foregroundColor(Color.black)
+          Spacer()
+        }
+        Button( action: {
+                  self.recording.delete() }) {
+          HStack {
+            Image(systemName: "trash")
+            Text("Discard")
+          }.font(.title).padding(10)
+
+
+        }.background(Color.red).foregroundColor(Color.black)
+        Spacer()
+
+      }
+
+      //    }
     }
     .onDisappear {
       self.recording.ap?.stop()
       // write out the annoyance form data?
 
       print("recording disappeared")
-    }
+    }.keyboardAdaptive()
   }
 }
 

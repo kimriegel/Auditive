@@ -318,7 +318,7 @@ enum SoundKind : Int, MyEnum, Codable {
     case .humanMovement: return "Human Movements"
     case .animalNoise: return "Animal Noise"
     case .weather: return "Weather"
-    case .construction: return "Consttruction"
+    case .construction: return "Construction"
     case .mechanical: return "Mechanical Equipment"
     case .transportationRail: return "Transportation (Subway/Train)"
     case .transportationSurface: return "Transportation (Cars/Trucks/Buses)"
@@ -333,4 +333,8 @@ class Annoyance : Codable, ObservableObject {
   var annoying : Int = 0 // 1-10
   var control : Int = 0 // 1-5
   var kind = OrOther<SoundKind>()
+
+  var isFilledOut : Bool {
+    return annoying != 0 && control != 0  &&  ( kind.choice != nil || (kind.other != nil && !kind.other!.isEmpty))
+  }
 }

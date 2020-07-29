@@ -43,8 +43,8 @@ struct Triangle : Shape {
 }
 
 struct PlayButton : View {
-  let outerRadius : CGFloat = 50
-  let innerRadius : CGFloat = 30
+  let outerRadius : CGFloat = 35
+  let innerRadius : CGFloat = 20
 
   let lightGreen = Color.init(red: 79.0/255, green: 170.0/255, blue: 79.0/255)
   let darkGreen = Color.init(red: 12.0/255, green: 30.0/255, blue: 12.0/255)

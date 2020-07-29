@@ -13,15 +13,10 @@ public enum LeqError : Error {
 
 public func LeqMaster(_ u : URL) throws -> Float {
   let avf = try AVAudioFile.init(forReading: u)
-  print(avf)
-  
   guard let buf = AVAudioPCMBuffer.init(pcmFormat: avf.processingFormat, frameCapacity: AVAudioFrameCount(avf.length)) else { throw LeqError.badBuffer }
-
   try avf.read(into: buf )
   return Leq(buf)
 }
-
-
 
 public func Leq(_ buf : AVAudioPCMBuffer) -> Float {
   var tmsq : Float = 0

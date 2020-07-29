@@ -8,6 +8,10 @@ import AVFoundation
 var refreshers : [SampleListView] = []
 var observer  = DirectoryObserver(URL: Recording.mediaDir) {
   // DispatchQueue.main.async { refreshers.forEach { $0.needsRefresh.x.toggle() }  }
+//  DispatchQueue.main.async {
+//    print("notification")
+//    NotificationCenter.default.post(Notification(name: .directoryEvent))
+//  }
 }
 
 struct ContentView : View {
@@ -15,6 +19,9 @@ struct ContentView : View {
 
   let pub = NotificationCenter.default.publisher(for: Notification.Name.savedSurvey)
     .merge(with: NotificationCenter.default.publisher(for: Notification.Name.savedConsent))
+    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.directoryEvent))
+    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.deletedFile))
+    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.addedFile))
 
   var body : some View {
     ZStack {
@@ -43,7 +50,7 @@ struct SampleListView: View {
     }
   }
 
-  @ObservedObject var needsRefresh = Observable<Bool>(false)
+//  @ObservedObject var needsRefresh = Observable<Bool>(false)
 
   init() {
     print(observer)

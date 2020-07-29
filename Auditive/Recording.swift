@@ -28,6 +28,8 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
   @Published var onAir : Bool = false
   @Published var percentage : CGFloat = 0
+  @Published var playing : Bool = false
+
   var baseTime : Double? = nil
 
   static var mediaDir : URL {
@@ -104,6 +106,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
     
     do {
       try FileManager.default.removeItem(at: url)
+      NotificationCenter.default.post(Notification(name: .deletedFile))
     } catch {
       os_log("deleting: %s", type: .error, error.localizedDescription)
     }
@@ -120,6 +123,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
       DispatchQueue.main.async {
         print("playing")
         self.ap?.play()
+        self.playing = true
       }
     } catch let error {
       print("Can't play the audio file failed with an error \(error.localizedDescription)")
@@ -237,7 +241,8 @@ extension Recording : AVAudioRecorderDelegate {
 
 extension Recording : AVAudioPlayerDelegate {
   func audioPlayerDidFinishPlaying(_ p : AVAudioPlayer, successfully: Bool) {
-    print("finished playing \(self.url.path)")
+//    print("finished playing \(self.url.path)")
+    self.playing = false
   }
 }
 
@@ -292,7 +297,9 @@ extension Recording {
     print("recording");
 
     self.onAir = true
+    print("onAir = true")
     self.record(length: DispatchTimeInterval.seconds(Self.recordingLength)) {
+      print("onAir = false")
       self.onAir = false
       self.timer?.invalidate()
       self.percentage = 0
@@ -304,6 +311,7 @@ extension Recording {
     audioFile = nil
     engine?.stop()
     self.onAir = false
+    print("stop onAir = false")
     self.baseTime = nil
     self.timer?.invalidate()
     self.percentage = 0

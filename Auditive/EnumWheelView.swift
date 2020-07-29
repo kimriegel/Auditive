@@ -29,13 +29,13 @@ struct EnumWheelView<T : MyEnum > : View {
 
   @State var selection : Int = 0
 
-  func setSelection() {
+  func calcSelection() -> Int {
     if let _ = pick.other {
-      self.selection = T.allCases.count+1
+      return  T.allCases.count+1
     } else if let c = self.pick.choice {
-      self.selection = 1 + (T.allCases.firstIndex(of: c) as? Int ?? -1)
+      return 1 + (T.allCases.firstIndex(of: c) as? Int ?? -1)
     } else {
-      self.selection = 0
+      return 0
     }
   }
 
@@ -43,12 +43,12 @@ struct EnumWheelView<T : MyEnum > : View {
     self.label = label
     self._pick = pick
     self.allowOther = allowOther
-    setSelection()
+    selection = calcSelection()
   }
 
   var body: some View {
     VStack {
-      Picker(selection: Binding(get: {self.selection },
+      Picker(selection: Binding(get: { calcSelection() },
                                         set: {
                                           self.pick = OrOther.pick($0)
                                           self.selection = $0
@@ -62,9 +62,14 @@ struct EnumWheelView<T : MyEnum > : View {
         }
       }
       if self.pick.other != nil {
-        TextField.init("Please specify", text: Binding(get: { self.pick.other ?? "Please specify"},
-                                                       set: { self.pick.other = $0} ))
-          .autocapitalization(.words).multilineTextAlignment(.trailing)
+        TextField.init("Specify Other", text: Binding(get: { self.pick.other ?? "other?"},
+                                                       set: {
+                                                        // This strangeness is required to trigger the "pick" assignement (which stores the data in an XAttr on the file
+                                                        let k = self.pick
+                                                        k.other = $0
+                                                        self.pick = k
+                                                       } ))
+          .autocapitalization(.words).multilineTextAlignment(.leading).padding(7)
 
       }
     }
