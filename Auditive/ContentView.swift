@@ -5,21 +5,11 @@
 import SwiftUI
 import AVFoundation
 
-var refreshers : [SampleListView] = []
-var observer  = DirectoryObserver(URL: Recording.mediaDir) {
-  // DispatchQueue.main.async { refreshers.forEach { $0.needsRefresh.x.toggle() }  }
-//  DispatchQueue.main.async {
-//    print("notification")
-//    NotificationCenter.default.post(Notification(name: .directoryEvent))
-//  }
-}
-
 struct ContentView : View {
   @State var uuid = UUID()
 
   let pub = NotificationCenter.default.publisher(for: Notification.Name.savedSurvey)
     .merge(with: NotificationCenter.default.publisher(for: Notification.Name.savedConsent))
-    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.directoryEvent))
     .merge(with: NotificationCenter.default.publisher(for: Notification.Name.deletedFile))
     .merge(with: NotificationCenter.default.publisher(for: Notification.Name.addedFile))
 
@@ -44,25 +34,16 @@ struct ContentView : View {
 }
 
 struct SampleListView: View {
-  @ObservedObject var sel = Observable<Int?>(1) { nv in
-    if let nv = nv {
-      print("nv:",nv)
-    }
-  }
-
-//  @ObservedObject var needsRefresh = Observable<Bool>(false)
-
-  init() {
-    print(observer)
-    let j = Recording()
-    rv = RecordingView(recording: j)
-    recording = j
-    refreshers.append(self)
-  }
-
+  @State var sel : Int?
   var rv : RecordingView
   @ObservedObject var recording : Recording
   @State var isRecording: Bool = false
+
+  init() {
+    let j = Recording()
+    rv = RecordingView(recording: j)
+    recording = j
+  }
 
   var body: some View {
     NavigationView {
@@ -73,24 +54,15 @@ struct SampleListView: View {
             self.isRecording = true
           }
         }
-        List(selection: self.$sel.x) {
+        List(selection: self.$sel) {
           ForEach(Recording.recordings, id: \.self) { z in
             NavigationLink(destination: RecordingView(recording: z)) {
-              Text( z.displayName).background(Color.orange)
-            }.background(Color.green)
-          }.background(Color.blue)
+              Text( z.displayName)
+            }
+          }
         }
-        .background(Color.orange)
       }.navigationBarTitle(Text("Urban Samples"))
     }
-  }
-  
-  func play(_ z : Recording) {
-    z.play()
-  }
-  
-  func delete(at offsets: IndexSet) {
-    offsets.forEach { print($0) }
   }
 }
 

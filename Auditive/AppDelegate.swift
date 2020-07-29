@@ -4,6 +4,13 @@
 import UIKit
 import CloudKit
 
+extension Notification.Name {
+  static var savedSurvey = Self("savedSurvey")
+  static var savedConsent = Self("savedConsent")
+  static var deletedFile = Self("deletedFile")
+  static var addedFile = Self("addedFile")
+}
+
 class Key {
   static var VendorID = "VendorID"
   static var UserRecordName = "UserRecordName"
@@ -48,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
 
     stashIDs()
-    monitorNetwork()
     return true
   }
 

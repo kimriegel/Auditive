@@ -26,9 +26,9 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
   static let recordingLength = 5 // seconds for a recording
 
-  @Published var onAir : Bool = false
+  @Published var isRecording : Bool = false
   @Published var percentage : CGFloat = 0
-  @Published var playing : Bool = false
+  @Published var isPlaying : Bool = false
 
   var baseTime : Double? = nil
 
@@ -121,12 +121,11 @@ class Recording : NSObject, Identifiable, ObservableObject {
       self.ap?.delegate = self
 
       DispatchQueue.main.async {
-        print("playing")
         self.ap?.play()
-        self.playing = true
+        self.isPlaying = true
       }
     } catch let error {
-      print("Can't play the audio file failed with an error \(error.localizedDescription)")
+      os_log("Playing audio file failed: %s", type: .error, error.localizedDescription)
     }
   }
 
@@ -242,7 +241,7 @@ extension Recording : AVAudioRecorderDelegate {
 extension Recording : AVAudioPlayerDelegate {
   func audioPlayerDidFinishPlaying(_ p : AVAudioPlayer, successfully: Bool) {
 //    print("finished playing \(self.url.path)")
-    self.playing = false
+    self.isPlaying = false
   }
 }
 
@@ -294,13 +293,10 @@ extension Recording {
     // reason: 'Invalid update: invalid number of rows in section 0. The number of rows contained in an existing section after the update (5) must be equal to the number of rows contained in that section before the update (5), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
 
     Self.checkPermission()
-    print("recording");
 
-    self.onAir = true
-    print("onAir = true")
+    self.isRecording = true
     self.record(length: DispatchTimeInterval.seconds(Self.recordingLength)) {
-      print("onAir = false")
-      self.onAir = false
+      self.isRecording = false
       self.timer?.invalidate()
       self.percentage = 0
       self.fractionalLeq = 0
@@ -310,8 +306,7 @@ extension Recording {
   func stop() {
     audioFile = nil
     engine?.stop()
-    self.onAir = false
-    print("stop onAir = false")
+    self.isRecording = false
     self.baseTime = nil
     self.timer?.invalidate()
     self.percentage = 0

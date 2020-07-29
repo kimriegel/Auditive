@@ -7,10 +7,6 @@ protocol MyEnum : CaseIterable, Equatable {
   var description : String { get }
 }
 
-protocol OrOtherP {
-
-}
-
 enum AgeRange : Int, MyEnum, Codable {
   case _17
   case _18_20

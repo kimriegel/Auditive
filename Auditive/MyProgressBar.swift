@@ -6,13 +6,13 @@ import SwiftUI
 
 struct MyProgressBar: View {
   var value: CGFloat
-
-  var percentage : Int { get {
-    // print("porgressbar value \(value)")
-    return Int(ceil(value * 100))
+  
+  var percentage : Int {
+    get {
+      return Int(ceil(value * 100))
     }
   }
-
+  
   func barWidth(geometry: GeometryProxy) -> CGFloat {
     let frame = geometry.frame(in: .global)
     return frame.size.width * value

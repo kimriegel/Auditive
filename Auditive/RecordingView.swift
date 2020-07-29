@@ -28,10 +28,9 @@ struct RecordingView: View {
   @ObservedObject var recording : Recording
 
   var body: some View {
-    print("view onaAir: \(self.recording.onAir)")
-    return  Form {
+    Form {
       VStack {
-        if self.recording.onAir {
+        if self.recording.isRecording {
           Text("Stop recording").foregroundColor(Color.black)
             // g.size.width
             .frame(width: UIScreen.screens[0].bounds.width - 40)
@@ -49,13 +48,13 @@ struct RecordingView: View {
            */        } else {
             PlayButton().onTapGesture {
               self.recording.play()
-            }.disabled(self.recording.playing)
+            }.disabled(self.recording.isPlaying)
            }
 
         Text(recording.displayName).font(.headline)
         //        Text(String(describing:recording.location))
 
-        if !self.recording.onAir {
+        if !self.recording.isRecording {
           HStack {
             Text(String(format: "Leq: %.2f", recording.leq))
           }
@@ -74,7 +73,7 @@ struct RecordingView: View {
 
         //          MeterView(value: self.recording.avgSamples).padding(10)
 
-        if self.recording.onAir {
+        if self.recording.isRecording {
           VStack {
             OnAirView(recording: self.recording)
 
@@ -119,9 +118,6 @@ struct RecordingView: View {
     }
     .onDisappear {
       self.recording.ap?.stop()
-      // write out the annoyance form data?
-
-      print("recording disappeared")
     }.keyboardAdaptive()
   }
 }

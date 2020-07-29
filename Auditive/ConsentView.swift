@@ -51,47 +51,43 @@ struct ConsentView : View {
             HTMLStringView( height: self.$webViewHeight, htmlContent: consent!).frame(height: self.webViewHeight)
             CheckboxField(
               label: "I agree to participate in this research study",
-            callback: { z in
-              print("agreed \(z)")
-            }, isMarked: Binding(get: {self.participate}, set: {
-              print("particpating \($0)")
+              callback: { z in },
+              isMarked: Binding(get: {self.participate}, set: {
                 self.participate = $0
-              self.dontParticipate = !$0
-            }
-            ) )
+                self.dontParticipate = !$0
+              }
+              ) )
             CheckboxField(
               label:"I do not agree to participate",
-            callback: { z in
-              print("failed to agree \(z)")
-            }, isMarked: Binding(get: {self.dontParticipate}, set: {
-              print("particpating \($0)")
+              callback: { z in },
+              isMarked: Binding(get: {self.dontParticipate}, set: {
                 self.participate = !$0
-              self.dontParticipate = $0
-            }
-            ))
+                self.dontParticipate = $0
+              }
+              ))
 
             if self.participate {
-            Button(action: {
-              if self.participate {
-                uploadConsent()
-                NotificationCenter.default.post(Notification(name: .savedConsent))
-              }}) {
+              Button(action: {
+                      if self.participate {
+                        uploadConsent()
+                        NotificationCenter.default.post(Notification(name: .savedConsent))
+                      }}) {
                 VStack { Spacer()
-                Text("Submit")
-            .disabled( (!self.participate) )
-                .foregroundColor(Color.black)
-                  .frame(width: g.size.width)
+                  Text("Submit")
+                    .disabled( (!self.participate) )
+                    .foregroundColor(Color.black)
+                    .frame(width: g.size.width)
                   Spacer()
                 }.background( (!self.participate) && !self.dontParticipate ? Color.red : Color.green)
 
-            }
+              }
               .frame(height: self.buttonHeight)
             } else {
               Spacer(minLength: self.buttonHeight)
             }
           }
         }
-    }
+      }
   }
 }
 
@@ -111,13 +107,13 @@ struct HTMLStringView: UIViewRepresentable {
 
 
   static private func userContentController() -> WKUserContentController {
-      let controller = WKUserContentController()
-      controller.addUserScript(viewPortScript())
-      return controller
+    let controller = WKUserContentController()
+    controller.addUserScript(viewPortScript())
+    return controller
   }
 
   static private func viewPortScript() -> WKUserScript {
-      let viewPortScript = """
+    let viewPortScript = """
           var meta = document.createElement('meta');
           meta.setAttribute('name', 'viewport');
           meta.setAttribute('content', 'width=device-width');
@@ -127,7 +123,7 @@ struct HTMLStringView: UIViewRepresentable {
           meta.setAttribute('user-scalable', 'no');
           document.getElementsByTagName('head')[0].appendChild(meta);
       """
-      return WKUserScript(source: viewPortScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+    return WKUserScript(source: viewPortScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
   }
 
 
@@ -149,12 +145,7 @@ struct HTMLStringView: UIViewRepresentable {
           return
         }
         DispatchQueue.main.async {
-          // print(height)
-          //          let j = self.parent.frame
-          //          let k = CGRect(origin: j.origin, size: CGSize(width: j.width, height: height as! CGFloat))
           if let h = xheight {
-            print("set frame \(h as! CGFloat)")
-//            self.parent.frame(minHeight: h as! CGFloat)
             self.parent.height = (h as! CGFloat)
           }
         }
