@@ -31,13 +31,16 @@ struct RecordingView: View {
     Form {
       VStack {
         if self.recording.isRecording {
-          Text("Stop recording").foregroundColor(Color.black)
+          StopButton()
+/*          Text("Stop recording").foregroundColor(Color.black)
             // g.size.width
             .frame(width: UIScreen.screens[0].bounds.width - 40)
             .padding(EdgeInsets.init(top: 20, leading: 0, bottom: 20, trailing: 0))
             .background( Color.green )
+ */
             .onTapGesture {
               self.recording.stop()
+              NotificationCenter.default.post(Notification(name: .stoppedRecording))
             }
           /*        } else if self.recording.audioFile == nil {
            RecordButton()
@@ -46,9 +49,11 @@ struct RecordingView: View {
            // self.recorder.objectWillChange.send()
            }
            */        } else {
-            PlayButton().onTapGesture {
+            PlayButton()
+              .onTapGesture {
               self.recording.play()
             }.disabled(self.recording.isPlaying)
+            .opacity(self.recording.isPlaying ? 0.5 : 1)
            }
 
         Text(recording.displayName).font(.headline)
@@ -93,7 +98,10 @@ struct RecordingView: View {
       HStack {
         Spacer()
         if self.recording.annoyance.isFilledOut {
-          Button( action: { uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance) }) {
+          Button( action: {
+            let _ =  uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance)
+            self.recording.delete() // delete the local recording after the upload succeeds
+          }) {
             HStack {
               Image(systemName: "icloud.and.arrow.up.fill")
               Text("Submit")

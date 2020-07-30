@@ -49,10 +49,13 @@ struct SampleListView: View {
     NavigationView {
       VStack {
         NavigationLink( destination: rv, isActive: $isRecording ) {
-          RecordButton().onTapGesture {
+          RecordButton()
+            .onTapGesture {
             self.recording.startRecordingSample()
             self.isRecording = true
-          }
+            }.onReceive(NotificationCenter.default.publisher(for: Notification.Name.stoppedRecording)) { _ in
+              self.isRecording = false
+            }
         }
         List(selection: self.$sel) {
           ForEach(Recording.recordings, id: \.self) { z in

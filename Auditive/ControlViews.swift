@@ -10,6 +10,7 @@ struct RecordButton : View {
   let innerRadius : CGFloat = 30
 
   var body: some View {
+
     let conic = RadialGradient(gradient: Gradient(colors: [.white, .black]),
                                center: .center, startRadius: innerRadius, endRadius: outerRadius)
     return
@@ -26,6 +27,30 @@ struct RecordButton : View {
 struct RecorderButton_Previews: PreviewProvider {
   static var previews: some View {
     RecordButton()
+  }
+}
+
+struct StopButton : View {
+  let outerRadius : CGFloat = 35
+  let innerRadius : CGFloat = 20
+
+  var body: some View {
+    let darkGray = Color.init(red: 100.0/255, green: 100.0/255, blue: 100.0/255)
+    let conic = RadialGradient(gradient: Gradient(colors: [.white, darkGray]),
+                               center: .center, startRadius: innerRadius, endRadius: outerRadius)
+    return VStack {
+      ZStack {
+        Circle().fill(conic).frame(width: outerRadius * 2, height: outerRadius * 2)
+        Rectangle().fill(Color.red).frame(width: innerRadius * 1.6, height: innerRadius * 1.6)
+      }
+      Text("Stop").foregroundColor(.red).font(.footnote).bold()
+    }
+  }
+}
+
+struct StopButton_Previews: PreviewProvider {
+  static var previews: some View {
+    StopButton()
   }
 }
 

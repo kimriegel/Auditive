@@ -9,6 +9,7 @@ extension Notification.Name {
   static var savedConsent = Self("savedConsent")
   static var deletedFile = Self("deletedFile")
   static var addedFile = Self("addedFile")
+  static var stoppedRecording = Self("stoppedRecording")
 }
 
 class Key {

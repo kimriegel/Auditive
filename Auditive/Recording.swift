@@ -24,7 +24,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
   var location : CLLocation?
   var locationManager : CLLocationManager
 
-  static let recordingLength = 5 // seconds for a recording
+  static let recordingLength = 40 // seconds for a recording
 
   @Published var isRecording : Bool = false
   @Published var percentage : CGFloat = 0

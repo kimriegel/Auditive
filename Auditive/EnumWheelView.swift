@@ -48,7 +48,7 @@ struct EnumWheelView<T : MyEnum > : View {
 
   var body: some View {
     VStack {
-      Picker(selection: Binding(get: { calcSelection() },
+      Picker(selection: Binding(get: { self.calcSelection() },
                                         set: {
                                           self.pick = OrOther.pick($0)
                                           self.selection = $0
