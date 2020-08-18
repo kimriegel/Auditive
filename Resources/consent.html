@@ -1,0 +1,348 @@
+<html>
+  <head>
+    <!-- THIS TAG NEEDS TO BE HERE FOR THE IOS WEBVIEW TO WORK PROPERLY -->
+    <!--
+    <meta name='viewport' content='width=device-width, shrink-to-=fit=YES'>
+      -->
+    
+    <style>
+    <!--
+     /* Font Definitions */
+     @font-face
+      {font-family:"Cambria Math";
+      panose-1:2 4 5 3 5 4 6 3 2 4;
+      mso-font-charset:0;
+      mso-generic-font-family:roman;
+      mso-font-pitch:variable;
+      mso-font-signature:3 0 0 0 1 0;}
+    @font-face
+      {font-family:Calibri;
+      panose-1:2 15 5 2 2 2 4 3 2 4;
+      mso-font-charset:0;
+      mso-generic-font-family:swiss;
+      mso-font-pitch:variable;
+      mso-font-signature:-536859905 -1073697537 9 0 511 0;}
+    @font-face
+      {font-family:Cambria;
+      panose-1:2 4 5 3 5 4 6 3 2 4;
+      mso-font-charset:0;
+      mso-generic-font-family:roman;
+      mso-font-pitch:variable;
+      mso-font-signature:-536870145 1073743103 0 0 415 0;}
+     /* Style Definitions */
+     p.MsoNormal, li.MsoNormal, div.MsoNormal
+      {mso-style-unhide:no;
+      mso-style-qformat:yes;
+      mso-style-parent:"";
+      margin:0in;
+      margin-bottom:.0001pt;
+      mso-pagination:widow-orphan;
+      font-size:12.0pt;
+      font-family:"Cambria",serif;
+      mso-fareast-font-family:Calibri;
+      mso-fareast-theme-font:minor-latin;
+      mso-bidi-font-family:Calibri;}
+    p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+      {mso-style-noshow:yes;
+      mso-style-priority:99;
+      mso-style-link:"Comment Text Char";
+      margin:0in;
+      margin-bottom:.0001pt;
+      mso-pagination:widow-orphan;
+      font-size:10.0pt;
+      font-family:"Cambria",serif;
+      mso-fareast-font-family:Calibri;
+      mso-fareast-theme-font:minor-latin;
+      mso-bidi-font-family:Calibri;}
+    a:link, span.MsoHyperlink
+      {mso-style-noshow:yes;
+      mso-style-priority:99;
+      color:blue;
+      text-decoration:underline;
+      text-underline:single;}
+    a:visited, span.MsoHyperlinkFollowed
+      {mso-style-noshow:yes;
+      mso-style-priority:99;
+      color:#954F72;
+      mso-themecolor:followedhyperlink;
+      text-decoration:underline;
+      text-underline:single;}
+    p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+      {mso-style-priority:1;
+      mso-style-unhide:no;
+      mso-style-qformat:yes;
+      margin:0in;
+      margin-bottom:.0001pt;
+      mso-pagination:widow-orphan;
+      font-size:12.0pt;
+      font-family:"Times New Roman",serif;
+      mso-fareast-font-family:Calibri;
+      mso-fareast-theme-font:minor-latin;}
+    p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+      {mso-style-priority:34;
+      mso-style-unhide:no;
+      mso-style-qformat:yes;
+      margin-top:0in;
+      margin-right:0in;
+      margin-bottom:0in;
+      margin-left:.5in;
+      margin-bottom:.0001pt;
+      mso-pagination:widow-orphan;
+      font-size:12.0pt;
+      font-family:"Cambria",serif;
+      mso-fareast-font-family:Calibri;
+      mso-fareast-theme-font:minor-latin;
+      mso-bidi-font-family:Calibri;}
+    span.CommentTextChar
+      {mso-style-name:"Comment Text Char";
+      mso-style-noshow:yes;
+      mso-style-priority:99;
+      mso-style-unhide:no;
+      mso-style-locked:yes;
+      mso-style-link:"Comment Text";
+      mso-ansi-font-size:10.0pt;
+      mso-bidi-font-size:10.0pt;
+      font-family:"Cambria",serif;
+      mso-ascii-font-family:Cambria;
+      mso-hansi-font-family:Cambria;
+      mso-bidi-font-family:Calibri;}
+    p.paragraph, li.paragraph, div.paragraph
+      {mso-style-name:paragraph;
+      mso-style-unhide:no;
+      mso-margin-top-alt:auto;
+      margin-right:0in;
+      mso-margin-bottom-alt:auto;
+      margin-left:0in;
+      mso-pagination:widow-orphan;
+      font-size:12.0pt;
+      font-family:"Times New Roman",serif;
+      mso-fareast-font-family:Calibri;
+      mso-fareast-theme-font:minor-latin;}
+    span.normaltextrun
+      {mso-style-name:normaltextrun;
+      mso-style-unhide:no;}
+    span.apple-converted-space
+      {mso-style-name:apple-converted-space;
+      mso-style-unhide:no;}
+    span.eop
+      {mso-style-name:eop;
+      mso-style-unhide:no;}
+    span.SpellE
+      {mso-style-name:"";
+      mso-spl-e:yes;}
+    span.GramE
+      {mso-style-name:"";
+      mso-gram-e:yes;}
+    .MsoChpDefault
+      {mso-style-type:export-only;
+      mso-default-props:yes;
+      font-family:"Calibri",sans-serif;
+      mso-ascii-font-family:Calibri;
+      mso-ascii-theme-font:minor-latin;
+      mso-fareast-font-family:Calibri;
+      mso-fareast-theme-font:minor-latin;
+      mso-hansi-font-family:Calibri;
+      mso-hansi-theme-font:minor-latin;
+      mso-bidi-font-family:"Times New Roman";
+      mso-bidi-theme-font:minor-bidi;}
+    @page WordSection1
+      {size:8.5in 11.0in;
+      margin:1.0in 1.0in 1.0in 1.0in;
+      mso-header-margin:.5in;
+      mso-footer-margin:.5in;
+      mso-paper-source:0;}
+    div.WordSection1
+      {page:WordSection1;}
+    -->
+    </style>
+
+</head>
+
+
+  <body lang=EN-US link=blue vlink="#954F72" style='tab-interval:.5in'>
+
+  <div class=WordSection1>
+
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='color:#002060'>Terms and Conditions/Informed Consent</span></b><o:p></o:p></p>
+
+  <p class=MsoNormal><b><span style='color:#002060'>&nbsp;</span></b><o:p></o:p></p>
+
+  <p class=MsoNormal><b><span style='color:#002060'>&nbsp;</span></b><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>We are
+  asking you to participate in a research study titled “Urban Noise: Effects on
+  Physical and Mental Health”. We will describe this study to you and answer any
+  of your questions.&nbsp; This study is being led by Kimberly Riegel, Department
+  of physics at Queensborough Community College. </span><o:p></o:p></p>
+
+  <p class=MsoNormal style='margin-left:2.0in'><span style='font-family:"Calibri",sans-serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>What
+  the study is about</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>The
+  purpose of this study is to correlate urban sound levels and noises to
+  annoyance levels and incidents of chronic health problems.&nbsp; We are trying
+  to obtain large amounts of data in a variety of listening environments and from
+  a variety of listeners to determine the correlations between several key
+  factors which are historically difficult to capture.&nbsp; These parameters
+  include physical health history, mental health history, annoyance, sound level
+  exposure, characteristics of the sound and types of sound. </span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>&nbsp;</span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><b><span style='font-family:"Calibri",sans-serif'>What we
+  will ask you to do</span></b><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>We will
+  ask you to download the Auditive app to your cell phone.&nbsp; If you agree to
+  participate in this <span class=GramE>study</span> you will then be asked a
+  series of medical and mental health history questions.&nbsp; Once you have
+  completed that survey you will be asked to measure the sound levels throughout
+  your day.&nbsp; You may make as many sound measurements as you would
+  like.&nbsp; After each measurement a short three question survey asking about
+  your perception and annoyance of the sound will be given.&nbsp; Once this
+  survey is complete the sound file as well as your responses will be sent to a
+  central server the next time your phone is connected to a <span class=SpellE>wifi</span>
+  network. </span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>Risks
+  and discomforts</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  font-weight:normal'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow;font-weight:normal'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>Benefits
+  </span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  font-weight:normal'>There are no direct benefits to the respondent at this
+  time. </span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  font-weight:normal'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  font-weight:normal'>Information from this study will be used to offer some
+  guidance to urban planners and environmental engineers to focus on particular
+  sounds that cause physical and mental hardships on a community scale. </span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>Compensation
+  for participation </span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>There is
+  no compensation for participation. </span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>Privacy/Confidentiality/Data
+  Security</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  font-weight:normal'>All participants will be assigned a random ID number and no
+  personal identifiable information will be uploaded to the central server for
+  use in the study.&nbsp; The data will be stored in a secure amazon bucket and
+  then downloaded and stored on a secured external hard drive.&nbsp; This drive
+  will be stored on the QCC campus.&nbsp; The survey is conducted through the
+  campus provided Microsoft forms service. </span></strong><a name="_msoanchor_1"></a><a
+  href="applewebdata://C63534F9-FC71-4024-96A9-F92303EC858E#_msocom_1"><span
+  style='mso-bookmark:_msoanchor_1'><span style='font-size:8.0pt;font-family:
+  "Cambria",serif'>[KR1]</span></span><span style='mso-bookmark:_msoanchor_1'></span></a><span
+  style='mso-bookmark:_msoanchor_1'></span><span class=MsoCommentReference><span
+  style='font-size:8.0pt;font-family:"Cambria",serif'>&nbsp;</span></span><strong><span
+  style='font-family:"Calibri",sans-serif;font-weight:normal'>It should be noted that
+  location information will be sent along with your sound data. This will be used
+  to identify neighborhood as well as proximity to regular noise sources. &nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNormal><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNormal><strong><span style='font-family:"Calibri",sans-serif'>Sharing
+  De-identified Data Collected in this Research </span></strong><o:p></o:p></p>
+
+  <p class=MsoNormal style='vertical-align:middle'><span style='font-family:"Calibri",sans-serif'>De-identified
+  data from this study may be shared with the research community at large to
+  advance science and health. We will remove or code any personal information
+  that could identify you before files are shared with other researchers to
+  ensure that, by current scientific standards and known methods, no one will be
+  able to identify you from the information we share. Despite these measures, we
+  cannot guarantee anonymity of your personal data.</span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>Taking
+  part is voluntary</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>Your
+  participation in this survey is voluntary.&nbsp; You can refuse to participate
+  before the study begins or discontinue your involvement at any time.&nbsp; You
+  will not be penalized in any way for not participating in this study. </span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif;
+  color:black;mso-color-alt:windowtext;background:yellow'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>If
+  you have questions</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>The main
+  researcher conducting this study is Kimberly Riegel, a professor at Queensborough
+  Community College. If you have any questions related to the <span class=GramE>research</span>
+  you may contact Kimberly Riegel at kriegel@qcc.cuny.edu or at
+  (718)631-6312.&nbsp; </span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif;color:black;
+  mso-color-alt:windowtext;background:yellow'>&nbsp;</span><o:p></o:p></p>
+
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Calibri",sans-serif'>If
+  you have questions about your rights as a research participant, or you have
+  comments or concerns that you would like to discuss with someone other than the
+  researchers, please contact QCC HRPP Coordinator, Anissa Moody, at
+  718-631-6296/amoody@qcc.cuny.edu; or call the CUNY Research Compliance
+  Administrator at 646-664-8918. Alternately, you can write to:</span><o:p></o:p></p>
+
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Calibri",sans-serif'>&nbsp;</span><o:p></o:p></p>
+
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Calibri",sans-serif'>CUNY
+  Office of the Vice Chancellor for Research</span><o:p></o:p></p>
+
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Calibri",sans-serif'>Attn:
+  Research Compliance Administrator</span><o:p></o:p></p>
+
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Calibri",sans-serif'>205
+  East 42nd Street</span><o:p></o:p></p>
+
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Calibri",sans-serif'>New
+  York, NY 10017</span><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>&nbsp;</span></strong><o:p></o:p></p>
+
+  <p class=MsoNoSpacing><strong><span style='font-family:"Calibri",sans-serif'>Statement
+  of Consent </span></strong><strong><span style='font-family:"Calibri",sans-serif;
+  font-weight:normal'>Please click the ‘I approve’ box if you have read and
+  understood the above information and have received answer to your questions</span></strong><o:p></o:p></p>
+
+    <br>
+  <p class=MsoNoSpacing><span style='font-family:"Calibri",sans-serif'>This
+  consent form will be kept by the researcher for five years beyond the end of
+  the study. </span><o:p></o:p></p>
+
+  </span></div>
+
+  </body>
+
+  </html>
+
+

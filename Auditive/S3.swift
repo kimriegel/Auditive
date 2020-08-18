@@ -4,10 +4,22 @@
 
 import Foundation
 import CryptoKit
+import os
 
 enum S3Error : Error {
   case s3ListError
   case noRequest
+}
+
+fileprivate class S3Key {
+  static var keyCount = "KeyCount"
+  static var contents = "Contents"
+  static var lastModified = "LastModified"
+  static var eTag = "ETag"
+  static var storageClass = "StorageClass"
+  static var size = "Size"
+  static var key = "Key"
+  static var listBucketResult = "ListBucketResult"
 }
 
 public struct Bucket : CustomStringConvertible {
@@ -27,12 +39,12 @@ public struct Bucket : CustomStringConvertible {
 
   static func objectList(element: Element) throws -> [S3Object] {
     if let z = element.childElements.first,
-      z.name == "ListBucketResult" {
+       z.name == S3Key.listBucketResult {
       let x = z.childElements
-      let keyCount = Int(x.first(where: {$0.name == "KeyCount"})?.text ?? "-1")
-      let contents = x.filter { $0.name == "Contents" }
+      let keyCount = Int(x.first(where: {$0.name == S3Key.keyCount })?.text ?? "-1")
+      let contents = x.filter { $0.name == S3Key.contents }
       if (contents.count != keyCount) {
-        print("wrong number of contents")
+        os_log("wrong number of contents", type: .error)
       }
       return contents.map { S3Object(element: $0) }
     }
@@ -50,14 +62,14 @@ public struct S3Object {
   init(element : Element) {
     for x in element.childElements {
       switch x.name {
-      case "Key": key = x.text!
-      case "LastModified":
+      case S3Key.key: key = x.text!
+      case S3Key.lastModified:
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         lastModified = dateFormatter.date(from: x.text!)!
-      case "ETag": eTag = x.text!
-      case "Size": size = Int(x.text!) ?? -1
-      case "StorageClass": storageClass = x.text!
+      case S3Key.eTag: eTag = x.text!
+      case S3Key.size: size = Int(x.text!) ?? -1
+      case S3Key.storageClass: storageClass = x.text!
       default:
         break
       }
@@ -94,7 +106,7 @@ public class S3 : AWSService {
 
   public init?(bucket b : String) {
     bucket = b
-    super.init(service: "s3", profile: "ONE")
+    super.init(service: "s3", profile: "kriegel")
   }
 
   public struct ETag {
@@ -216,7 +228,7 @@ public class S3 : AWSService {
     }
       return request
     } else {
-      print("failed to create URL")
+      os_log("failed to create URL", type: .error)
       return nil
     }
   }

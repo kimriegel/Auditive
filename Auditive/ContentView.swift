@@ -5,106 +5,67 @@
 import SwiftUI
 import AVFoundation
 
-struct SwipeableText : View {
-  @State var offset : CGSize = .zero
+struct ContentView : View {
+  @State var uuid = UUID()
 
-  let string : String
-  var recording : Recording
+  let pub = NotificationCenter.default.publisher(for: Notification.Name.savedSurvey)
+    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.savedConsent))
+    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.deletedFile))
+    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.addedFile))
 
-  var body: some View {
-    let drag = DragGesture()
-         .onChanged { self.offset = $0.translation
-          print("clem \(self.offset)")
-    }
-         .onEnded {
-          print("ended?")
-             if $0.translation.width < -100 {
-                 self.offset = .init(width: -1000, height: 0)
-              self.recording.delete()
-//              self.selection.x = nil
-              print("left")
-             } else if $0.translation.width > 100 {
-                 self.offset = .init(width: 1000, height: 0)
-              self.recording.delete()
-//              self.selection.x = nil
-              print("right")
-             } else {
-              print("nope")
-                 self.offset = .zero
-             }
-          print("zem")
-     }
-
-    return Text(string)
-    .offset(x: self.offset.width, y: 0)
-     .simultaneousGesture(drag)
-     .animation(.spring())
-  }
-  
-}
-
-var refreshers : [ContentView] = []
-var observer  = DirectoryObserver(URL: Recording.mediaDir) {
-  DispatchQueue.main.async { refreshers.forEach { $0.needsRefresh.x.toggle() }
-  }
-}
-
-struct ContentView: View {
-  @ObservedObject var sel = Observable<Int?>(1) { nv in
-    if let nv = nv {
-      print("nv:",nv)
-    }
-  }
-
-  @ObservedObject var needsRefresh = Observable<Bool>(false)
-
-
-  init() {
-    print(observer)
-    refreshers.append(self)
-  }
-  
-  @ObservedObject var recorder = Recorder()
-
-
-  var body: some View {
-
-    NavigationView {
-      GeometryReader {g in
-        VStack {
-          NavigationLink(destination: RecorderView(recorder: self.recorder)) {
-//        Button(action: {
-//          self.recorder.startRecordingSample()
-//        }) {
-          Text("Record").foregroundColor(Color.black)
-          .frame(width: g.size.width - 40)
-          .padding(EdgeInsets.init(top: 20, leading: 0, bottom: 20, trailing: 0))
-          .background( self.recorder.onAir ? Color.gray : Color.red)
-//        }
-//          .disabled( self.recorder.onAir)
+  var body : some View {
+    ZStack {
+      Text(uuid.uuidString).hidden()
+      VStack {
+        if UserDefaults.standard.bool(forKey: Key.hasConsented) {
+          if nil != UserDefaults.standard.string(forKey: Key.healthSurvey) {
+            SampleListView()
+          } else {
+            SurveyView()
           }
-//        List.init(0..<self.recordingsX.recordingNames.count, selection: self.$sel.x) { x in
-          List(selection: self.$sel.x) {
-            ForEach(self.recorder.recordings, id: \.self) { z in
-              
-              NavigationLink(destination: RecordingView(recording: z)) {
-                SwipeableText(string: z.displayName, recording: z) // .background( x == self.sel.x ? Color.gray : Color.white)
-                          }
-              }
-        }.navigationBarTitle(Text("Urban Samples"))
+        } else {
+          ConsentView()
         }
-        .contrast(self.needsRefresh.x ? (
-        self.needsRefresh.x.toggle() , 1).1 : 0.9)
+      }.onReceive(pub) { _ in
+        self.uuid = UUID()
       }
     }
   }
-  
-  func play(_ z : Recording){
-    z.play()
+}
+
+struct SampleListView: View {
+  @State var sel : Int?
+  var rv : RecordingView
+  @ObservedObject var recording : Recording
+  @State var isRecording: Bool = false
+
+  init() {
+    let j = Recording()
+    rv = RecordingView(recording: j)
+    recording = j
   }
-  
-  func delete(at offsets: IndexSet) {
-    offsets.forEach { print($0) }
+
+  var body: some View {
+    NavigationView {
+      VStack {
+        NavigationLink( destination: rv, isActive: $isRecording ) {
+          RecordButton()
+            .onTapGesture {
+            self.recording.startRecordingSample()
+            self.isRecording = true
+            }.onReceive(NotificationCenter.default.publisher(for: Notification.Name.stoppedRecording)) { _ in
+              self.isRecording = false
+            }
+        }
+        List(selection: self.$sel) {
+          ForEach(Recording.recordings, id: \.self) { z in
+            NavigationLink(destination: RecordingView(recording: z)) {
+              Text( z.displayName)
+            }
+          }
+        }
+      }.navigationBarTitle(Text("Urban Samples"))
+    }
   }
 }
 
