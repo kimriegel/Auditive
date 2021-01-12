@@ -132,6 +132,7 @@ enum Race : Int, MyEnum, Codable {
   }
 }
 
+
 enum Gender : Int, MyEnum, Codable {
   case female
   case male

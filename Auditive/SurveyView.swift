@@ -30,8 +30,11 @@ struct AffectedByNoiseView : View {
 
   var body: some View {
     Section(header: Text("Noise tolerance")) {
-      RatingView(rating: $affectedByNoise.awakened, label: "I am easily awakened by noise",
-                 maximumRating: 6)
+        HStack{ Text("👎")
+            HStack{RatingView(rating: $affectedByNoise.awakened, label: "I am easily awakened by noise",
+                              maximumRating: 6)}
+            Text("👍")
+        }
       RatingView(rating: $affectedByNoise.studying, label: "If it's noisy where I'm studying, I try to close the door or window or move someplace else",
                  maximumRating: 6)
       RatingView(rating: $affectedByNoise.usedTo, label: "I get used to most noises without much difficulty",
@@ -44,21 +47,38 @@ struct AffectedByNoiseView : View {
 
 struct SurveyView : View {
   @State var survey = Survey()
-
+    @State private var age = 18;
+    var race = ["Asian", "White","Black" , "Hispanic" , "Other"];
+    @State private var racenum = 0
   var body : some View {
     NavigationView {
       Form {
         Section(header: Text("Demographic data")) {
-
+                
+            Picker("AGE",selection: $age)
+            {
+                ForEach(18..<32){
+                    Text("\($0) Years Old")
+                }
+            }
+            Picker("Race",selection: $racenum){
+                ForEach(0..<race.count){
+                    Text(self.race[$0]);
+                }
+                
+            }
+            
+            
+            /*
           EnumWheelView(label: "Age", pick: self.$survey.age, allowOther: false) // SegmentPickerStyle)(
           EnumWheelView(label: "Gender", pick: self.$survey.gender, allowOther: true) // false
 
           EnumWheelView(label: "Race", pick: self.$survey.race, allowOther: true)
           EnumWheelView(label: "Schooling", pick: self.$survey.schooling, allowOther: false)
           EnumWheelView(label: "Employment", pick: self.$survey.employment, allowOther: false)
-          EnumWheelView(label: "Residence", pick: self.$survey.residence, allowOther: true ) // false
+          EnumWheelView(label: "Residence", pick: self.$survey.residence, allowOther: true ) // false*/
         }
-
+      
         HealthView(health: $survey.health).padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)).allowsTightening(true)
 
         AffectedByNoiseView(affectedByNoise: survey.affectedByNoise)
