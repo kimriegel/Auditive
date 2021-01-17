@@ -30,48 +30,48 @@ struct AffectedByNoiseView : View {
 
   var body: some View {
     Section(header: Text("Noise tolerance")) {
-      RatingView(rating: $affectedByNoise.awakened, label: "I am easily awakened by noise",
+      Rater(rating: $affectedByNoise.awakened, label: "I am easily awakened by noise",
                  maximumRating: 6)
-      RatingView(rating: $affectedByNoise.studying, label: "If it's noisy where I'm studying, I try to close the door or window or move someplace else",
+      Rater(rating: $affectedByNoise.studying, label: "If it's noisy where I'm studying, I try to close the door or window or move someplace else",
                  maximumRating: 6)
-      RatingView(rating: $affectedByNoise.usedTo, label: "I get used to most noises without much difficulty",
+      Rater(rating: $affectedByNoise.usedTo, label: "I get used to most noises without much difficulty",
                  maximumRating: 6)
-      RatingView(rating: $affectedByNoise.music, label: "Even music I normally like will bother me if I'm trying to concentrate",
+      Rater(rating: $affectedByNoise.music, label: "Even music I normally like will bother me if I'm trying to concentrate",
                  maximumRating: 6)
     }
   }
 }
 
+typealias XPick = MenuPick
+
 struct SurveyView : View {
   @State var survey = Survey()
 
   var body : some View {
-    NavigationView {
-      Form {
-        Section(header: Text("Demographic data")) {
+    //   NavigationView {
+    Form {
+      Section(header: Text("Demographic data")) {
+        XPick(label: "Age", pick: self.$survey.age, allowOther: false) // SegmentPickerStyle)(
+        XPick(label: "Gender", pick: self.$survey.gender, allowOther: true) // false
+        XPick(label: "Race", pick: self.$survey.race, allowOther: true)
+        XPick(label: "Schooling", pick: self.$survey.schooling, allowOther: false)
+        XPick(label: "Employment", pick: self.$survey.employment, allowOther: false)
+        XPick(label: "Residence", pick: self.$survey.residence, allowOther: true ) // false
+      }
 
-          EnumWheelView(label: "Age", pick: self.$survey.age, allowOther: false) // SegmentPickerStyle)(
-          EnumWheelView(label: "Gender", pick: self.$survey.gender, allowOther: true) // false
+      HealthView(health: $survey.health).padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)).allowsTightening(true)
 
-          EnumWheelView(label: "Race", pick: self.$survey.race, allowOther: true)
-          EnumWheelView(label: "Schooling", pick: self.$survey.schooling, allowOther: false)
-          EnumWheelView(label: "Employment", pick: self.$survey.employment, allowOther: false)
-          EnumWheelView(label: "Residence", pick: self.$survey.residence, allowOther: true ) // false
-        }
+      AffectedByNoiseView(affectedByNoise: survey.affectedByNoise)
 
-        HealthView(health: $survey.health).padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)).allowsTightening(true)
+      Button(action: {
+        saveSurvey(self.survey)
+        NotificationCenter.default.post(Notification(name: .savedSurvey))
+      }) {
 
-        AffectedByNoiseView(affectedByNoise: survey.affectedByNoise)
-
-        Button(action: {
-          saveSurvey(self.survey)
-          NotificationCenter.default.post(Notification(name: .savedSurvey))
-        }) {
-
-          Text("Submit")
-        }
-      }.keyboardAdaptive()
-    }.navigationBarTitle("Demographic")
+        Text("Submit")
+      }
+    }.keyboardAdaptive()
+    //    }
   }
 }
 

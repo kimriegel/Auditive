@@ -15,7 +15,6 @@ struct ContentView : View {
 
   var body : some View {
     ZStack {
-      Text(uuid.uuidString).hidden()
       VStack {
         if UserDefaults.standard.bool(forKey: Key.hasConsented) {
           if nil != UserDefaults.standard.string(forKey: Key.healthSurvey) {
@@ -29,6 +28,7 @@ struct ContentView : View {
       }.onReceive(pub) { _ in
         self.uuid = UUID()
       }
+      Text(uuid.uuidString).hidden()
     }
   }
 }

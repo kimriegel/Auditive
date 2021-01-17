@@ -6,20 +6,21 @@ import SwiftUI
 
 
 struct AnnoyanceForm : View {
-  @Binding var annoyance : Annoyance
+  @ObservedObject var annoyance : Annoyance
 
   var body: some View {
     //    Form {
-    Section(header: Text("Annoyance data")) {
-
-      RatingView(rating: $annoyance.annoying, label: "How annoying is it?",
+  //  Section(header: Text("Annoyance data")) {
+    GroupBox {
+      Rater(rating: $annoyance.annoying, label: "How annoying is the noise?",
                  maximumRating: 10)
-      RatingView(rating: $annoyance.control, label: "How much control do you have over it?",
+      Rater(rating: $annoyance.control, label: "How much control do you have over it?",
                  maximumRating: 5)
 
-      EnumWheelView(label: "What kind of sound is it?", pick: self.$annoyance.kind, allowOther: true) // SegmentPickerStyle)(
+      XPick(label: "What kind of sound is it?", pick: self.$annoyance.kind, allowOther: true) // SegmentPickerStyle)(
     }
   }
+//  }
   //  }
 }
 
@@ -28,8 +29,8 @@ struct RecordingView: View {
   @ObservedObject var recording : Recording
 
   var body: some View {
-    Form {
-      VStack {
+    VStack {
+      VStack(spacing: 0) {
         if self.recording.isRecording {
           StopButton()
 /*          Text("Stop recording").foregroundColor(Color.black)
@@ -86,10 +87,10 @@ struct RecordingView: View {
             Spacer().layoutPriority(0.1)
           }
         }
-      }
+      }.padding(0)
 
       // NavigationView {
-      AnnoyanceForm(annoyance: $recording.annoyance)
+      AnnoyanceForm(annoyance: recording.annoyance)
         .layoutPriority(0.3)
 
       //          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
@@ -123,7 +124,12 @@ struct RecordingView: View {
       }
 
       //    }
-    }
+    }// .navigationBarHidden(false)
+    .navigationBarTitle(
+      Text("Recording"), displayMode: .inline
+    )
+//    .listStyle(GroupedListStyle())
+//    .environment(\.horizontalSizeClass, .compact)
     .onDisappear {
       self.recording.ap?.stop()
     }.keyboardAdaptive()
