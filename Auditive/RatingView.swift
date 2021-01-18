@@ -8,8 +8,8 @@ struct RatingView: View {
   
   var label = ""
   var maximumRating = 6
-  var offImage = Image(systemName: "circle")
-  var onImage = Image(systemName: "circle.fill")
+  var offImage = Image(systemName: "star")
+  var onImage = Image(systemName: "star.fill")
   
   var offColor = Color.gray
   var onColor = Color.yellow

@@ -19,19 +19,10 @@ struct RecordButton : View {
         {
         ZStack
         {
-          Circle().fill(conic).frame(width: outerRadius * 2, height: outerRadius * 2)
+         
           Circle().fill(Color.red).frame(width: innerRadius * 2, height: innerRadius * 2)
         }
-        ZStack
-        {
-            Circle().fill(conic).frame(width: outerRadius * 2, height: outerRadius * 2)
-            Circle().fill(Color.red).frame(width: innerRadius * 2, height: innerRadius * 2)
-        }
-        ZStack
-        {
-            Circle().fill(conic).frame(width: outerRadius * 2, height: outerRadius * 2)
-            Circle().fill(Color.red).frame(width: innerRadius * 2, height: innerRadius * 2)
-        }
+       
         //Text("Record").foregroundColor(.red).font(.footnote).bold()
       }
       }
