@@ -143,8 +143,10 @@ struct HMeterView : View {
 
   var body : some View {
     VStack(alignment: .leading,  spacing: 5) {
+        Text(String(value))
       //      GeometryReader { g in
       ZStack {
+      
         Rectangle()
           .fill(Color.purple)
           .frame(width: CGFloat(value), height: 50, alignment: .leading)
