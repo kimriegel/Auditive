@@ -1,7 +1,42 @@
-//// Copyright (c) 1868 Charles Babbage
+// Copyright (c) 1868 Charles Babbage
 // Found amongst his effects by r0ml
 
 import SwiftUI
+import Combine
+
+typealias Rater = RateView
+
+struct RateView: View {
+  @Binding var rating: Int
+  var label = ""
+  var maximumRating : Int = 6
+  @State var ratingString = ""
+
+  var body: some View {
+    Group {
+      Text(label)
+      HStack {
+        Slider(value: Binding(get: {
+//          self.ratingString = String(describing: self.rating)
+          return Float(self.rating)
+        }, set: {
+          // print("-> \($0)")
+          self.rating = Int($0)
+          self.ratingString = "\(Int($0))/\(self.maximumRating)"
+        }
+        ), in: 1...Float(maximumRating), step: 1 ) { z in
+          // self.ratingString = "\(self.rating)/\(self.maximumRating)"
+        }
+        Text( ratingString )
+      } // .offset(y: -10)
+      .padding(.top, -10)
+      .padding([.leading,.trailing], 10)
+    }.onReceive(Just(rating)) { z in
+      self.ratingString = "\(self.rating)/\(self.maximumRating)"
+      // print("received \(rating) \(z)")
+    }
+  }
+}
 
 struct RatingView: View {
   @Binding var rating : Int

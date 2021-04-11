@@ -10,9 +10,9 @@
 		E700917724685E25005FA915 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
+		E71C3E99255E590C00082FA6 /* qlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E71C3E98255E590C00082FA6 /* qlogo.png */; };
 		E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */; };
 		E7403F2B2468B39900EA5631 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7403F2A2468B39900EA5631 /* Secret.swift */; };
-		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
 		E76EA106237B6BC800D1282A /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA105237B6BC800D1282A /* Recording.swift */; };
 		E7761A19246225A3006C9E4A /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A17246225A3006C9E4A /* S3.swift */; };
 		E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A18246225A3006C9E4A /* XAttr.swift */; };
@@ -44,11 +44,11 @@
 		E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABC222625AF0009B02CD /* AuditiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveUITests.swift; sourceTree = "<group>"; };
 		E70DABC422625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E71C3E98255E590C00082FA6 /* qlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qlogo.png; sourceTree = "<group>"; };
 		E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumWheelView.swift; sourceTree = "<group>"; };
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E7403F2A2468B39900EA5631 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E76EA105237B6BC800D1282A /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		E773940E235F60E100DE5031 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E7761A17246225A3006C9E4A /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 				E773940E235F60E100DE5031 /* README.md */,
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
+				E71C3EBB255F205600082FA6 /* Views */,
 				E7A0EA062360C9210014C886 /* Auditive */,
 				E70DAB9C22625AED009B02CD /* Products */,
 				E739ACB42271024C00DCCC06 /* Frameworks */,
@@ -142,6 +143,23 @@
 			path = AuditiveUITests;
 			sourceTree = "<group>";
 		};
+		E71C3EBB255F205600082FA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
+				E78B0147249D3443009EA972 /* SurveyView.swift */,
+				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
+				E78351D4237CA59A00576B00 /* RecordingView.swift */,
+				E78B0141249C6566009EA972 /* ConsentView.swift */,
+				E796FD8124633B2E00D17947 /* ControlViews.swift */,
+				E796FD8B246470EF00D17947 /* MapView.swift */,
+				E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */,
+				E796FD7F24632D6200D17947 /* MyProgressBar.swift */,
+				E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E739ACB42271024C00DCCC06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
+				E71C3E98255E590C00082FA6 /* qlogo.png */,
 				E78B0143249C6655009EA972 /* consent.html */,
 			);
 			path = Resources;
@@ -165,19 +184,9 @@
 			children = (
 				E700917624685E10005FA915 /* Auditive.entitlements */,
 				E7A0EA072360C9210014C886 /* AppDelegate.swift */,
-				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
-				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
-				E78B0147249D3443009EA972 /* SurveyView.swift */,
 				E7E01E1824A9006100BFA87C /* Survey.swift */,
-				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
-				E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */,
 				E78B0145249D2F44009EA972 /* Storage.swift */,
-				E78B0141249C6566009EA972 /* ConsentView.swift */,
-				E78351D4237CA59A00576B00 /* RecordingView.swift */,
-				E796FD8124633B2E00D17947 /* ControlViews.swift */,
-				E796FD8B246470EF00D17947 /* MapView.swift */,
 				E76EA105237B6BC800D1282A /* Recording.swift */,
-				E796FD7F24632D6200D17947 /* MyProgressBar.swift */,
 				E78351D6237CAB8F00576B00 /* Leq.swift */,
 				E7761A1B24622710006C9E4A /* AWS.swift */,
 				E7761A17246225A3006C9E4A /* S3.swift */,
@@ -186,7 +195,6 @@
 				E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */,
 				E7A0EA152360C9220014C886 /* Info.plist */,
 				E7A0EA0F2360C9220014C886 /* Preview Content */,
-				E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */,
 			);
 			path = Auditive;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				E78B0144249C6655009EA972 /* consent.html in Resources */,
 				E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */,
 				E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */,
+				E71C3E99255E590C00082FA6 /* qlogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +364,6 @@
 				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
 				E78B0148249D3443009EA972 /* SurveyView.swift in Sources */,
 				E7B980EC24CD2FAE000FCEC0 /* ControlViews.swift in Sources */,
-				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
 				E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */,
 				E796FD8C246470EF00D17947 /* MapView.swift in Sources */,
 				E77783AE24A1C51C00B7EE89 /* RatingView.swift in Sources */,
@@ -591,7 +599,7 @@
 				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,7 +623,7 @@
 				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

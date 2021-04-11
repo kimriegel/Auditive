@@ -1,8 +1,18 @@
 // Copyright (c) 1868 Charles Babbage
 // Found amongst his effects by r0ml
 
+import SwiftUI
 import UIKit
 import CloudKit
+
+@main struct AuditiveApp : App {
+  var body: some Scene {
+    stashIDs()
+    return WindowGroup {
+      ContentView()
+    }
+  }
+}
 
 extension Notification.Name {
   static var savedSurvey = Self("savedSurvey")
@@ -27,7 +37,7 @@ class Key {
 }
 
 func stashIDs() {
-
+  print("stashing IDs")
   if nil == UserDefaults.standard.string(forKey: Key.VendorID) {
     if let ifv = UIDevice.current.identifierForVendor?.uuidString {
       UserDefaults.standard.set(ifv, forKey: Key.VendorID)
@@ -48,29 +58,3 @@ func stashIDs() {
     }
   }
 }
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
-
-    stashIDs()
-    return true
-  }
-
-  // MARK: UISceneSession Lifecycle
-
-  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-  }
-
-  func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-  }
-}
-
