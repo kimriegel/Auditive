@@ -125,9 +125,11 @@ struct RecordingView: View {
 
       //    }
     }// .navigationBarHidden(false)
-    .navigationBarTitle(
-      Text("Recording"), displayMode: .inline
-    )
+    .navigationBarTitleDisplayMode(.inline)
+    .toolbar(content: {
+      ToolbarItem(placement: .principal, content: {
+        Text("Recording")
+      })})
 //    .listStyle(GroupedListStyle())
 //    .environment(\.horizontalSizeClass, .compact)
     .onDisappear {

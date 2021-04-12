@@ -64,7 +64,11 @@ struct SampleListView: View {
             }
           }
         }
-      }.navigationBarTitle(Text("Urban Samples"))
+      }.navigationBarTitleDisplayMode(.inline)
+      .toolbar(content: {
+        ToolbarItem(placement: .principal, content: {
+          Text("Urban Samples")
+        })})
     }
   }
 }

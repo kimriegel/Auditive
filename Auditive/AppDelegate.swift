@@ -8,7 +8,7 @@ import CloudKit
 @main struct AuditiveApp : App {
   var body: some Scene {
     stashIDs()
-    return WindowGroup {
+    return WindowGroup("Auditive") {
       ContentView()
     }
   }

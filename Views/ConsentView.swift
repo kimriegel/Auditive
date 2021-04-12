@@ -104,8 +104,6 @@ struct HTMLStringView: UIViewRepresentable {
     return configuration
   }
 
-
-
   static private func userContentController() -> WKUserContentController {
     let controller = WKUserContentController()
     controller.addUserScript(viewPortScript())

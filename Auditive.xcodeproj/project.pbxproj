@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -147,10 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
+				E78B0141249C6566009EA972 /* ConsentView.swift */,
 				E78B0147249D3443009EA972 /* SurveyView.swift */,
 				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
 				E78351D4237CA59A00576B00 /* RecordingView.swift */,
-				E78B0141249C6566009EA972 /* ConsentView.swift */,
 				E796FD8124633B2E00D17947 /* ControlViews.swift */,
 				E796FD8B246470EF00D17947 /* MapView.swift */,
 				E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */,
@@ -269,7 +269,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = Semasiology;
+				ORGANIZATIONNAME = Quacs;
 				TargetAttributes = {
 					E70DABB222625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
@@ -285,7 +285,7 @@
 				};
 			};
 			buildConfigurationList = E70DAB9622625AEC009B02CD /* Build configuration list for PBXProject "Auditive" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
