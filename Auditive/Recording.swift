@@ -18,6 +18,8 @@ class Recording : NSObject, Identifiable, ObservableObject {
   var id : String
   var timer : Timer?
 
+  let dqb = DispatchQueue.global()
+
   @Published var annoyance = Annoyance()
   @Published var fractionalLeq : Float = 0
 
@@ -61,11 +63,14 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
     super.init()
     startLocationTracking()
-    sink = $annoyance.sink {
-      if let a = try? JSONEncoder().encode($0) {
+/*    sink = self.annoyance.$annoying
+      .receive(on: dqb)
+      .sink {_ in
+      if let a = try? JSONEncoder().encode(self.annoyance) {
         try? XAttr(self.url).set(data: a, forName: Key.annoyance)
       }
     }
+ */
   }
   
   convenience init(_ u : URL) {

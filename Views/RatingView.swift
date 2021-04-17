@@ -11,28 +11,32 @@ struct RateView: View {
   var label = ""
   var maximumRating : Int = 6
   @State var ratingString = ""
+  @State var ratingState : Float
+
+  init(rating r: Binding<Int>, label l : String, maximumRating x : Int = 6) {
+    _rating = r
+    _ratingState = State(initialValue: Float(r.wrappedValue))
+    label = l
+    maximumRating = x
+  }
 
   var body: some View {
-    Group {
+    VStack(alignment: .leading, spacing: 10) {
       Text(label)
       HStack {
-        Slider(value: Binding(get: {
-//          self.ratingString = String(describing: self.rating)
-          return Float(self.rating)
-        }, set: {
-          // print("-> \($0)")
-          self.rating = Int($0)
-          self.ratingString = "\(Int($0))/\(self.maximumRating)"
-        }
-        ), in: 1...Float(maximumRating), step: 1 ) { z in
+        Slider.init(value: $ratingState,
+                    in: 0...Float(maximumRating), step: 1 ) { z in
+          if (!z) {
+            rating = Int(ratingState)
+          }
           // self.ratingString = "\(self.rating)/\(self.maximumRating)"
         }
-        Text( ratingString )
+      Text("\(Int(ratingState))/\(self.maximumRating)")
       } // .offset(y: -10)
       .padding(.top, -10)
       .padding([.leading,.trailing], 10)
     }.onReceive(Just(rating)) { z in
-      self.ratingString = "\(self.rating)/\(self.maximumRating)"
+      self.ratingString = "\(self.rating == 0 ? "?" : String(describing: self.rating))/\(self.maximumRating)"
       // print("received \(rating) \(z)")
     }
   }

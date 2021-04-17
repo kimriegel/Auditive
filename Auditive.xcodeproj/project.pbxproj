@@ -20,7 +20,6 @@
 		E77783AE24A1C51C00B7EE89 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77783AD24A1C51C00B7EE89 /* RatingView.swift */; };
 		E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D4237CA59A00576B00 /* RecordingView.swift */; };
 		E78351D7237CAB8F00576B00 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D6237CAB8F00576B00 /* Leq.swift */; };
-		E78B0142249C6566009EA972 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0141249C6566009EA972 /* ConsentView.swift */; };
 		E78B0144249C6655009EA972 /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = E78B0143249C6655009EA972 /* consent.html */; };
 		E78B0146249D2F44009EA972 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0145249D2F44009EA972 /* Storage.swift */; };
 		E78B0148249D3443009EA972 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0147249D3443009EA972 /* SurveyView.swift */; };
@@ -33,6 +32,8 @@
 		E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA102360C9220014C886 /* Preview Assets.xcassets */; };
 		E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */; };
 		E7B980EC24CD2FAE000FCEC0 /* ControlViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8124633B2E00D17947 /* ControlViews.swift */; };
+		E7D9439A2624DA600037CD8D /* MConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D943992624DA600037CD8D /* MConsentView.swift */; };
+		E7D943A52624EA8C0037CD8D /* CheckboxField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D943A42624EA8C0037CD8D /* CheckboxField.swift */; };
 		E7E01E1924A9006100BFA87C /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E01E1824A9006100BFA87C /* Survey.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,8 @@
 		E7A0EA102360C9220014C886 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E7A0EA132360C9220014C886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A0EA152360C9220014C886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7D943992624DA600037CD8D /* MConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MConsentView.swift; sourceTree = "<group>"; };
+		E7D943A42624EA8C0037CD8D /* CheckboxField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxField.swift; sourceTree = "<group>"; };
 		E7E01E1824A9006100BFA87C /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +151,8 @@
 			children = (
 				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
 				E78B0141249C6566009EA972 /* ConsentView.swift */,
+				E7D943A42624EA8C0037CD8D /* CheckboxField.swift */,
+				E7D943992624DA600037CD8D /* MConsentView.swift */,
 				E78B0147249D3443009EA972 /* SurveyView.swift */,
 				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
 				E78351D4237CA59A00576B00 /* RecordingView.swift */,
@@ -361,6 +366,8 @@
 				E7E01E1924A9006100BFA87C /* Survey.swift in Sources */,
 				E78B0146249D2F44009EA972 /* Storage.swift in Sources */,
 				E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */,
+				E7D943A52624EA8C0037CD8D /* CheckboxField.swift in Sources */,
+				E7D9439A2624DA600037CD8D /* MConsentView.swift in Sources */,
 				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
 				E78B0148249D3443009EA972 /* SurveyView.swift in Sources */,
 				E7B980EC24CD2FAE000FCEC0 /* ControlViews.swift in Sources */,
@@ -368,7 +375,6 @@
 				E796FD8C246470EF00D17947 /* MapView.swift in Sources */,
 				E77783AE24A1C51C00B7EE89 /* RatingView.swift in Sources */,
 				E7403F2B2468B39900EA5631 /* Secret.swift in Sources */,
-				E78B0142249C6566009EA972 /* ConsentView.swift in Sources */,
 				E7761A1C24622710006C9E4A /* AWS.swift in Sources */,
 				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,

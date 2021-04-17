@@ -45,6 +45,9 @@ class OrOther<T : MyEnum> : Codable {
   var other : String?
   var choice : T?
 
+  var complete : Bool { get {
+    return choice != nil || ( other != nil && !other!.isEmpty )
+  }}
 
   required init(from decoder: Decoder) throws {
     let values = try decoder.singleValueContainer()
@@ -201,13 +204,65 @@ enum Residence : Int, MyEnum, Codable {
   }
 }
 
-class Health : Codable {
-  var deafness : Bool = false
-  var hypertension : Bool = false
-  var heartRate : Bool = false
-  var anxiety : Bool = false
-  var learningProblems : Bool = false
-  var sleeping : Bool = false
+class Health : Codable, ObservableObject, Equatable {
+  static func == (lhs: Health, rhs: Health) -> Bool {
+    return lhs.deafness == rhs.deafness &&
+      lhs.hypertension == rhs.hypertension &&
+      lhs.heartRate == rhs.heartRate &&
+      lhs.anxiety == rhs.anxiety &&
+      lhs.learningProblems == rhs.learningProblems &&
+      lhs.sleeping == rhs.sleeping
+  }
+
+  enum CodingKeys : CodingKey {
+    case deafness, hypertension, heartRate, anxiety, learningProblems, sleeping
+  }
+
+  @Published var deafness : Bool = false
+  @Published var hypertension : Bool = false
+  @Published var heartRate : Bool = false
+  @Published var anxiety : Bool = false
+  @Published var learningProblems : Bool = false
+  @Published var sleeping : Bool = false
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+
+    try container.encode(deafness, forKey: .deafness)
+    try container.encode(hypertension, forKey: .hypertension)
+    try container.encode(heartRate, forKey: .heartRate)
+    try container.encode(anxiety, forKey: .anxiety)
+    try container.encode(learningProblems, forKey: .learningProblems)
+    try container.encode(sleeping, forKey: .sleeping)
+
+  }
+
+  required init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+
+    deafness = try container.decode(Bool.self, forKey: .deafness)
+    hypertension = try container.decode(Bool.self, forKey: .hypertension)
+    heartRate = try container.decode(Bool.self, forKey: .heartRate)
+    anxiety = try container.decode(Bool.self, forKey: .anxiety)
+    learningProblems = try container.decode(Bool.self, forKey: .learningProblems)
+    sleeping = try container.decode(Bool.self, forKey: .sleeping)
+  }
+
+  init() {
+  }
+
+  var anyTrue : Bool { get {
+    return deafness || hypertension || heartRate || anxiety || learningProblems || sleeping
+  }}
+
+  func clearAll() {
+    deafness = false
+    hypertension = false
+    heartRate = false
+    anxiety = false
+    learningProblems = false
+    sleeping = false
+  }
 }
 
 
@@ -281,6 +336,22 @@ class AffectedByNoise : Codable, ObservableObject {
     try container.encode(relax, forKey: .relax)
     try container.encode(sensitive, forKey: .sensitive)
   }
+
+  var part1FilledOut : Bool { get {
+    return awakened != 0 &&
+    studying != 0 &&
+    usedTo != 0 &&
+    music != 0 &&
+    everyday != 0
+  }}
+
+  var part2FilledOut : Bool { get {
+    return concentrating != 0 &&
+    library != 0 &&
+    relax != 0 &&
+    sensitive != 0
+  }}
+
 }
 
 class Survey : ObservableObject, Codable {
@@ -293,6 +364,9 @@ class Survey : ObservableObject, Codable {
   var health = Health()
   var affectedByNoise = AffectedByNoise()
 
+  var section1Complete : Bool { get {
+    return age.complete && race.complete && gender.complete && schooling.complete && employment.complete && residence.complete
+  }}
 }
 
 enum SoundKind : Int, MyEnum, Codable {
@@ -326,11 +400,35 @@ enum SoundKind : Int, MyEnum, Codable {
 }
 
 class Annoyance : Codable, ObservableObject {
-  var annoying : Int = 0 // 1-10
-  var control : Int = 0 // 1-5
+  @Published var annoying : Int = 0 // 1-10
+  @Published var control : Int = 0 // 1-5
   var kind = OrOther<SoundKind>()
+
+  enum CodingKeys : String, CodingKey { case annoying, control, kind }
 
   var isFilledOut : Bool {
     return annoying != 0 && control != 0  &&  ( kind.choice != nil || (kind.other != nil && !kind.other!.isEmpty))
   }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+
+    try container.encode(annoying, forKey: .annoying)
+    try container.encode(control, forKey: .control)
+    try container.encode(kind, forKey: .kind)
+  }
+
+  required init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+
+    annoying = try container.decode(Int.self, forKey: .annoying)
+    control = try container.decode(Int.self, forKey: .control)
+    kind = try container.decode(OrOther<SoundKind>.self, forKey: .kind)
+  }
+
+  init() {
+  }
+
+
+
 }

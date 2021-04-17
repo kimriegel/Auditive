@@ -75,7 +75,7 @@ struct MenuPick<T : MyEnum> : View {
 }
 
 
-
+/*
 struct EnumWheelView<T : MyEnum > : View {
   let label : String
   @Binding var pick : OrOther<T>
@@ -137,3 +137,4 @@ struct EnumWheelView_Previews: PreviewProvider {
     EnumWheelView(label: "Race", pick: self.$race, allowOther: true)
   }
 }
+*/

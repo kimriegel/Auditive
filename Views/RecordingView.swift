@@ -26,7 +26,16 @@ struct AnnoyanceForm : View {
 
 struct RecordingView: View {
 
+  let dqb = DispatchQueue.global()
   @ObservedObject var recording : Recording
+  // @ObservedObject var annoyance : Annoyance
+//  @State var uuid : UUID = UUID()
+  @State var formIsFilledOut : Bool
+
+  init(recording r : Recording) {
+    recording = r
+    _formIsFilledOut = State(initialValue: r.annoyance.isFilledOut)
+  }
 
   var body: some View {
     VStack {
@@ -92,13 +101,28 @@ struct RecordingView: View {
       // NavigationView {
       AnnoyanceForm(annoyance: recording.annoyance)
         .layoutPriority(0.3)
+        .onReceive(recording.annoyance.objectWillChange) {
 
+          dqb.async {
+
+          if let a = try? JSONEncoder().encode(self.recording.annoyance) {
+            do {
+              try XAttr(self.recording.url).set(data: a, forName: Key.annoyance)
+            } catch (let e){
+              print(e)
+            }
+          }
+            if self.recording.annoyance.isFilledOut != formIsFilledOut {
+              // uuid = UUID()
+              formIsFilledOut.toggle()
+            }
+          }
+        }
       //          ProgressBar(value: self.$recorder.percentage).layoutPriority(0)
       // Spacer().layoutPriority(0.1)
-
       HStack {
         Spacer()
-        if self.recording.annoyance.isFilledOut {
+//        if self.recording.annoyance.isFilledOut {
           Button( action: {
             let _ =  uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance)
             self.recording.delete() // delete the local recording after the upload succeeds
@@ -108,8 +132,12 @@ struct RecordingView: View {
               Text("Submit")
             }.font(.title).padding(10)
           }.background(Color.green).foregroundColor(Color.black)
+          .opacity( formIsFilledOut ? 1 : 0)
+          .disabled(!formIsFilledOut)
+
+          .frame(maxWidth:.infinity)
           Spacer()
-        }
+//                    }
         Button( action: {
                   self.recording.delete() }) {
           HStack {
@@ -119,8 +147,8 @@ struct RecordingView: View {
 
 
         }.background(Color.red).foregroundColor(Color.black)
+        .frame(maxWidth: .infinity)
         Spacer()
-
       }
 
       //    }
