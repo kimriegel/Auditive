@@ -7,17 +7,22 @@ import AVFoundation
 
 struct ContentView : View {
   @State var uuid = UUID()
+  @AppStorage("show_survey") var show_survey : Bool = false
+  @AppStorage(Key.savedSurvey) var survey_uploaded : Bool = false
+  @AppStorage(Key.hasConsented) var hasConsented : Bool = false
 
-  let pub = NotificationCenter.default.publisher(for: Notification.Name.savedSurvey)
-    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.savedConsent))
-    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.deletedFile))
+  let pub = NotificationCenter.default.publisher(for:   Notification.Name.deletedFile)
     .merge(with: NotificationCenter.default.publisher(for: Notification.Name.addedFile))
+    .merge(with: NotificationCenter.default.publisher(for:
+                                                        Notification.Name.completedSurvey))
 
   var body : some View {
     ZStack {
       VStack {
-        if UserDefaults.standard.bool(forKey: Key.hasConsented) {
-          if nil != UserDefaults.standard.string(forKey: Key.healthSurvey) {
+        if hasConsented {
+          let hs = UserDefaults.standard.string(forKey: Key.healthSurvey)
+          let hsx = hs == nil ? nil : try? JSONDecoder().decode(Survey.self, from: hs!.data(using: String.Encoding.utf8)!)
+          if nil != hsx && !show_survey && survey_uploaded {
             SampleListView()
           } else {
             SurveyView()

@@ -38,7 +38,11 @@ struct RecordingView: View {
   }
 
   var body: some View {
-    VStack {
+/*    DispatchQueue.main.async {
+      formIsFilledOut = recording.annoyance.isFilledOut
+    }
+    return
+ */ VStack {
       VStack(spacing: 0) {
         if self.recording.isRecording {
           StopButton()

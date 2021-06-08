@@ -1,4 +1,4 @@
-//// Copyright (c) 1868 Charles Babbage
+// Copyright (c) 1868 Charles Babbage
 // Found amongst his effects by r0ml
 
 import Foundation
@@ -6,13 +6,11 @@ import CoreLocation
 import os
 
 func uploadConsent() {
-  // FIXME: not yet implemented
-  UserDefaults.standard.set( true, forKey: Key.hasConsented)
 
   do {
     let dat = Data()
     var tags = [String : String]()
-
+    
     if let uid = UserDefaults.standard.string(forKey: Key.UserRecordName) {
       tags[Key.UserRecordName] = uid
     }
@@ -21,9 +19,11 @@ func uploadConsent() {
       // FIXME: What do I do here?  Consent failed to upload
       return
     }
-    let _ = try
+    let res = try
       S3(bucket: Key.s3bucket)?.putObject("consent-\(vid)", dat, metadata: tags)
-    os_log("saved consent", type: .info)
+    os_log("saved consent %s", type: .info, res.debugDescription)
+    UserDefaults.standard.set( true, forKey: Key.hasConsented)
+
   } catch(let e) {
     os_log("failed to save consent: %s", type: .error, e.localizedDescription)
   }
@@ -33,12 +33,13 @@ func saveSurvey(_ survey : Survey) {
   let j = try? String(data: JSONEncoder().encode(survey), encoding: .utf8)
   UserDefaults.standard.set(j, forKey: Key.healthSurvey)
 
+
   guard let vid = UserDefaults.standard.string(forKey: Key.VendorID)
   else {
     os_log("unable to get vendor ID %s", type: .error, #function)
     return
   }
-
+  
   var tags = [String : String]()
   if let uid = UserDefaults.standard.string(forKey: Key.UserRecordName) {
     tags[Key.UserRecordName] = uid
@@ -47,9 +48,11 @@ func saveSurvey(_ survey : Survey) {
   
   do {
     let dat = try JSONEncoder().encode(survey)
-    let _ = try
+    let res = try
       S3(bucket: Key.s3bucket)?.putObject("healthSurvey-\(vid)", dat, metadata: tags)
-    os_log("saved survey")
+    UserDefaults.standard.set(true, forKey: Key.savedSurvey)
+    NotificationCenter.default.post(Notification(name: .completedSurvey))
+    os_log("saved survey \(res.debugDescription)")
   } catch(let e) {
     os_log("failed to save survey: %s", type: .error, e.localizedDescription)
   }
@@ -58,7 +61,7 @@ func saveSurvey(_ survey : Survey) {
 func uploadToS3(url : URL, location: CLLocation?, annoyance: Annoyance) {
   do {
     let dat = try Data.init(contentsOf: url)
-
+    
     var tags = [String:String]()
     if let l = location {
       tags[Key.latitude]=String(l.coordinate.latitude)

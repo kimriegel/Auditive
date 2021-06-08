@@ -31,7 +31,7 @@ struct RateView: View {
           }
           // self.ratingString = "\(self.rating)/\(self.maximumRating)"
         }
-      Text("\(Int(ratingState))/\(self.maximumRating)")
+        Text("\(ratingState == 0 ? "?" : String(describing: Int(ratingState)))/\(self.maximumRating)")
       } // .offset(y: -10)
       .padding(.top, -10)
       .padding([.leading,.trailing], 10)
@@ -60,13 +60,16 @@ struct RatingView: View {
       return onImage
     }
   }
-  
+
+  let smallSize = CGFloat(11.5)
+
   var body: some View {
     VStack {
       if label.isEmpty == false {
         Text(label)
       }
       HStack {
+        Text("Disagree").font(.system(size: smallSize))
         ForEach(1..<maximumRating+1) { number in
           self.image(for: number)
             .foregroundColor(number > self.rating ? self.offColor : self.onColor)
@@ -75,8 +78,9 @@ struct RatingView: View {
             }
             .padding(EdgeInsets.init(top: 0, leading: 4, bottom: 0, trailing: 4))
         }
-      }
-    }
+                Text("Agree").font(.system(size: smallSize))
+      }.padding([.top], 3)
+    }.padding([.top, .bottom], 3)
   }
 }
 

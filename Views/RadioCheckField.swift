@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-struct CheckboxField: View {
+struct RadioCheckField: View {
   let label: String
   let id : Int
   @Binding var marked : Int?

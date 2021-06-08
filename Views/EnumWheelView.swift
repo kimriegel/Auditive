@@ -24,15 +24,18 @@ fileprivate struct SplitOut<T:MyEnum> : View {
 
 struct MenuPick<T : MyEnum> : View {
   let label: String
+
+//  var ss : Published<OrOther<T>>.Publisher
+
   @Binding var ss : OrOther<T>
-  @State var p : String = ""
+  // @State var p : String = ""
   let allowOther : Bool
 
   init(label: String, pick s : Binding<OrOther<T>>, allowOther : Bool) {
     self.label = label
     self.allowOther = allowOther
     _ss = s
-    p = ss.description
+    // p = ss.description
   }
 
   var body : some View {
@@ -42,7 +45,7 @@ struct MenuPick<T : MyEnum> : View {
 
           Button(action: {
             ss = OrOther(choice: T.allCases[ee as! T.AllCases.Index])
-            p = ss.description
+            // p = ss.description
           }) {
             Text( T.allCases[ee as! T.AllCases.Index].description )
           }
@@ -50,7 +53,7 @@ struct MenuPick<T : MyEnum> : View {
         if allowOther {
           Button(action: {
             ss = OrOther<T>(other: "")
-            p = ss.description
+            // p = ss.description
           }) {
             Text("Other")
           }
@@ -62,13 +65,13 @@ struct MenuPick<T : MyEnum> : View {
           TextField("other:", text: Binding(get: {ss.other ?? ""}, set: {
             ss.other = $0
             ss.choice = nil
-            p = $0
+            // p = $0
           }))
 
-          Text(p).hidden()
+          Text(ss.description).hidden()
         }
       } else {
-        Text(p)
+        Text(ss.description)
       }
     }
   }
