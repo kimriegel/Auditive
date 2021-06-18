@@ -554,7 +554,7 @@ class Survey : ObservableObject, Codable {
     age = try values.decode(OrOther<AgeRange>.self, forKey: .age)
     ethnic = try values.decode(OrOther<EthnicBackground>.self, forKey: .ethnic)
     gender = try values.decode(OrOther<Gender>.self, forKey: .gender)
-    employment = try values.decode(OrOther<Employment>.self, forKey: .income)
+    employment = try values.decode(OrOther<Employment>.self, forKey: .employment)
     income = try values.decode(OrOther<Income>.self, forKey: .income)
     health = try values.decode(Health.self, forKey: .health)
     noise = try values.decode(Noise.self, forKey: .noise)
