@@ -71,8 +71,17 @@ func uploadToS3(url : URL, location: CLLocation?, annoyance: Annoyance) {
         tags[Key.annoyance]=ss
       }
     }
+    guard let vid = UserDefaults.standard.string(forKey: Key.VendorID)
+    else {
+      os_log("unable to get vendor ID %s", type: .error, #function)
+      return
+    }
+    tags[Key.VendorID] = vid
+    let t = vid + "-" + url.lastPathComponent
+    //print(vid)
+    // Added a variable where we add the the id and combine it with the url. the id goes first so it doesnt mess up the aiff file
     let _ = try
-      S3(bucket: Key.s3bucket)?.putObject(url.lastPathComponent, dat, metadata: tags)
+        S3(bucket: Key.s3bucket)?.putObject( t, dat, metadata: tags)
     os_log("uploaded audio", type: .info)
   } catch(let e) {
     os_log("failed to upload audio: %s", type: .error, e.localizedDescription)
