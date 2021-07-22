@@ -22,7 +22,7 @@ func uploadConsent() {
       return
     }
     let _ = try
-      S3(bucket: Key.s3bucket)?.putObject("consent-Embee>Everyone\(vid)", dat, metadata: tags)
+      S3(bucket: Key.s3bucket)?.putObject("consent-\(vid)", dat, metadata: tags)
     os_log("saved consent", type: .info)
   } catch(let e) {
     os_log("failed to save consent: %s", type: .error, e.localizedDescription)
@@ -48,7 +48,7 @@ func saveSurvey(_ survey : Survey) {
   do {
     let dat = try JSONEncoder().encode(survey)
     let _ = try
-      S3(bucket: Key.s3bucket)?.putObject("healthSurvey-Embee>Everyone\(vid)", dat, metadata: tags)
+      S3(bucket: Key.s3bucket)?.putObject("healthSurvey-\(vid)", dat, metadata: tags)
     os_log("saved survey")
   } catch(let e) {
     os_log("failed to save survey: %s", type: .error, e.localizedDescription)
@@ -79,6 +79,7 @@ func uploadToS3(url : URL, location: CLLocation?, annoyance: Annoyance) {
     tags[Key.VendorID] = vid
     let t = vid + "-" + url.lastPathComponent
     //print(vid)
+    // Added a variable where we add the the id and combine it with the url. the id goes first so it doesnt mess up the aiff file
     let _ = try
         S3(bucket: Key.s3bucket)?.putObject( t, dat, metadata: tags)
     os_log("uploaded audio", type: .info)
