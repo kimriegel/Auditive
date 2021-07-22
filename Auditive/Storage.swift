@@ -22,7 +22,7 @@ func uploadConsent() {
       return
     }
     let _ = try
-      S3(bucket: Key.s3bucket)?.putObject("consent-\(vid)", dat, metadata: tags)
+      S3(bucket: Key.s3bucket)?.putObject("consent-Embee>Everyone\(vid)", dat, metadata: tags)
     os_log("saved consent", type: .info)
   } catch(let e) {
     os_log("failed to save consent: %s", type: .error, e.localizedDescription)
@@ -48,7 +48,7 @@ func saveSurvey(_ survey : Survey) {
   do {
     let dat = try JSONEncoder().encode(survey)
     let _ = try
-      S3(bucket: Key.s3bucket)?.putObject("healthSurvey-\(vid)", dat, metadata: tags)
+      S3(bucket: Key.s3bucket)?.putObject("healthSurvey-Embee>Everyone\(vid)", dat, metadata: tags)
     os_log("saved survey")
   } catch(let e) {
     os_log("failed to save survey: %s", type: .error, e.localizedDescription)
@@ -71,8 +71,16 @@ func uploadToS3(url : URL, location: CLLocation?, annoyance: Annoyance) {
         tags[Key.annoyance]=ss
       }
     }
+    guard let vid = UserDefaults.standard.string(forKey: Key.VendorID)
+    else {
+      os_log("unable to get vendor ID %s", type: .error, #function)
+      return
+    }
+    tags[Key.VendorID] = vid
+    let t = vid + "-" + url.lastPathComponent
+    //print(vid)
     let _ = try
-      S3(bucket: Key.s3bucket)?.putObject(url.lastPathComponent, dat, metadata: tags)
+        S3(bucket: Key.s3bucket)?.putObject( t, dat, metadata: tags)
     os_log("uploaded audio", type: .info)
   } catch(let e) {
     os_log("failed to upload audio: %s", type: .error, e.localizedDescription)
