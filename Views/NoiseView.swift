@@ -30,10 +30,10 @@ struct NoiseView : View {
       Form {
         Section(header: Text("Home Noise Environment")) {
           RatingView(rating: $noise.homeNoise.noisy , label: "The noise level in my community is high:",
-                     maximumRating: 5)
-          PickerView(label: "I have lived in my current home or apartment", pick: self.$noise.homeNoise.living)
-          PickerView(label: "Noise affects my sleep", pick: self.$noise.homeNoise.sleep)
-          PickerView(label: "On a normal day, I listen or watch digital devices", pick: self.$noise.homeNoise.digital /*, allowOther: false*/ )
+                     maximumRating: 5).padding([.bottom, .top], 12)
+          PickerView(label: "I have lived in my current home or apartment", pick: self.$noise.homeNoise.living).padding([.bottom, .top], 12)
+          PickerView(label: "Noise affects my sleep", pick: self.$noise.homeNoise.sleep).padding([.bottom, .top], 12)
+          PickerView(label: "On a normal day, I listen or watch digital devices", pick: self.$noise.homeNoise.digital /*, allowOther: false*/ ).padding([.bottom, .top], 12)
         }
       }
     } else if part == 2 {

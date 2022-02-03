@@ -31,12 +31,21 @@ struct PickerView<T : MyEnum>: View {
   var body: some View {
     VStack {
       if label.isEmpty == false {
-        Text(label)
+        Text(label).font(.system(size: 17))
+          .fixedSize(horizontal: false, vertical: true)
+          .lineLimit(3)
       }
 
       HStack {
 //        Text("Disagree").font(.system(size: smallSize))
-        ForEach(0..<T.allCases.count) { number in
+
+        ForEach(Array(0..<T.allCases.count), id: \.self) { number in
+          if number == T.allCases.count {
+            let _ = (
+              print("this should be impossible!"),
+              print("clem")
+              )
+          }
           VStack(spacing: 1) {
           self.image(for: number)
             .foregroundColor(number == self.pick.choiceIndex ? self.onColor : self.offColor)

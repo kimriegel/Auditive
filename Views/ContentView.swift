@@ -43,6 +43,7 @@ struct SampleListView: View {
   var rv : RecordingView
   @ObservedObject var recording : Recording
   @State var isRecording: Bool = false
+  @AppStorage("numberOfUploads") var nos : Int = 0
 
   init() {
     let j = Recording()
@@ -72,7 +73,10 @@ struct SampleListView: View {
       }.navigationBarTitleDisplayMode(.inline)
       .toolbar(content: {
         ToolbarItem(placement: .principal, content: {
-          Text("Urban Samples")
+          VStack {
+            Text("Urban Samples")
+            Text("uploaded \(nos) samples").font(.system(size: 10))
+          }
         })})
     }
   }
