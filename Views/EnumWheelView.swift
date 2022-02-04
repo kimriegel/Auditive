@@ -22,6 +22,63 @@ fileprivate struct SplitOut<T:MyEnum> : View {
   }
 }
 
+struct MenuPick<T : MyEnum> : View {
+  let label: String
+
+//  var ss : Published<OrOther<T>>.Publisher
+
+  @Binding var ss : OrOther<T>
+  // @State var p : String = ""
+  let allowOther : Bool
+
+  init(label: String, pick s : Binding<OrOther<T>>, allowOther : Bool) {
+    self.label = label
+    self.allowOther = allowOther
+    _ss = s
+    // p = ss.description
+  }
+
+  var body : some View {
+    HStack {
+      Menu( label  ) {
+        ForEach(0..<T.allCases.count, id: \.self) { ee in
+
+          Button(action: {
+            ss = OrOther(choice: T.allCases[ee as! T.AllCases.Index])
+            // p = ss.description
+          }) {
+            Text( T.allCases[ee as! T.AllCases.Index].description )
+          }
+        }
+        if allowOther {
+          Button(action: {
+            ss = OrOther<T>(other: "")
+            // p = ss.description
+          }) {
+            Text("Other")
+          }
+        }
+      }
+
+      if ss.other != nil {
+        ZStack {
+          TextField("other:", text: Binding(get: {ss.other ?? ""}, set: {
+            ss.other = $0
+            ss.choice = nil
+            // p = $0
+          }))
+
+          Text(ss.description).hidden()
+        }
+      } else {
+        Text(ss.description)
+      }
+    }
+  }
+}
+
+
+/*
 struct EnumWheelView<T : MyEnum > : View {
   let label : String
   @Binding var pick : OrOther<T>
@@ -49,11 +106,11 @@ struct EnumWheelView<T : MyEnum > : View {
   var body: some View {
     VStack {
       Picker(selection: Binding(get: { self.calcSelection() },
-                                        set: {
-                                          self.pick = OrOther.pick($0)
-                                          self.selection = $0
-                                        }),
-                     label: Text(label)
+                                set: {
+                                  self.pick = OrOther.pick($0)
+                                  self.selection = $0
+                                }),
+             label: Text(label)
       ) {
         ForEach(0..<T.allCases.count+1+(allowOther ? 1 : 0), id: \.self) { ee in
           VStack {
@@ -63,12 +120,12 @@ struct EnumWheelView<T : MyEnum > : View {
       }
       if self.pick.other != nil {
         TextField.init("Specify Other", text: Binding(get: { self.pick.other ?? "other?"},
-                                                       set: {
+                                                      set: {
                                                         // This strangeness is required to trigger the "pick" assignement (which stores the data in an XAttr on the file
                                                         let k = self.pick
                                                         k.other = $0
                                                         self.pick = k
-                                                       } ))
+                                                      } ))
           .autocapitalization(.words).multilineTextAlignment(.leading).padding(7)
 
       }
@@ -83,3 +140,4 @@ struct EnumWheelView_Previews: PreviewProvider {
     EnumWheelView(label: "Race", pick: self.$race, allowOther: true)
   }
 }
+*/

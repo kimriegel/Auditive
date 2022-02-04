@@ -18,13 +18,15 @@ class Recording : NSObject, Identifiable, ObservableObject {
   var id : String
   var timer : Timer?
 
+  let dqb = DispatchQueue.global()
+
   @Published var annoyance = Annoyance()
   @Published var fractionalLeq : Float = 0
 
   var location : CLLocation?
   var locationManager : CLLocationManager
 
-  static let recordingLength = 40 // seconds for a recording
+  static let recordingLength = 20 // seconds for a recording
 
   @Published var isRecording : Bool = false
   @Published var percentage : CGFloat = 0
@@ -41,7 +43,6 @@ class Recording : NSObject, Identifiable, ObservableObject {
   let aa : AVAudioSession = AVAudioSession.sharedInstance()
   var ap : AVAudioPlayer? = nil
   var engine : AVAudioEngine?
-  var sink : AnyCancellable!
 
   var noiseQ : DispatchQueue = DispatchQueue.init(label: "audioGrabber", attributes: .concurrent)
   var counter = 0
@@ -60,12 +61,6 @@ class Recording : NSObject, Identifiable, ObservableObject {
     id = url.lastPathComponent
 
     super.init()
-    startLocationTracking()
-    sink = $annoyance.sink {
-      if let a = try? JSONEncoder().encode($0) {
-        try? XAttr(self.url).set(data: a, forName: Key.annoyance)
-      }
-    }
   }
   
   convenience init(_ u : URL) {
@@ -166,6 +161,8 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
   func record(length clipLength: DispatchTimeInterval,  _ f : @escaping () -> Void ) {
     do {
+      startLocationTracking()
+
       try self.aa.setCategory(.record, mode: .default)
       try self.aa.setActive(true)
     } catch (let e ) {
@@ -240,7 +237,7 @@ extension Recording : AVAudioRecorderDelegate {
 
 extension Recording : AVAudioPlayerDelegate {
   func audioPlayerDidFinishPlaying(_ p : AVAudioPlayer, successfully: Bool) {
-//    print("finished playing \(self.url.path)")
+    //    print("finished playing \(self.url.path)")
     self.isPlaying = false
   }
 }
@@ -332,7 +329,6 @@ extension Recording {
       os_log("saved successfully", type: .info)
     }
   }
-
 }
 
 extension Recording : CLLocationManagerDelegate {
@@ -343,7 +339,8 @@ extension Recording : CLLocationManagerDelegate {
       locationManager.requestWhenInUseAuthorization()
       locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
       locationManager.distanceFilter = 100 // meters
-      locationManager.startUpdatingLocation()
+      locationManager.requestLocation()
+//      locationManager.startUpdatingLocation()
     } else {
       os_log("location services not enabled!", type: .info)
     }
@@ -359,6 +356,10 @@ extension Recording : CLLocationManagerDelegate {
         // os_log("latitude %+.6f, longitude %+.6f\n", type: .info, location.coordinate.latitude, location.coordinate.longitude);
       }
     }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+      print("Did location updates is called but failed getting location \(error)")
   }
 
 }

@@ -4,6 +4,7 @@
 
 import Foundation
 
+/** Support for reading and writing extended file attribures */
 public class XAttr {
   private var url : URL
 
@@ -11,6 +12,7 @@ public class XAttr {
     url = u
   }
 
+  /** Get extended file attribute */
   func get(forName name: String) throws -> Data  {
     return try url.withUnsafeFileSystemRepresentation { fileSystemPath -> Data in
       let length = getxattr(fileSystemPath, name, nil, 0, 0, 0)  // Determine attribute size:
@@ -24,6 +26,7 @@ public class XAttr {
     }
   }
 
+  /** Write extended file attribute */
   func set(data: Data, forName name: String) throws {
     try url.withUnsafeFileSystemRepresentation { fileSystemPath in
       let result = data.withUnsafeBytes {
@@ -33,6 +36,7 @@ public class XAttr {
     }
   }
 
+  /** Delete extended file attribute */
   func remove(forName name: String) throws {
     try url.withUnsafeFileSystemRepresentation { fileSystemPath in
       let result = removexattr(fileSystemPath, name, 0)
@@ -40,6 +44,7 @@ public class XAttr {
     }
   }
 
+  /** List extended file attributes */
   func list() throws -> [String] {
     return try url.withUnsafeFileSystemRepresentation { fileSystemPath -> [String] in
       let length = listxattr(fileSystemPath, nil, 0, 0)
