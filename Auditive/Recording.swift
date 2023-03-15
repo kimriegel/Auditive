@@ -173,8 +173,8 @@ class Recording : NSObject, Identifiable, ObservableObject {
 
     do {
 
-      try AVAudioSession.sharedInstance().setCategory(.record)
-
+      try aa.setCategory(.record, mode: .measurement)
+      
       engine = AVAudioEngine()
 
       let inputNode = engine!.inputNode
