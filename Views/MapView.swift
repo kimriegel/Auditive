@@ -20,7 +20,7 @@ struct MapView: UIViewRepresentable {
     let ma = MKPointAnnotation()
     ma.coordinate = centerCoordinate
     view.addAnnotation(ma)
-    view.region = MKCoordinateRegion.init(center: centerCoordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    view.region = MKCoordinateRegion.init(center: centerCoordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.015, longitudeDelta: 0.015))
   }
 
   func makeCoordinator() -> Coordinator {

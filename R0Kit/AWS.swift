@@ -155,6 +155,7 @@ fileprivate func sha256(_ data: Data) -> Data {
 
 // =====================================================================================
 // Testing code
+/*
 var counts = [0,0]
 fileprivate func der(_ a:String) -> String {
   return a.replacingOccurrences(of: "\r\n", with: "\n")
@@ -175,7 +176,7 @@ func printCounts() {
   print("Passed:",counts[0],", Failed:",counts[1])
   counts = [0,0]
 }
-
+*/
 class HTTPHeader {
   let originalKey : String
   let key : String
@@ -222,6 +223,7 @@ func parseRequest(req: String) -> ParsedRequest {
   return (rt, ur, qsx, headers, rp.data(using: .utf8)!, dtx!)
 }
 
+/*
 let aws_test_id = "AKIDEXAMPLE"
 let aws_test_secret = "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY"
 
@@ -267,7 +269,7 @@ func testTask2(_ nam:String) {
 func testTask3(_ nam: String) {
   testTask("task 3", nam, "authz", { _awsSignature($0, secret: aws_test_secret, region: "us-east-1", servic: "host", ak: aws_test_id).1 })
 }
-
+*/
 
 class Element : CustomStringConvertible {
   let name: String

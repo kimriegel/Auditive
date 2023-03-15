@@ -22,6 +22,7 @@ fileprivate class S3Key {
   static var listBucketResult = "ListBucketResult"
 }
 
+/** A struct corresponding to an S3 bucket */
 public struct Bucket : CustomStringConvertible {
   let name : String
   let created : Date
@@ -52,6 +53,7 @@ public struct Bucket : CustomStringConvertible {
   }
 }
 
+/** A struct corresponding to an S3 object */
 public struct S3Object {
   var key : String?
   var lastModified : Date?
@@ -77,6 +79,7 @@ public struct S3Object {
   }
 }
 
+/** Congruent to the result from an S3 bucketList query.  A struct is used for each XML type for parsing */
 public struct BucketList : CustomStringConvertible {
   let owner : (String, String)
   let buckets : [Bucket]
@@ -101,9 +104,11 @@ public struct BucketList : CustomStringConvertible {
   }
 }
 
+/** Implements AWS S3 functions (not a complete list) */
 public class S3 : AWSService {
   let bucket : String?
 
+  /** Create an S3 endpoint attached to a given S3 bucket */
   public init?(bucket b : String) {
     bucket = b
     super.init(service: "s3", profile: "kriegel")
@@ -115,6 +120,7 @@ public class S3 : AWSService {
     }
   }
 
+  /** S3 putObject function */
   public func putObject(_ n : String, _ d : Data, tags : [String : String] = [:], metadata : [String : String] = [:]) throws -> ETag {
     let sem = DispatchSemaphore(value: 0)
     var res : ETag?
@@ -149,6 +155,7 @@ public class S3 : AWSService {
     return res!
   }
 
+  /** S3 listObjects function returns a list of S3Objects */
   public func listObjects() throws -> [S3Object] {
     let sem = DispatchSemaphore(value: 0)
     var res : [S3Object] = []
@@ -176,6 +183,7 @@ public class S3 : AWSService {
 
   }
 
+  /** Returns a list of S3Buckets */
   public func bucketList() throws -> [Bucket]  {
     let sem = DispatchSemaphore(value: 0)
 
@@ -199,7 +207,8 @@ public class S3 : AWSService {
     return res
   }
 
-  func makeRequest(_ pr: ParsedRequest) -> URLRequest? {
+  /** low level implementation of S3 requests */
+  private func makeRequest(_ pr: ParsedRequest) -> URLRequest? {
     var host : String = "s3.amazonaws.com"
     if let b = bucket {
       host = "\(b).s3.amazonaws.com"
@@ -232,6 +241,4 @@ public class S3 : AWSService {
       return nil
     }
   }
-
-
 }

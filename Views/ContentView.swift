@@ -7,18 +7,22 @@ import AVFoundation
 
 struct ContentView : View {
   @State var uuid = UUID()
+  @AppStorage("show_survey") var show_survey : Bool = false
+  @AppStorage(Key.savedSurvey) var survey_uploaded : Bool = false
+  @AppStorage(Key.hasConsented) var hasConsented : Bool = false
 
-  let pub = NotificationCenter.default.publisher(for: Notification.Name.savedSurvey)
-    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.savedConsent))
-    .merge(with: NotificationCenter.default.publisher(for: Notification.Name.deletedFile))
+  let pub = NotificationCenter.default.publisher(for:   Notification.Name.deletedFile)
     .merge(with: NotificationCenter.default.publisher(for: Notification.Name.addedFile))
+    .merge(with: NotificationCenter.default.publisher(for:
+                                                        Notification.Name.completedSurvey))
 
   var body : some View {
     ZStack {
-      Text(uuid.uuidString).hidden()
       VStack {
-        if UserDefaults.standard.bool(forKey: Key.hasConsented) {
-          if nil != UserDefaults.standard.string(forKey: Key.healthSurvey) {
+        if hasConsented {
+          let hs = UserDefaults.standard.string(forKey: Key.healthSurvey)
+          let hsx = hs == nil ? nil : try? JSONDecoder().decode(Survey.self, from: hs!.data(using: String.Encoding.utf8)!)
+          if nil != hsx && !show_survey && survey_uploaded {
             SampleListView()
           } else {
             SurveyView()
@@ -29,6 +33,7 @@ struct ContentView : View {
       }.onReceive(pub) { _ in
         self.uuid = UUID()
       }
+      Text(uuid.uuidString).hidden()
     }
   }
 }
@@ -38,6 +43,7 @@ struct SampleListView: View {
   var rv : RecordingView
   @ObservedObject var recording : Recording
   @State var isRecording: Bool = false
+  @AppStorage("numberOfUploads") var nos : Int = 0
 
   init() {
     let j = Recording()
@@ -64,7 +70,14 @@ struct SampleListView: View {
             }
           }
         }
-      }.navigationBarTitle(Text("Urban Samples"))
+      }.navigationBarTitleDisplayMode(.inline)
+      .toolbar(content: {
+        ToolbarItem(placement: .principal, content: {
+          VStack {
+            Text("Urban Samples")
+            Text("uploaded \(nos) samples").font(.system(size: 10))
+          }
+        })})
     }
   }
 }

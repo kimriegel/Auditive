@@ -45,6 +45,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       enableASanStackUseAfterReturn = "YES"
+      disablePerformanceAntipatternChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -54,7 +55,6 @@
       enableGPUFrameCaptureMode = "3"
       enableGPUValidationMode = "1"
       allowLocationSimulation = "YES"
-      viewDebuggingEnabled = "No"
       GPUProfilerEnabled = "No">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">

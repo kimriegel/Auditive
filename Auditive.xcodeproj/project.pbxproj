@@ -3,24 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		E700917724685E25005FA915 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
+		E71C3E99255E590C00082FA6 /* qlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E71C3E98255E590C00082FA6 /* qlogo.png */; };
+		E72B0AA4266EC9D300EBE81B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E72B0AA3266EC9D300EBE81B /* Settings.bundle */; };
 		E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */; };
 		E7403F2B2468B39900EA5631 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7403F2A2468B39900EA5631 /* Secret.swift */; };
-		E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */; };
 		E76EA106237B6BC800D1282A /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76EA105237B6BC800D1282A /* Recording.swift */; };
 		E7761A19246225A3006C9E4A /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A17246225A3006C9E4A /* S3.swift */; };
 		E7761A1A246225A3006C9E4A /* XAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A18246225A3006C9E4A /* XAttr.swift */; };
 		E7761A1C24622710006C9E4A /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7761A1B24622710006C9E4A /* AWS.swift */; };
 		E77783AE24A1C51C00B7EE89 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77783AD24A1C51C00B7EE89 /* RatingView.swift */; };
+		E781881F263BBBD500B2EF00 /* CodableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E781881E263BBBD500B2EF00 /* CodableStorage.swift */; };
+		E7818831263F024100B2EF00 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7818830263F024100B2EF00 /* TableView.swift */; };
+		E7818833263F06C800B2EF00 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7818832263F06C800B2EF00 /* HealthView.swift */; };
+		E7818835263F0EE800B2EF00 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7818834263F0EE800B2EF00 /* CheckBox.swift */; };
 		E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D4237CA59A00576B00 /* RecordingView.swift */; };
 		E78351D7237CAB8F00576B00 /* Leq.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78351D6237CAB8F00576B00 /* Leq.swift */; };
-		E78B0142249C6566009EA972 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0141249C6566009EA972 /* ConsentView.swift */; };
 		E78B0144249C6655009EA972 /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = E78B0143249C6655009EA972 /* consent.html */; };
 		E78B0146249D2F44009EA972 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0145249D2F44009EA972 /* Storage.swift */; };
 		E78B0148249D3443009EA972 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B0147249D3443009EA972 /* SurveyView.swift */; };
@@ -30,9 +34,12 @@
 		E7A0EA082360C9210014C886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA072360C9210014C886 /* AppDelegate.swift */; };
 		E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0EA0B2360C9210014C886 /* ContentView.swift */; };
 		E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA0D2360C9220014C886 /* Assets.xcassets */; };
-		E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA102360C9220014C886 /* Preview Assets.xcassets */; };
-		E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */; };
 		E7B980EC24CD2FAE000FCEC0 /* ControlViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8124633B2E00D17947 /* ControlViews.swift */; };
+		E7C061E226598B1B00B37545 /* NoiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C061E126598B1B00B37545 /* NoiseView.swift */; };
+		E7C061E4265AF28B00B37545 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C061E3265AF28B00B37545 /* PickerView.swift */; };
+		E7C061E6265B448400B37545 /* qlogostartup.png in Resources */ = {isa = PBXBuildFile; fileRef = E7C061E5265B448300B37545 /* qlogostartup.png */; };
+		E7D9439A2624DA600037CD8D /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D943992624DA600037CD8D /* ConsentView.swift */; };
+		E7D943A52624EA8C0037CD8D /* RadioCheckField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D943A42624EA8C0037CD8D /* RadioCheckField.swift */; };
 		E7E01E1924A9006100BFA87C /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E01E1824A9006100BFA87C /* Survey.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,20 +51,24 @@
 		E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABC222625AF0009B02CD /* AuditiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveUITests.swift; sourceTree = "<group>"; };
 		E70DABC422625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E71C3E98255E590C00082FA6 /* qlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qlogo.png; sourceTree = "<group>"; };
+		E72B0AA3266EC9D300EBE81B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumWheelView.swift; sourceTree = "<group>"; };
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E7403F2A2468B39900EA5631 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		E74E1E1E2274E37F003774FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E76EA105237B6BC800D1282A /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		E773940E235F60E100DE5031 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E7761A17246225A3006C9E4A /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
 		E7761A18246225A3006C9E4A /* XAttr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAttr.swift; sourceTree = "<group>"; };
 		E7761A1B24622710006C9E4A /* AWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWS.swift; sourceTree = "<group>"; };
 		E77783AD24A1C51C00B7EE89 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		E781881E263BBBD500B2EF00 /* CodableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorage.swift; sourceTree = "<group>"; };
+		E7818830263F024100B2EF00 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		E7818832263F06C800B2EF00 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		E7818834263F0EE800B2EF00 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		E78351D4237CA59A00576B00 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		E78351D6237CAB8F00576B00 /* Leq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leq.swift; sourceTree = "<group>"; };
-		E78B0141249C6566009EA972 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		E78B0143249C6655009EA972 /* consent.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = consent.html; sourceTree = "<group>"; };
 		E78B0145249D2F44009EA972 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E78B0147249D3443009EA972 /* SurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
@@ -69,9 +80,12 @@
 		E7A0EA072360C9210014C886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7A0EA0B2360C9210014C886 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E7A0EA0D2360C9220014C886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E7A0EA102360C9220014C886 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E7A0EA132360C9220014C886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A0EA152360C9220014C886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7C061E126598B1B00B37545 /* NoiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseView.swift; sourceTree = "<group>"; };
+		E7C061E3265AF28B00B37545 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		E7C061E5265B448300B37545 /* qlogostartup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qlogostartup.png; sourceTree = "<group>"; };
+		E7D943992624DA600037CD8D /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
+		E7D943A42624EA8C0037CD8D /* RadioCheckField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioCheckField.swift; sourceTree = "<group>"; };
 		E7E01E1824A9006100BFA87C /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +122,9 @@
 				E773940E235F60E100DE5031 /* README.md */,
 				E70DABB622625AF0009B02CD /* AuditiveTests */,
 				E70DABC122625AF0009B02CD /* AuditiveUITests */,
+				E71C3EBB255F205600082FA6 /* Views */,
 				E7A0EA062360C9210014C886 /* Auditive */,
+				E785E293262B9A6500547CBC /* R0Kit */,
 				E70DAB9C22625AED009B02CD /* Products */,
 				E739ACB42271024C00DCCC06 /* Frameworks */,
 			);
@@ -142,6 +158,29 @@
 			path = AuditiveUITests;
 			sourceTree = "<group>";
 		};
+		E71C3EBB255F205600082FA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
+				E7D943A42624EA8C0037CD8D /* RadioCheckField.swift */,
+				E7D943992624DA600037CD8D /* ConsentView.swift */,
+				E78B0147249D3443009EA972 /* SurveyView.swift */,
+				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
+				E7C061E3265AF28B00B37545 /* PickerView.swift */,
+				E78351D4237CA59A00576B00 /* RecordingView.swift */,
+				E796FD8124633B2E00D17947 /* ControlViews.swift */,
+				E796FD8B246470EF00D17947 /* MapView.swift */,
+				E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */,
+				E796FD7F24632D6200D17947 /* MyProgressBar.swift */,
+				E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */,
+				E7818830263F024100B2EF00 /* TableView.swift */,
+				E7818832263F06C800B2EF00 /* HealthView.swift */,
+				E7C061E126598B1B00B37545 /* NoiseView.swift */,
+				E7818834263F0EE800B2EF00 /* CheckBox.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E739ACB42271024C00DCCC06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,9 +194,24 @@
 			isa = PBXGroup;
 			children = (
 				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
+				E71C3E98255E590C00082FA6 /* qlogo.png */,
+				E7C061E5265B448300B37545 /* qlogostartup.png */,
 				E78B0143249C6655009EA972 /* consent.html */,
+				E72B0AA3266EC9D300EBE81B /* Settings.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E785E293262B9A6500547CBC /* R0Kit */ = {
+			isa = PBXGroup;
+			children = (
+				E7403F2A2468B39900EA5631 /* Secret.swift */,
+				E7761A18246225A3006C9E4A /* XAttr.swift */,
+				E7761A1B24622710006C9E4A /* AWS.swift */,
+				E7761A17246225A3006C9E4A /* S3.swift */,
+				E781881E263BBBD500B2EF00 /* CodableStorage.swift */,
+			);
+			path = R0Kit;
 			sourceTree = "<group>";
 		};
 		E7A0EA062360C9210014C886 /* Auditive */ = {
@@ -165,38 +219,13 @@
 			children = (
 				E700917624685E10005FA915 /* Auditive.entitlements */,
 				E7A0EA072360C9210014C886 /* AppDelegate.swift */,
-				E76EA0FD237B1A7800D1282A /* SceneDelegate.swift */,
-				E7A0EA0B2360C9210014C886 /* ContentView.swift */,
-				E78B0147249D3443009EA972 /* SurveyView.swift */,
 				E7E01E1824A9006100BFA87C /* Survey.swift */,
-				E77783AD24A1C51C00B7EE89 /* RatingView.swift */,
-				E78B0149249DBC29009EA972 /* KeyboardAdaptive.swift */,
 				E78B0145249D2F44009EA972 /* Storage.swift */,
-				E78B0141249C6566009EA972 /* ConsentView.swift */,
-				E78351D4237CA59A00576B00 /* RecordingView.swift */,
-				E796FD8124633B2E00D17947 /* ControlViews.swift */,
-				E796FD8B246470EF00D17947 /* MapView.swift */,
 				E76EA105237B6BC800D1282A /* Recording.swift */,
-				E796FD7F24632D6200D17947 /* MyProgressBar.swift */,
 				E78351D6237CAB8F00576B00 /* Leq.swift */,
-				E7761A1B24622710006C9E4A /* AWS.swift */,
-				E7761A17246225A3006C9E4A /* S3.swift */,
-				E7761A18246225A3006C9E4A /* XAttr.swift */,
-				E7403F2A2468B39900EA5631 /* Secret.swift */,
-				E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */,
 				E7A0EA152360C9220014C886 /* Info.plist */,
-				E7A0EA0F2360C9220014C886 /* Preview Content */,
-				E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */,
 			);
 			path = Auditive;
-			sourceTree = "<group>";
-		};
-		E7A0EA0F2360C9220014C886 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				E7A0EA102360C9220014C886 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +290,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = Semasiology;
+				ORGANIZATIONNAME = Quacs;
 				TargetAttributes = {
 					E70DABB222625AF0009B02CD = {
 						CreatedOnToolsVersion = 10.2;
@@ -277,7 +306,7 @@
 				};
 			};
 			buildConfigurationList = E70DAB9622625AEC009B02CD /* Build configuration list for PBXProject "Auditive" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -317,10 +346,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7A0EA142360C9220014C886 /* LaunchScreen.storyboard in Resources */,
+				E7C061E6265B448400B37545 /* qlogostartup.png in Resources */,
 				E78B0144249C6655009EA972 /* consent.html in Resources */,
-				E7A0EA112360C9220014C886 /* Preview Assets.xcassets in Resources */,
+				E72B0AA4266EC9D300EBE81B /* Settings.bundle in Resources */,
 				E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */,
+				E71C3E99255E590C00082FA6 /* qlogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,17 +382,23 @@
 				E7E01E1924A9006100BFA87C /* Survey.swift in Sources */,
 				E78B0146249D2F44009EA972 /* Storage.swift in Sources */,
 				E7A0EA0C2360C9210014C886 /* ContentView.swift in Sources */,
+				E7D943A52624EA8C0037CD8D /* RadioCheckField.swift in Sources */,
+				E7D9439A2624DA600037CD8D /* ConsentView.swift in Sources */,
 				E78351D5237CA59A00576B00 /* RecordingView.swift in Sources */,
+				E7818835263F0EE800B2EF00 /* CheckBox.swift in Sources */,
 				E78B0148249D3443009EA972 /* SurveyView.swift in Sources */,
+				E7C061E226598B1B00B37545 /* NoiseView.swift in Sources */,
+				E7818831263F024100B2EF00 /* TableView.swift in Sources */,
+				E7C061E4265AF28B00B37545 /* PickerView.swift in Sources */,
 				E7B980EC24CD2FAE000FCEC0 /* ControlViews.swift in Sources */,
-				E76EA0FE237B1A7800D1282A /* SceneDelegate.swift in Sources */,
 				E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */,
+				E7818833263F06C800B2EF00 /* HealthView.swift in Sources */,
 				E796FD8C246470EF00D17947 /* MapView.swift in Sources */,
 				E77783AE24A1C51C00B7EE89 /* RatingView.swift in Sources */,
 				E7403F2B2468B39900EA5631 /* Secret.swift in Sources */,
-				E78B0142249C6566009EA972 /* ConsentView.swift in Sources */,
 				E7761A1C24622710006C9E4A /* AWS.swift in Sources */,
 				E78351D7237CAB8F00576B00 /* Leq.swift in Sources */,
+				E781881F263BBBD500B2EF00 /* CodableStorage.swift in Sources */,
 				E76EA106237B6BC800D1282A /* Recording.swift in Sources */,
 				E78B014A249DBC29009EA972 /* KeyboardAdaptive.swift in Sources */,
 				E796FD8024632D6200D17947 /* MyProgressBar.swift in Sources */,
@@ -371,17 +407,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E7A0EA122360C9220014C886 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7A0EA132360C9220014C886 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E70DABC522625AF0009B02CD /* Debug */ = {
@@ -436,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -492,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -586,17 +611,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"Auditive/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacs.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -610,17 +634,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Auditive/Auditive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"Auditive/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacs.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
