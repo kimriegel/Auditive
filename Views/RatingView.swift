@@ -22,9 +22,7 @@ struct RateView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 10) {
-      Text(label).font(.system(size: 17))
-        .fixedSize(horizontal: false, vertical: true)
-        .lineLimit(3)
+      Text(label)
       HStack {
         Slider.init(value: $ratingState,
                     in: 0...Float(maximumRating), step: 1 ) { z in
@@ -55,11 +53,11 @@ struct RatingView: View {
   var offColor = Color.gray
   var onColor = Color.yellow
   
-  func image(for number: Int) -> some View {
-    if number == rating {
-      return onImage.foregroundColor(self.onColor)
+  func image(for number: Int) -> Image {
+    if number > rating {
+      return offImage // ?? onImage
     } else {
-      return offImage.foregroundColor(self.offColor)
+      return onImage
     }
   }
 
@@ -68,14 +66,13 @@ struct RatingView: View {
   var body: some View {
     VStack {
       if label.isEmpty == false {
-        Text(label).font(.system(size: 17))
-          .fixedSize(horizontal: false, vertical: true)
-          .lineLimit(3)
+        Text(label)
       }
       HStack {
         Text("Disagree").font(.system(size: smallSize))
-        ForEach(Array(1..<maximumRating+1), id: \.self) { number in
+        ForEach(1..<maximumRating+1) { number in
           self.image(for: number)
+            .foregroundColor(number > self.rating ? self.offColor : self.onColor)
             .onTapGesture {
               self.rating = number
             }
