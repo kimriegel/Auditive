@@ -266,7 +266,7 @@ enum Employment : Int, MyEnum, Codable {
 struct Health : Codable, Equatable {
 
   var conditions = ["Heart diseases", "Diabetes", "Dementia", "Stroke", "Migraine", "Thyroid", "Hyperactivity/ADD", "Substance Use Disorder", "Sleep Disorder", "Depression", "Bipolar Disorder"].map{ HealthCondition($0) }
-  var symptoms = ["Seizures", "Shakiness", "Sweats (night)", "Nosebleeds", "Lightheadedness", "Dizziness", "Hearing loss", "Loss of Consciousness", "Confusion", "Panic Attacks"].map { HealthSymptom($0) }
+  var symptoms = ["Seizures", "Shakiness", "Sweats (night)", "Nosebleeds", "Lightheadedness", "Dizziness", "Loss of Consciousness", "Confusion", "Panic Attacks"].map { HealthSymptom($0) }
 
 
   var smoking = OrOther<Oftenness>()

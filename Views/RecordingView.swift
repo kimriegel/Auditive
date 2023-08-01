@@ -11,10 +11,12 @@ struct AnnoyanceForm : View {
     //    Form {
     //  Section(header: Text("Annoyance data")) {
     GroupBox {
-      Rater(rating: $annoyance.annoying, label: "How annoying is the noise?",
-            maximumRating: 10)
-      Rater(rating: $annoyance.control, label: "How much control do you have over it?",
-            maximumRating: 5)
+        RatingView(rating: $annoyance.annoying , label: "I find this sound annoying",
+                   maximumRating: 5).padding([.bottom, .top], 12)
+//      Rater(rating: $annoyance.annoying, label: "How annoying is the noise?",
+//            maximumRating: 5)
+        RatingView(rating: $annoyance.control , label: "I have control over this sound",
+                   maximumRating: 5).padding([.bottom, .top], 12)
 
       XPick(label: "What kind of sound is it?", pick: self.$annoyance.kind, allowOther: true) // SegmentPickerStyle)(
     }
@@ -27,7 +29,7 @@ struct RecordingView: View {
 
   @AppStorage("numberOfUploads") var numberOfUploads : Int = 0
   @Environment(\.presentationMode) var presentationMode
-
+  let vid = Key.VendorID
   let dqb = DispatchQueue.global()
   @ObservedObject var recording : Recording
   // @ObservedObject var annoyance : Annoyance
@@ -44,7 +46,9 @@ struct RecordingView: View {
      formIsFilledOut = recording.annoyance.isFilledOut
      }
      return
-     */ VStack {
+     
+     */
+      VStack {
        VStack(spacing: 0) {
          if self.recording.isRecording {
            StopButton()
@@ -75,12 +79,12 @@ struct RecordingView: View {
          Text(recording.displayName).font(.headline)
          //        Text(String(describing:recording.location))
 
-         if !self.recording.isRecording {
-           HStack {
-             Text(String(format: "Leq: %.2f", recording.leq))
-           }
+//         if !self.recording.isRecording {
+//           HStack {
+//             Text(String(format: "Leq: %.2f", recording.leq))
+          // }
 
-         }
+       //  }
 
          GeometryReader { g in
            if nil != self.recording.location {
@@ -102,7 +106,7 @@ struct RecordingView: View {
              Spacer().layoutPriority(0.1)
            }
          }
-       }.padding(0)
+       }.padding(40)
 
        // NavigationView {
        AnnoyanceForm(annoyance: recording.annoyance)
@@ -130,7 +134,8 @@ struct RecordingView: View {
          Spacer()
          //        if self.recording.annoyance.isFilledOut {
          Button( action: {
-           let _ =  uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance)
+             let _ =  uploadToS3(url: self.recording.url, location: self.recording.location, annoyance: self.recording.annoyance
+             )
            numberOfUploads += 1
            presentationMode.wrappedValue.dismiss()
            self.recording.delete() // delete the local recording after the upload succeeds

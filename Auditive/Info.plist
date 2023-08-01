@@ -40,7 +40,7 @@
 		<key>UIColorName</key>
 		<string>launchcolor2</string>
 		<key>UIImageName</key>
-		<string>qlogostartup</string>
+		<string>qlogostartup.jpeg</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
@@ -56,10 +56,10 @@
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 </dict>
 </plist>

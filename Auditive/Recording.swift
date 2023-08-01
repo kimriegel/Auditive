@@ -154,7 +154,7 @@ class Recording : NSObject, Identifiable, ObservableObject {
       }
 
       let jj = dd - (self.baseTime ?? dd )
-      self.percentage = CGFloat(jj / Double(Self.recordingLength) )
+        self.percentage = CGFloat(jj / Double(Self.recordingLength) )
     }
   }
 

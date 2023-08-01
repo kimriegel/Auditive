@@ -61,8 +61,13 @@ func saveSurvey(_ survey : Survey) {
 func uploadToS3(url : URL, location: CLLocation?, annoyance: Annoyance) {
   do {
     let dat = try Data.init(contentsOf: url)
-    
+    guard let vid = UserDefaults.standard.string(forKey: Key.VendorID)
+    else {
+        os_log("unable to get vendor ID %s", type: .error, #function)
+        return
+      }
     var tags = [String:String]()
+      tags[Key.VendorID] = String(vid)
     if let l = location {
       tags[Key.latitude]=String(l.coordinate.latitude)
       tags[Key.longitude]=String( l.coordinate.longitude)

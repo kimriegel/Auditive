@@ -42,7 +42,7 @@ public func Leq(_ buf : AVAudioPCMBuffer) -> Float {
   }
   
   // let Lmax = leqs.reduce(-Float.greatestFiniteMagnitude) { max($0, $1) }
-  return 10 * log10( (tmsq / Float(buf.frameLength)) / pow( 0.00002, 2))
+    return 10 * log10( (tmsq / Float(buf.frameLength)) / pow( 0.00002, 2))+22.8
 }
 
 // ======================================================================

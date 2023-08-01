@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		069563B42A0063B7007E9CCC /* qlogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 069563B22A0063B7007E9CCC /* qlogo.jpeg */; };
+		069563B62A0064A2007E9CCC /* qlogostartup.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 069563B52A0064A2007E9CCC /* qlogostartup.jpeg */; };
 		E700917724685E25005FA915 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739ACB52271024C00DCCC06 /* CloudKit.framework */; };
 		E70DABB822625AF0009B02CD /* AuditiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABB722625AF0009B02CD /* AuditiveTests.swift */; };
 		E70DABC322625AF0009B02CD /* AuditiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DABC222625AF0009B02CD /* AuditiveUITests.swift */; };
-		E71C3E99255E590C00082FA6 /* qlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E71C3E98255E590C00082FA6 /* qlogo.png */; };
 		E72B0AA4266EC9D300EBE81B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E72B0AA3266EC9D300EBE81B /* Settings.bundle */; };
 		E7340D8724B807EB00CC98C7 /* EnumWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */; };
 		E7403F2B2468B39900EA5631 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7403F2A2468B39900EA5631 /* Secret.swift */; };
@@ -37,13 +38,14 @@
 		E7B980EC24CD2FAE000FCEC0 /* ControlViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796FD8124633B2E00D17947 /* ControlViews.swift */; };
 		E7C061E226598B1B00B37545 /* NoiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C061E126598B1B00B37545 /* NoiseView.swift */; };
 		E7C061E4265AF28B00B37545 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C061E3265AF28B00B37545 /* PickerView.swift */; };
-		E7C061E6265B448400B37545 /* qlogostartup.png in Resources */ = {isa = PBXBuildFile; fileRef = E7C061E5265B448300B37545 /* qlogostartup.png */; };
 		E7D9439A2624DA600037CD8D /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D943992624DA600037CD8D /* ConsentView.swift */; };
 		E7D943A52624EA8C0037CD8D /* RadioCheckField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D943A42624EA8C0037CD8D /* RadioCheckField.swift */; };
 		E7E01E1924A9006100BFA87C /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E01E1824A9006100BFA87C /* Survey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		069563B22A0063B7007E9CCC /* qlogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qlogo.jpeg; sourceTree = "<group>"; };
+		069563B52A0064A2007E9CCC /* qlogostartup.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qlogostartup.jpeg; sourceTree = "<group>"; };
 		E700917624685E10005FA915 /* Auditive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Auditive.entitlements; sourceTree = "<group>"; };
 		E70DABB322625AF0009B02CD /* AuditiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABB722625AF0009B02CD /* AuditiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveTests.swift; sourceTree = "<group>"; };
@@ -51,7 +53,6 @@
 		E70DABBE22625AF0009B02CD /* AuditiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuditiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70DABC222625AF0009B02CD /* AuditiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditiveUITests.swift; sourceTree = "<group>"; };
 		E70DABC422625AF0009B02CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E71C3E98255E590C00082FA6 /* qlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qlogo.png; sourceTree = "<group>"; };
 		E72B0AA3266EC9D300EBE81B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E7340D8624B807EB00CC98C7 /* EnumWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumWheelView.swift; sourceTree = "<group>"; };
 		E739ACB52271024C00DCCC06 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -83,7 +84,6 @@
 		E7A0EA152360C9220014C886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7C061E126598B1B00B37545 /* NoiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseView.swift; sourceTree = "<group>"; };
 		E7C061E3265AF28B00B37545 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
-		E7C061E5265B448300B37545 /* qlogostartup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qlogostartup.png; sourceTree = "<group>"; };
 		E7D943992624DA600037CD8D /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		E7D943A42624EA8C0037CD8D /* RadioCheckField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioCheckField.swift; sourceTree = "<group>"; };
 		E7E01E1824A9006100BFA87C /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				E7A0EA0D2360C9220014C886 /* Assets.xcassets */,
-				E71C3E98255E590C00082FA6 /* qlogo.png */,
-				E7C061E5265B448300B37545 /* qlogostartup.png */,
 				E78B0143249C6655009EA972 /* consent.html */,
+				069563B22A0063B7007E9CCC /* qlogo.jpeg */,
+				069563B52A0064A2007E9CCC /* qlogostartup.jpeg */,
 				E72B0AA3266EC9D300EBE81B /* Settings.bundle */,
 			);
 			path = Resources;
@@ -288,8 +288,9 @@
 		E70DAB9322625AEC009B02CD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = Quacs;
 				TargetAttributes = {
 					E70DABB222625AF0009B02CD = {
@@ -306,7 +307,7 @@
 				};
 			};
 			buildConfigurationList = E70DAB9622625AEC009B02CD /* Build configuration list for PBXProject "Auditive" */;
-			compatibilityVersion = "Xcode 11.4";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -346,11 +347,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7C061E6265B448400B37545 /* qlogostartup.png in Resources */,
+				069563B42A0063B7007E9CCC /* qlogo.jpeg in Resources */,
 				E78B0144249C6655009EA972 /* consent.html in Resources */,
 				E72B0AA4266EC9D300EBE81B /* Settings.bundle in Resources */,
 				E7A0EA0E2360C9220014C886 /* Assets.xcassets in Resources */,
-				E71C3E99255E590C00082FA6 /* qlogo.png in Resources */,
+				069563B62A0064A2007E9CCC /* qlogostartup.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -517,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -615,14 +616,17 @@
 				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacs.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -638,14 +642,17 @@
 				DEVELOPMENT_TEAM = P2DQ2FPSMV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Auditive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.qcc.quacs.Auditive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
